@@ -1,0 +1,3187 @@
+    1  *:*****************************************************************************
+    2  *:
+    3  *: Procedure file: Z:\SISTEMA\SCP20333.PRG
+    4  *:
+    5  *:         System: 
+    6  *:         Author: 
+    7  *:      Copyright (c) 1910, 
+    8  *:  Last modified: 19/12/106     13:34
+    9  *:
+   10  *:         Set by: SCP20033.PRG                      
+   11  *:
+   12  *:          Calls: SPACE()            (function  in ?)
+   13  *:               : CHR()              (function  in ?)
+   14  *:               : VARREAD()          (function  in ?)
+   15  *:               : VALIDAR            (procedure in SCP20033.PRG)
+   16  *:               : LASTKEY()          (function  in ?)
+   17  *:               : IIF()              (function  in ?)
+   18  *:               : LEN()              (function  in ?)
+   19  *:               : LTRIM()            (function  in ?)
+   20  *:               : STR()              (function  in ?)
+   21  *:               : BUSQUEDA()         (function  in ?)
+   22  *:               : SUBSTR()           (function  in ?)
+   23  *:               : VAL()              (function  in ?)
+   24  *:               : MSGERRO()          (function  in ?)
+   25  *:               : FOUND()            (function  in ?)
+   26  *:               : LEFT()             (function  in ?)
+   27  *:               : SEEK()             (function  in ?)
+   28  *:               : DEUDA_VEN1()       (function  in SCP20033.PRG)
+   29  *:               : ALLTRIM()          (function  in ?)
+   30  *:               : DATE()             (function  in ?)
+   31  *:               : EOF()              (function  in ?)
+   32  *:               : COL()              (function  in ?)
+   33  *:               : ACEPTA()           (function  in ?)
+   34  *:               : SCP20033.PRG
+   35  *:               : MBANCOS()          (function  in SCP20033.PRG)
+   36  *:               : SALIDA()           (function  in ?)
+   37  *:               : BOXFIELD()         (function  in ?)
+   38  *:               : MCOBRAD()          (function  in SCP20033.PRG)
+   39  *:               : ACEPTA1()          (function  in ?)
+   40  *:               : PRINTER()          (function  in ?)
+   41  *:               : RLOCK()            (function  in ?)
+   42  *:               : PCOL()             (function  in ?)
+   43  *:               : LETRAS()           (function  in ?)
+   44  *:               : REPITE_RECIBO.PRG
+   45  *:               : FLOCK()            (function  in ?)
+   46  *:               : WCOLS()            (function  in ?)
+   47  *:               : OBJNUM()           (function  in ?)
+   48  *:
+   49  *:           Uses: LAPSO1.DBF         
+   50  *:               : DATOS.DBF          
+   51  *:               : AD&LAPMAT.DBF      
+   52  *:               : CONTDEUD.DBF           Alias: CONTDEUD
+   53  *:               : PLANCOBR.DBF           Alias: PLANCOBR
+   54  *:               : DETACOBR.DBF           Alias: DETACOBR
+   55  *:               : CONCEPTO.DBF           Alias: CONCEPTO
+   56  *:               : LICEO.DBF          
+   57  *:               : COBRADOR.DBF           Alias: COBRADOR
+   58  *:               : REGPAGOS.DBF           Alias: REGDATOS
+   59  *:               : BANCOS.DBF             Alias: BANCOS
+   60  *:               : MP&LAPMAT.DBF      
+   61  *:
+   62  *:      CDX files: DATOS.CDX
+   63  *:               : CONTDEUD.CDX
+   64  *:               : PLANCOBR.CDX
+   65  *:               : DETACOBR.CDX
+   66  *:               : CONCEPTO.CDX
+   67  *:               : COBRADOR.CDX
+   68  *:               : REGPAGOS.CDX
+   69  *:               : BANCOS.CDX
+   70  *:
+   71  *:      Documented 25/04/10 at 11:21               FoxDoc  version 2.10f
+   72  *:*****************************************************************************
+   73      close databases
+   74      set deleted on
+   75      set talk off
+   76      select 1
+   77      use lapso1
+   78      m.lapso = lapso1
+   79      clear gets
+   80      select 1
+   81      use datos
+   82      set order to cedula
+   83      select 2
+   84      use ad&lapmat
+   85      set order to ced
+   86      select 7
+   87      use contdeud again alias contdeud  ;
+   88          order cedula
+   89      select 8
+   90      use plancobr again alias plancobr  ;
+   91          order lapcod
+   92      select 11
+   93      use detacobr again alias detacobr  ;
+   94          order lapcod
+   95      select 12
+   96      use concepto again alias concepto  ;
+   97          order codigo
+   98      select 13
+   99      use liceo
+  100      select 14
+  101      use cobrador again alias cobrador  ;
+  102          order codigo
+  103      select 9
+  104      use regpagos again alias regdatos  ;
+  105          order cedula
+  106      select 10
+  107      use bancos again alias bancos  ;
+  108          order codigo
+  109      select 15
+  110      use mp&lapmat
+  111      set order to ced
+  112      define window record1 from 00, 00  ;
+  113          to 24, 79 grow float close  ;
+  114          zoom shadow title  ;
+  115          'Registro de Control de Pago Materia Adicional (SCP20333)'  ;
+  116          minimize system color  ;
+  117          scheme 5
+  118      move window record1 center
+  119      activate window record1
+  120      xcedula = space(12)
+  121      m.nrocont = space(10)
+  122      m.nromatad = space(2)
+  123      m.nroconad = space(10)
+  124      m.swp = 0
+  125      m.control = 0
+  126      m.pote = 1
+  127      on key label f8 keybo chr(13)
+  128      on key label f9 keybo chr(13)
+  129      on key label tab do validar with varread()
+  130      m.nac = 'V'
+  131      m.ced = 0
+  132      valida1 = 'ABCDEFGHIJKLMNOPQRSTUVXYZ'
+  133      valida2 = 'ABCDEFGHIJKLMNOPQRSTUVXYZ*'
+  134      mcuota = 01
+  135      lin1 = 0
+  136      lin2 = 0
+  137      mdec1 = 0
+  138      mdec2 = 0
+  139      tu = 0
+  140      mbandes = space(30)
+  141      tdeuda = 0.00
+  142      tpagad = 0.00
+  143      tsaldo = 0.00
+  144      tmontv = 0.00
+  145    ษอdo while .t.
+  146    บ    lin1 = 0
+  147    บ    lin2 = 0
+  148    บ    lin3 = 0
+  149    บ    mdec1 = 0
+  150    บ    mdec2 = 0
+  151    บ    tu = 0
+  152    บ  ฺฤif m.pote = 1
+  153    บ  ณ    @ 00, 00 say  ;
+  154    บ  ณ        'ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป'
+  155    บ  ณ    @ 01, 00 say  ;
+  156    บ  ณ        'บ Cdula  :             Apell/Nombres :                                      บ'
+  157    บ  ณ    @ 02, 00 say  ;
+  158    บ  ณ        'บ Menciขn :       (             )  Nro.Control:             Semestre :(  )   บ'
+  159    บ  ณ    @ 03, 00 say  ;
+  160    บ  ณ        'บ Nro.Mat.Adicionales : (  )       Nro.Control Mat.Adicional:                บ'
+  161    บ  ณ    @ 04, 00 say  ;
+  162    บ  ณ        'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ'
+  163    บ  ณ    @ 05, 00 say  ;
+  164    บ  ณ        'บ Cขdigo del Plan:      Descripciขn:                                         บ'
+  165    บ  ณ    @ 06, 00 say  ;
+  166    บ  ณ        'บ       Total Plan Cobro:               Fecha de Pago    :                   บ'
+  167    บ  ณ    @ 07, 00 say  ;
+  168    บ  ณ        'บ           Monto Pagado:               Tipo Pago (E/D/C):                   บ'
+  169    บ  ณ    @ 08, 00 say  ;
+  170    บ  ณ        'บ        Saldo por Pagar:               Nro. Dep./Cheq   :                   บ'
+  171    บ  ณ    @ 09, 00 say  ;
+  172    บ  ณ        'บ    Total Deuda Vencida:               Banco :                              บ'
+  173    บ  ณ    @ 10, 00 say  ;
+  174    บ  ณ        'บ  Monto Cancelar/Abonar:               Cobrador :                           บ'
+  175    บ  ณ    @ 11, 00 say  ;
+  176    บ  ณ        'บ CONCEPTOS   ณ  Cuotas  ณ  Pagado  ณTบ CONCEPTOS    ณ  Cuotas  ณ  Pagado  ณTบ'
+  177    บ  ณ    @ 11, 01 say  ;
+  178    บ  ณ        ' CONCEPTOS   ณ  Cuotas  ณ  Pagado  ณTบ CONCEPTOS    ณ  Cuotas  ณ  Pagado  ณT'  ;
+  179    บ  ณ        color n+/w
+  180    บ  ณ    @ 12, 00 say  ;
+  181    บ  ณ        'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
+  182    บ  ณ    @ 13, 00 say  ;
+  183    บ  ณ        'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
+  184    บ  ณ    @ 14, 00 say  ;
+  185    บ  ณ        'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
+  186    บ  ณ    @ 15, 00 say  ;
+  187    บ  ณ        'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
+  188    บ  ณ    @ 16, 00 say  ;
+  189    บ  ณ        'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
+  190    บ  ณ    @ 17, 00 say  ;
+  191    บ  ณ        'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
+  192    บ  ณ    @ 18, 00 say  ;
+  193    บ  ณ        'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
+  194    บ  ณ    @ 19, 00 say  ;
+  195    บ  ณ        'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
+  196    บ  ณ    @ 20, 00 say  ;
+  197    บ  ณ        'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
+  198    บ  ณ    @ 21, 00 say  ;
+  199    บ  ณ        'ศอออออออออออออฯออออออออออฯออออออออออฯอสออออออออออออออฯออออออออออฯออออออออออฯอผ'
+  200    บ  ณ    m.pote = 2
+  201    บ  ณ    save screen to pelota
+  202    บ  ภฤendif
+  203    บ    restore screen from pelota
+  204    บ    @ 01, 12 get m.nac picture  ;
+  205    บ        '@!M V,E,C,R' message  ;
+  206    บ        'ingrese la Nacionalidad del Alumno'
+  207    บ    @ 01, 13 say '-'
+  208    บ    @ 01, 14 get m.ced picture  ;
+  209    บ        '99999999' valid m.ced >=  ;
+  210    บ        0 message  ;
+  211    บ        'Ingrese el Nฃmero del Cedula del Alumno'  ;
+  212    บ        error  ;
+  213    บ        'Ingrese al Nฃmero de Cedula'
+  214    บ    read
+  215    บ  ฺฤif lastkey() = -8
+  216    บ  ณ    select 1
+  217    บ  ณ    goto top
+  218    บ  ณ    m.ced = iif(len(ltrim(str(m.ced,  ;
+  219    บ  ณ        10))) < 10,  ;
+  220    บ  ณ        ltrim(str(m.ced,  ;
+  221    บ  ณ        10)) + space(10 -  ;
+  222    บ  ณ        len(ltrim(str(m.ced,  ;
+  223    บ  ณ        10)))),  ;
+  224    บ  ณ        ltrim(str(m.ced,  ;
+  225    บ  ณ        10)))
+  226    บ  ณ    xcedula = m.nac + '-' +  ;
+  227    บ  ณ        m.ced
+  228    บ  ณ    xcedula = busqueda()
+  229    บ  ณ    m.nac = substr(xcedula,  ;
+  230    บ  ณ        1, 1)
+  231    บ  ณ    m.ced = val(substr(xcedula,  ;
+  232    บ  ณ        3, 10))
+  233    ^อออออออloop
+  234    บ  ภฤendif
+  235    บ  ฺฤif lastkey() = 27
+  236    บ  ณ    entra = .f.
+  237    บ  ณ    on key label tab
+  238    บ  ณ    release window record1
+  239    บ  ณ    close databases
+  240  <อออออออออreturn
+  241    บ  ภฤendif
+  242    บ  ฺฤif m.ced <= 0
+  243    บ  ณ    = msgerro( ;
+  244    บ  ณ        'Ingrese el Nro. de Cedula' ;
+  245    บ  ณ        )
+  246    ^อออออออloop
+  247    บ  ภฤendif
+  248    บ    m.ced = iif(len(ltrim(str(m.ced,  ;
+  249    บ        10))) < 10,  ;
+  250    บ        ltrim(str(m.ced,  ;
+  251    บ        10)) + space(10 -  ;
+  252    บ        len(ltrim(str(m.ced,  ;
+  253    บ        10)))),  ;
+  254    บ        ltrim(str(m.ced,  ;
+  255    บ        10)))
+  256    บ    xcedula = m.nac + '-' +  ;
+  257    บ        m.ced
+  258    บ    select 1
+  259    บ    set order to cedula
+  260    บ    seek xcedula
+  261    บ  ฺฤif  .not. found()
+  262    บ  ณ    = msgerro( ;
+  263    บ  ณ        'Este alumno no esta registrado, verifique' ;
+  264    บ  ณ        )
+  265    บ  ณ    m.nac = 'V'
+  266    บ  ณ    m.ced = 0
+  267    ^อออออออloop
+  268    บ  ภฤendif
+  269    บ    scatter memo memvar
+  270    บ    m.cedula = xcedula
+  271    บ    @ 01, 40 get m.nombres  ;
+  272    บ        picture '@!S37' message  ;
+  273    บ        'Ingrese Apellidos y Nombres de Alumno'
+  274    บ    m.nac1 = left(m.rep_legal,  ;
+  275    บ        1)
+  276    บ    m.ced1 = val(substr(m.rep_legal,  ;
+  277    บ        3, 10))
+  278    บ    select 2
+  279    บ  ฺฤif seek(xcedula)
+  280    บ  ณ  ฺฤif cierre = 'S'
+  281    บ  ณ  ณ    = msgerro( ;
+  282    บ  ณ  ณ        'Esta Matricula de pago de Mat. Adicional ya fue cerrada, verifique' ;
+  283    บ  ณ  ณ        )
+  284    บ  ณ  ณ    m.nac = 'V'
+  285    บ  ณ  ณ    m.ced = 0
+  286    ^ออออออออออloop
+  287    บ  ณ  ภฤendif
+  288    บ  ภฤendif
+  289    บ    select 7
+  290    บ    set order to cedula
+  291    บ  ฺฤif seek(xcedula)
+  292    บ  ณ    m.saldo = total_d -  ;
+  293    บ  ณ        monto_p
+  294    บ  ณ  ฺฤif m.saldo > 0
+  295    บ  ณ  ณ    = msgerro( ;
+  296    บ  ณ  ณ        'Este Alumno tiene un registro de deuda vencida pendiente, verifique' ;
+  297    บ  ณ  ณ        )
+  298    บ  ณ  ณ  ฺฤif  .not.  ;
+  299    บ  ณ  ณ  ณ        deuda_ven1()
+  300    บ  ณ  ณ  ณ    m.nac = 'V'
+  301    บ  ณ  ณ  ณ    m.ced = 0
+  302    ^อออออออออออออloop
+  303    บ  ณ  ณ  ภฤendif
+  304    บ  ณ  ภฤendif
+  305    บ  ภฤendif
+  306    บ    select 2
+  307    บ    set order to ced
+  308    บ  ฺฤif  .not. seek(xcedula)
+  309    บ  ณ    = msgerro( ;
+  310    บ  ณ        'Este alumno no esta registrado con Materia Adicional, verifique' ;
+  311    บ  ณ        )
+  312    บ  ณ    m.nac = 'V'
+  313    บ  ณ    m.ced = 0
+  314    ^อออออออloop
+  315    บ  ภฤendif
+  316    บ  ฺฤif status = 'X'
+  317    บ  ณ    = msgerro( ;
+  318    บ  ณ        'Este Alumno fue egresado de la Matricula de Mat. Adicional, verifique' ;
+  319    บ  ณ        )
+  320    บ  ณ    m.nac = 'V'
+  321    บ  ณ    m.ced = space(10)
+  322    ^อออออออloop
+  323    บ  ภฤendif
+  324    บ    scatter memo memvar
+  325    บ    qcurso = m.cur
+  326    บ    m.codigo = semestre
+  327    บ    m.nrocont = matricula
+  328    บ    @ 02, 12 get qcurso picture  ;
+  329    บ        '@!M 32012,31022,31023'
+  330    บ  ีอdo case
+  331    บ  ฦอcase alltrim(qcurso) =  ;
+  332    บ  ณ        '32012'
+  333    บ  ณ    @ 02, 19 say  ;
+  334    บ  ณ        'BASICA'
+  335    บ  ณ    mmencion = 'BASICA'
+  336    บ  ฦอcase alltrim(qcurso) =  ;
+  337    บ  ณ        '31022'
+  338    บ  ณ    @ 02, 19 say  ;
+  339    บ  ณ        'CIENCIAS'
+  340    บ  ณ    mmencion = 'CIENCIAS'
+  341    บ  ฦอcase alltrim(qcurso) =  ;
+  342    บ  ณ        '31023'
+  343    บ  ณ    @ 02, 19 say  ;
+  344    บ  ณ        'HUMANIDADES'
+  345    บ  ณ    mmencion = 'HUMANIDADES'
+  346    บ  ิอendcase
+  347    บ    @ 02, 48 get m.nrocont  ;
+  348    บ        picture '@!'
+  349    บ    @ 02, 71 get m.codigo  ;
+  350    บ        picture '@!'
+  351    บ    m.curso = qcurso
+  352    บ    m.cedula = xcedula
+  353    บ    m.ced = xcedula
+  354    บ    m.ultima = ultimacuot + 1
+  355    บ    xultimacuo = ultimacuot
+  356    บ    m.turno = turno
+  357    บ    clear gets
+  358    บ    select 2
+  359    บ    set order to ced
+  360    บ  ฺฤif seek(xcedula)
+  361    บ  ณ    m.nromatad = nromatad
+  362    บ  ณ    m.nroconad = matricula
+  363    บ  ณ    @ 03, 25 say m.nromatad  ;
+  364    บ  ณ        picture '@!' color w+/ ;
+  365    บ  ณ        bg*
+  366    บ  ณ    @ 03, 62 say m.nroconad  ;
+  367    บ  ณ        picture '@!' color w+/ ;
+  368    บ  ณ        bg*
+  369    บ  ภฤendif
+  370    บ    select 8
+  371    บ    seek lapmat + m.plancobro
+  372    บ    mdes1 = alltrim(descripcio)
+  373    บ    mdes2 = alltrim(descripcio)
+  374    บ    @ 05, 18 say m.plancobro  ;
+  375    บ        picture '@!' color w+/w
+  376    บ    @ 05, 36 say mdes1 picture  ;
+  377    บ        '@!'
+  378    บ    xnro = nrocuotas
+  379    บ    save screen to hol
+  380    บ    select 2
+  381    บ    ii = 1
+  382    บ    tdeuda = 0.00
+  383    บ    tpagad = 0.00
+  384    บ    tsaldo = 0.00
+  385    บ    tmontv = 0.00
+  386    บ    m.montov = 0.00
+  387    บ  ึฤfor ii = 1 to xnro
+  388    บ  บ    lk = ltrim(str(ii))
+  389    บ  บ    tdeuda=tdeuda+cuota&lk
+  390    บ  บ    tpagad=tpagad+pagado&lk
+  391    บ  บ  ฺฤif cuota&lk<=pagado&lk
+  392    บ  ^อออออออloop
+  393    บ  บ  ภฤendif
+  394    บ  บ    select 11
+  395    บ  บ    set order to codcuota
+  396    บ  บ    locate for lapso =  ;
+  397    บ  บ        lapmat .and.  ;
+  398    บ  บ        codigo =  ;
+  399    บ  บ        m.plancobro  ;
+  400    บ  บ        .and. cuota =  ;
+  401    บ  บ        ii
+  402    บ  บ  ฺฤif fecha_ven >= date()
+  403    บ  vอออออออexit
+  404    บ  บ  ภฤendif
+  405    บ  บ    select 2
+  406    บ  บ    tmontv=tmontv+(cuota&lk-pagado&lk)
+  407    บ  บ    m.montov=m.montov+(cuota&lk-pagado&lk)
+  408    บ  บ    m.montov1 = m.montov
+  409    บ  ำฤendfor
+  410    บ    select 2
+  411    บ    tsaldo = tdeuda - tpagad
+  412    บ    m.montov1 = m.montov
+  413    บ    m.saldo_paga = m.total_deud -  ;
+  414    บ        m.monto_paga
+  415    บ    m.saldo_paga = m.saldo_paga
+  416    บ    m.total_deud = m.total_deud
+  417    บ    m.monto_paga = m.monto_paga
+  418    บ    @ 06, 26 say tdeuda picture  ;
+  419    บ        '99,999,999.99' color w+/w
+  420    บ    @ 07, 26 say tpagad picture  ;
+  421    บ        '99,999,999.99' color w+/w
+  422    บ    @ 08, 26 say tsaldo picture  ;
+  423    บ        '99,999,999.99' color w+/w
+  424    บ    @ 09, 26 say tmontv picture  ;
+  425    บ        '99,999,999.99' color w+/w
+  426    บ    mm = 1
+  427    บ    select 11
+  428    บ    set order to codcuota
+  429    บ    seek lapmat + m.plancobro +  ;
+  430    บ        str(1)
+  431    บ    swp = 0
+  432    บ    suma = 0
+  433    บ    paso = 0
+  434    บ    li = 12
+  435    บ    m.planco = m.plancobro
+  436    บ  ษอdo while  .not. eof()
+  437    บ  บ  ฺฤif lapso <> lapmat
+  438    บ  บ  ณ    select 11
+  439    บ  บ  ณ    skip
+  440    บ  ^อออออออloop
+  441    บ  บ  ภฤendif
+  442    บ  บ  ฺฤif codigo <> m.planco
+  443    บ  บ  ณ    select 11
+  444    บ  บ  ณ    skip
+  445    บ  ^อออออออloop
+  446    บ  บ  ภฤendif
+  447    บ  บ  ฺฤif swp = 0
+  448    บ  บ  ณ    mcuota = cuota
+  449    บ  บ  ณ    swp = 1
+  450    บ  บ  ณ    mcon = concepto1
+  451    บ  บ  ณ    col1 = 02
+  452    บ  บ  ณ    select 12
+  453    บ  บ  ณ    seek mcon
+  454    บ  บ  ณ    @ li, col1 say  ;
+  455    บ  บ  ณ        left(descripcio,  ;
+  456    บ  บ  ณ        11)
+  457    บ  บ  ณ    select 11
+  458    บ  บ  ภฤendif
+  459    บ  บ  ฺฤif mcuota <> cuota
+  460    บ  บ  ณ    lk = ltrim(str(mcuota))
+  461    บ  บ  ณ    @ li, col() + 2  ;
+  462    บ  บ  ณ        say suma picture  ;
+  463    บ  บ  ณ        '999,999.99'
+  464    บ  บ  ณ    m.cuota&lk=suma
+  465    บ  บ  ณ    select 2
+  466    บ  บ  ณ    @li,col()+1 say pagado&lk;
+  467    บ  บ  ณ        pict '999,999.99'
+  468    บ  บ  ณ  ฺฤif pagado&lk > 0
+  469    บ  บ  ณ  ณ    marca=iif(pagado&lk>=suma,'๛','ํ')
+  470    บ  บ  ณ  ณ    @ li, col() +  ;
+  471    บ  บ  ณ  ณ        1 say marca  ;
+  472    บ  บ  ณ  ณ        color w+/bg*
+  473    บ  บ  ณ  ภฤendif
+  474    บ  บ  ณ    li = li + 1
+  475    บ  บ  ณ  ฺฤif li > 20
+  476    บ  บ  ณ  ณ    col1 = 41
+  477    บ  บ  ณ  ณ    li = 12
+  478    บ  บ  ณ  ณ    paso = 1
+  479    บ  บ  ณ  รฤelse
+  480    บ  บ  ณ  ณ  ฺฤif paso = 0
+  481    บ  บ  ณ  ณ  ณ    col1 = 02
+  482    บ  บ  ณ  ณ  รฤelse
+  483    บ  บ  ณ  ณ  ณ    col1 = 41
+  484    บ  บ  ณ  ณ  ภฤendif
+  485    บ  บ  ณ  ภฤendif
+  486    บ  บ  ณ    select 11
+  487    บ  บ  ณ    mcuota = cuota
+  488    บ  บ  ณ    mcon = concepto1
+  489    บ  บ  ณ    select 12
+  490    บ  บ  ณ    seek mcon
+  491    บ  บ  ณ    @ li, col1 say  ;
+  492    บ  บ  ณ        left(descripcio,  ;
+  493    บ  บ  ณ        11)
+  494    บ  บ  ณ    select 11
+  495    บ  บ  ณ    suma = 0.00
+  496    บ  บ  ณ    mcuota = cuota
+  497    บ  บ  ภฤendif
+  498    บ  บ    ii = 1
+  499    บ  บ  ึฤfor ii = 1 to 10
+  500    บ  บ  บ    lk = ltrim(str(ii))
+  501    บ  บ  บ  ฺฤif concepto&lk=space(2)
+  502    บ  บ  ^อออออออloop
+  503    บ  บ  บ  ภฤendif
+  504    บ  บ  บ  ฺฤif monto&lk=0
+  505    บ  บ  ^อออออออloop
+  506    บ  บ  บ  ภฤendif
+  507    บ  บ  บ    suma=suma+monto&lk
+  508    บ  บ  ำฤendfor
+  509    บ  บ    skip
+  510    บ  ศอenddo
+  511    บ    lk = ltrim(str(mcuota))
+  512    บ    @ li, col() + 2 say suma  ;
+  513    บ        picture '999,999.99'
+  514    บ    cuota&lk=suma
+  515    บ    select 2
+  516    บ    @li,col()+1 say pagado&lk pict '999,999.99'
+  517    บ  ฺฤif pagado&lk > 0
+  518    บ  ณ    marca=iif(pagado&lk>=suma,'๛','ํ')
+  519    บ  ณ    @ li, col() + 1 say  ;
+  520    บ  ณ        marca color w+/bg*
+  521    บ  ภฤendif
+  522    บ  ฺฤif tdeuda = tpagad
+  523    บ  ณ    = msgerro( ;
+  524    บ  ณ        'Este Alumno esta Solvente de Pagos, Verifique' ;
+  525    บ  ณ        )
+  526    บ  ณ    m.nac = 'V'
+  527    บ  ณ    m.ced = 0
+  528    ^อออออออloop
+  529    บ  ภฤendif
+  530    บ    select 2
+  531    บ  ฺฤif cierre = 'S'
+  532    บ  ณ    = msgerro( ;
+  533    บ  ณ        'Esta Matricula de pago de Materia Adicional ya fue cerrada, verifique' ;
+  534    บ  ณ        )
+  535    บ  ณ    m.nac = 'V'
+  536    บ  ณ    m.ced = 0
+  537    ^อออออออloop
+  538    บ  ภฤendif
+  539    บ    select 15
+  540    บ    set order to ced
+  541    บ  ฺฤif seek(xcedula)
+  542    บ  ณ    iii = 1
+  543    บ  ณ    m.montovad = 0.00
+  544    บ  ณ  ึฤfor iii = 1 to xnro
+  545    บ  ณ  บ    lq = ltrim(str(iii))
+  546    บ  ณ  บ  ฺฤif cuota&lq<=pagado&lq
+  547    บ  ณ  ^อออออออloop
+  548    บ  ณ  บ  ภฤendif
+  549    บ  ณ  บ    select 11
+  550    บ  ณ  บ    set order to codcuota
+  551    บ  ณ  บ    locate for lapso =  ;
+  552    บ  ณ  บ        lapmat  ;
+  553    บ  ณ  บ        .and.  ;
+  554    บ  ณ  บ        codigo =  ;
+  555    บ  ณ  บ        m.plancobro  ;
+  556    บ  ณ  บ        .and. cuota =  ;
+  557    บ  ณ  บ        iii
+  558    บ  ณ  บ  ฺฤif fecha_ven >=  ;
+  559    บ  ณ  บ  ณ        date()
+  560    บ  ณ  vอออออออexit
+  561    บ  ณ  บ  ภฤendif
+  562    บ  ณ  บ    select 15
+  563    บ  ณ  บ    m.montovad=m.montovad+(cuota&lq-pagado&lq)
+  564    บ  ณ  ำฤendfor
+  565    บ  ณ  ฺฤif m.montovad > 0 .and.  ;
+  566    บ  ณ  ณ        entra = .f.
+  567    บ  ณ  ณ    = msgerro( ;
+  568    บ  ณ  ณ        'Este Alumno tiene Deuda Vencida de Pago de Mensualidad, verifique' ;
+  569    บ  ณ  ณ        )
+  570    บ  ณ  ณ    opc = acepta( ;
+  571    บ  ณ  ณ        'Ir a Proceso de Pago de Mensualidades' ;
+  572    บ  ณ  ณ        )
+  573    บ  ณ  ณ  ฺฤif opc = 1
+  574    บ  ณ  ณ  ณ    entra = .t.
+  575    บ  ณ  ณ  ณ    do scp20033
+  576    บ  ณ  ณ  ณ    on key label tab
+  577    บ  ณ  ณ  ณ    release window  ;
+  578    บ  ณ  ณ  ณ        record1
+  579    บ  ณ  ณ  ณ    close databases
+  580  <อออออออออออออออreturn
+  581    บ  ณ  ณ  ภฤendif
+  582    บ  ณ  ภฤendif
+  583    บ  ภฤendif
+  584    บ    select 2
+  585    บ    mfechap = date()
+  586    บ    mtipop = 'Efectivo'
+  587    บ    mnrode = space(20)
+  588    บ    mbanco = space(2)
+  589    บ    mmontop = 0.00
+  590    บ    mdesban = space(20)
+  591    บ    m.choice = 1
+  592    บ    mcobrador = space(2)
+  593    บ    swp = 0
+  594    บ    p = 0
+  595    บ    save screen to hi
+  596    บ  ษอdo while .t.
+  597    บ  บ    restore screen from hi
+  598    บ  บ    @ 06, 58 say mfechap  ;
+  599    บ  บ        picture '@E'
+  600    บ  บ    @ 07, 58 get mtipop  ;
+  601    บ  บ        default 'Efectivo'  ;
+  602    บ  บ        picture  ;
+  603    บ  บ        '@!M Deposito,Cheque,Efectivo'
+  604    บ  บ    read
+  605    บ  บ  ฺฤif mtipop <> 'Efectivo'
+  606    บ  บ  ณ    @ 08, 58 get  ;
+  607    บ  บ  ณ        mnrode picture  ;
+  608    บ  บ  ณ        '@!S15' valid  ;
+  609    บ  บ  ณ        mnrode <>  ;
+  610    บ  บ  ณ        space(20) error  ;
+  611    บ  บ  ณ        'El Nฃmero de la Transacciขn esta en blanco'
+  612    บ  บ  ณ    @ 09, 47 get  ;
+  613    บ  บ  ณ        mbanco picture  ;
+  614    บ  บ  ณ        '@!' valid  ;
+  615    บ  บ  ณ        mbancos(mbanco)
+  616    บ  บ  ณ    read
+  617    บ  บ  ณ  ฺฤif lastkey() = 27
+  618    บ  บ  ณ  ณ    p = salida()
+  619    บ  บ  ณ  ณ  ฺฤif p = 2
+  620    บ  บ  ณ  ณ  ณ    entra = .f.
+  621    บ  บ  ณ  ณ  ณ    on key label;
+  622    บ  บ  ณ  ณ  ณ        f4
+  623    บ  vอออออออออออออexit
+  624    บ  บ  ณ  ณ  ภฤendif
+  625    บ  ^ออออออออออloop
+  626    บ  บ  ณ  ภฤendif
+  627    บ  บ  ณ    select 10
+  628    บ  บ  ณ  ฺฤif  .not.  ;
+  629    บ  บ  ณ  ณ        seek(mbanco)
+  630    บ  บ  ณ  ณ    mbanco = boxfield('bancos', ;
+  631    บ  บ  ณ  ณ        'codigo')
+  632    บ  บ  ณ  ภฤendif
+  633    บ  บ  ณ    select 9
+  634    บ  บ  ณ    set order to bandepo
+  635    บ  บ  ณ  ฺฤif seek(mbanco +  ;
+  636    บ  บ  ณ  ณ        mnrode)
+  637    บ  บ  ณ  ณ  ฺฤif status <>  ;
+  638    บ  บ  ณ  ณ  ณ        'D'
+  639    บ  บ  ณ  ณ  ณ    = msgerro( ;
+  640    บ  บ  ณ  ณ  ณ        'Ya existe un registro de pagos con este numero, verifique' ;
+  641    บ  บ  ณ  ณ  ณ        )
+  642    บ  ^อออออออออออออloop
+  643    บ  บ  ณ  ณ  ภฤendif
+  644    บ  บ  ณ  ภฤendif
+  645    บ  บ  ณ    select 10
+  646    บ  บ  ณ    @ 09, 47 say  ;
+  647    บ  บ  ณ        mbanco picture  ;
+  648    บ  บ  ณ        '@!' color w+/w
+  649    บ  บ  ณ    @ 09, col() + 2  ;
+  650    บ  บ  ณ        say  ;
+  651    บ  บ  ณ        left(descripcio,  ;
+  652    บ  บ  ณ        25)
+  653    บ  บ  ณ    mbandes = alltrim(descripcio)
+  654    บ  บ  ภฤendif
+  655    บ  บ    @ 10, 26 get mmontop  ;
+  656    บ  บ        picture  ;
+  657    บ  บ        '99,999,999.99'
+  658    บ  บ    @ 10, 50 get mcobrador  ;
+  659    บ  บ        picture '@!' valid  ;
+  660    บ  บ        mcobrad(mcobrador)
+  661    บ  บ    read
+  662    บ  บ  ฺฤif lastkey() = 27
+  663    บ  บ  ณ    p = salida()
+  664    บ  บ  ณ  ฺฤif p = 2
+  665    บ  บ  ณ  ณ    entra = .f.
+  666    บ  บ  ณ  ณ    on key label f4
+  667    บ  vออออออออออexit
+  668    บ  บ  ณ  ภฤendif
+  669    บ  ^อออออออloop
+  670    บ  บ  ภฤendif
+  671    บ  บ  ฺฤif mmontop = 0 .or.  ;
+  672    บ  บ  ณ        mmontop >  ;
+  673    บ  บ  ณ        m.total_deud
+  674    บ  บ  ณ    = msgerro( ;
+  675    บ  บ  ณ        'El Monto a Pagar por Concepto de Mensualidad es invalido, verifique' ;
+  676    บ  บ  ณ        )
+  677    บ  ^อออออออloop
+  678    บ  บ  ภฤendif
+  679    บ  บ    select cobrador
+  680    บ  บ  ฺฤif  .not.  ;
+  681    บ  บ  ณ        seek(mcobrador)
+  682    บ  บ  ณ    mcobrador = boxfield('cobrador', ;
+  683    บ  บ  ณ        'codigo')
+  684    บ  บ  ภฤendif
+  685    บ  บ    select 14
+  686    บ  บ    @ 10, 50 say mcobrador  ;
+  687    บ  บ        picture '@!' color w+/ ;
+  688    บ  บ        w
+  689    บ  บ    @ 10, col() + 2 say  ;
+  690    บ  บ        left(nombres, 20)
+  691    บ  บ    mnomcob = alltrim(nombres)
+  692    บ  บ    opc = acepta1( ;
+  693    บ  บ        'Esta correcto este Monto a Cancelar' ;
+  694    บ  บ        )
+  695    บ  บ  ฺฤif opc = 2
+  696    บ  ^อออออออloop
+  697    บ  บ  ภฤendif
+  698    บ  vออออexit
+  699    บ  ศอenddo
+  700    บ  ฺฤif p = 2
+  701    บ  ณ    m.nac = 'V'
+  702    บ  ณ    m.ced = 0
+  703    ^อออออออloop
+  704    บ  ภฤendif
+  705    บ    on key label f4
+  706    บ    mpagado = mmontop
+  707    บ    np = 1
+  708    บ  ึฤfor np = 1 to 12
+  709    บ  บ    np1 = ltrim(str(np))
+  710    บ  บ    mpagrec&np1=0
+  711    บ  บ    mpsaldo&np1=0
+  712    บ  บ    imp&np1=0
+  713    บ  ำฤendfor
+  714    บ    ii = 1
+  715    บ    li = 12
+  716    บ    col1 = 26
+  717    บ    paso = 0
+  718    บ  ึฤfor ii = 1 to xnro
+  719    บ  บ    lk = ltrim(str(ii))
+  720    บ  บ  ฺฤif pagado&lk>=cuota&lk
+  721    บ  บ  ณ    li = li + 1
+  722    บ  บ  ณ  ฺฤif li > 20
+  723    บ  บ  ณ  ณ    col1 = 65
+  724    บ  บ  ณ  ณ    li = 12
+  725    บ  บ  ณ  ภฤendif
+  726    บ  ^อออออออloop
+  727    บ  บ  ภฤendif
+  728    บ  บ    select 2
+  729    บ  บ  ฺฤif (mpagado+pagado&lk) >= cuota&lk
+  730    บ  บ  ณ    mpagado=mpagado-(cuota&lk-pagado&lk)
+  731    บ  บ  ณ    mpagrec&lk=cuota&lk-pagado&lk
+  732    บ  บ  ณ    mpsaldo&lk=0
+  733    บ  บ  ณ    @li,col1 say cuota&lk pict;
+  734    บ  บ  ณ        '999,999.99'
+  735    บ  บ  ณ    @ li, col() + 1  ;
+  736    บ  บ  ณ        say '๛' color w+/ ;
+  737    บ  บ  ณ        bg*
+  738    บ  บ  ณ    mdec1 = mdec1 + 1
+  739    บ  บ  รฤelse
+  740    บ  บ  ณ  ฺฤif mpagado > 0
+  741    บ  บ  ณ  ณ    @li,col1 say mpagado+pagado&lk;
+  742    บ  บ  ณ  ณ        pict '999,999.99'
+  743    บ  บ  ณ  ณ    @ li, col() +  ;
+  744    บ  บ  ณ  ณ        1 say 'ํ'  ;
+  745    บ  บ  ณ  ณ        color w+/bg*
+  746    บ  บ  ณ  ณ    mpsaldo&lk=cuota&lk-mpagado-pagado&lk
+  747    บ  บ  ณ  ณ    mpagrec&lk=mpagado
+  748    บ  บ  ณ  ณ    mdec2 = mdec2 +  ;
+  749    บ  บ  ณ  ณ        1
+  750    บ  บ  ณ  ภฤendif
+  751    บ  vอออออออexit
+  752    บ  บ  ภฤendif
+  753    บ  บ    li = li + 1
+  754    บ  บ  ฺฤif li > 20
+  755    บ  บ  ณ    col1 = 65
+  756    บ  บ  ณ    li = 12
+  757    บ  บ  ภฤendif
+  758    บ  ำฤendfor
+  759    บ    opce = acepta1( ;
+  760    บ        'Proceso este Pago de Mensualidad' ;
+  761    บ        )
+  762    บ  ฺฤif opce = 2
+  763    บ  ณ    release window reg
+  764    บ  ณ    on key label f4
+  765    บ  ณ    m.nac = 'V'
+  766    บ  ณ    m.ced = 0
+  767    ^อออออออloop
+  768    บ  ภฤendif
+  769    บ    mrecibo = 0
+  770    บ    select 2
+  771    บ    p = printer()
+  772    บ  ฺฤif p = 2
+  773    บ  ณ    select 13
+  774    บ  ณ  ษอdo while .t.
+  775    บ  ณ  บ  ฺฤif rlock()
+  776    บ  ณ  บ  ณ    replace recibo  ;
+  777    บ  ณ  บ  ณ        with  ;
+  778    บ  ณ  บ  ณ        recibo +  ;
+  779    บ  ณ  บ  ณ        1
+  780    บ  ณ  บ  ณ    mrecibo = recibo
+  781    บ  ณ  บ  ณ    unlock
+  782    บ  ณ  vอออออออexit
+  783    บ  ณ  บ  ภฤendif
+  784    บ  ณ  ศอenddo
+  785    บ  ณ    select 2
+  786    บ  ณ    wait window  ;
+  787    บ  ณ        'Nro. del Recibo Generado: ' +  ;
+  788    บ  ณ        ltrim(str(mrecibo)) +  ;
+  789    บ  ณ        chr(13) +  ;
+  790    บ  ณ        'Presione Cualquier Tecla para continuar..'
+  791    บ  รฤelse
+  792    บ  ณ    select 13
+  793    บ  ณ  ษอdo while .t.
+  794    บ  ณ  บ  ฺฤif rlock()
+  795    บ  ณ  บ  ณ    replace recibo  ;
+  796    บ  ณ  บ  ณ        with  ;
+  797    บ  ณ  บ  ณ        recibo +  ;
+  798    บ  ณ  บ  ณ        1
+  799    บ  ณ  บ  ณ    mrecibo = recibo
+  800    บ  ณ  บ  ณ    unlock
+  801    บ  ณ  vอออออออexit
+  802    บ  ณ  บ  ภฤendif
+  803    บ  ณ  ศอenddo
+  804    บ  ณ    select 2
+  805    บ  ณ    set device to printer
+  806    บ  ณ    @ 0, 1 say '  ' +  ;
+  807    บ  ณ        chr(27) + chr(67) +  ;
+  808    บ  ณ        chr(33)
+  809    บ  ณ    @ 00, 00 say chr(18) +  ;
+  810    บ  ณ        chr(20)
+  811    บ  ณ    @ 00, 00 say chr(14) +  ;
+  812    บ  ณ        chr(15) + titulo +  ;
+  813    บ  ณ        chr(18) + chr(20) +  ;
+  814    บ  ณ        ' '
+  815    บ  ณ    @ 01, 00 say  ;
+  816    บ  ณ        'RIF                                                     RECIBO Nro.:          '
+  817    บ  ณ    @ 01, 04 say l_rif
+  818    บ  ณ    @ 01, 68 say chr(14) +  ;
+  819    บ  ณ        ng +  ;
+  820    บ  ณ        ltrim(str(mrecibo)) +  ;
+  821    บ  ณ        ngn
+  822    บ  ณ    @ 02, 00 say chr(15) +  ;
+  823    บ  ณ        ' '
+  824    บ  ณ    @ 02, 00 say l_direccio
+  825    บ  ณ    @ 02, pcol() say  ;
+  826    บ  ณ        chr(18) + chr(20) +  ;
+  827    บ  ณ        ' '
+  828    บ  ณ    @ 02, 00 say  ;
+  829    บ  ณ        '                                                        FECHA PAGO :          '
+  830    บ  ณ    @ 02, 68 say mfechap  ;
+  831    บ  ณ        picture '@E'
+  832    บ  ณ    @ 03, 00 say  ;
+  833    บ  ณ        '                                                      '
+  834    บ  ณ    @ 03, 28 say chr(14) +  ;
+  835    บ  ณ        chr(15) +  ;
+  836    บ  ณ        'RECIBO DE PAGO' +  ;
+  837    บ  ณ        chr(18) + chr(20) +  ;
+  838    บ  ณ        ' '
+  839    บ  ณ    @ 04, 00 say  ;
+  840    บ  ณ        '                                                      ษออออออออออออออออออออป '
+  841    บ  ณ    @ 05, 00 say  ;
+  842    บ  ณ        'C.I.:                                                 บ Bs.                บ '
+  843    บ  ณ    @ 05, 61 say mmontop  ;
+  844    บ  ณ        picture  ;
+  845    บ  ณ        '9,999,999.99'
+  846    บ  ณ    @ 05, 06 say m.cedula  ;
+  847    บ  ณ        picture '!-99999999'
+  848    บ  ณ    @ 06, 00 say  ;
+  849    บ  ณ        'ALUMNO:                                               ศออออออออออออออออออออผ '
+  850    บ  ณ    @ 06, 08 say m.nombres  ;
+  851    บ  ณ        picture '@!s45'
+  852    บ  ณ    @ 07, 00 say  ;
+  853    บ  ณ        'SEMESTRE: ' +  ;
+  854    บ  ณ        m.semestre
+  855    บ  ณ    @ 08, 00 say  ;
+  856    บ  ณ        'TURNO   : ' +  ;
+  857    บ  ณ        m.turno
+  858    บ  ณ    @ 09, 00 say  ;
+  859    บ  ณ        'PLAN    : ' + mdes1
+  860    บ  ณ    xcantidad = letras(mmontop)
+  861    บ  ณ    xcantidad = alltrim(xcantidad)
+  862    บ  ณ    @ 10, 00 say  ;
+  863    บ  ณ        'Hemos recibido la cantidad de:'
+  864    บ  ณ    @ 11, 00 say xcantidad  ;
+  865    บ  ณ        picture '@!'
+  866    บ  ณ    li = 12
+  867    บ  ณ    @ li, 00 say  ;
+  868    บ  ณ        'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ' +  ;
+  869    บ  ณ        ng
+  870    บ  ณ    li = li + 1
+  871    บ  ณ    @ li, 00 say  ;
+  872    บ  ณ        '  C O N C E P T O S                   S A L D O              M O N T O       ' +  ;
+  873    บ  ณ        ngn
+  874    บ  ณ    li = li + 1
+  875    บ  ณ    @ li, 00 say  ;
+  876    บ  ณ        'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ'
+  877    บ  ณ    mpagado = mmontop
+  878    บ  ณ    ii = 1
+  879    บ  ณ    li = li + 1
+  880    บ  ณ    xsaldo = 0
+  881    บ  ณ  ึฤfor ii = 1 to xnro
+  882    บ  ณ  บ    lk = ltrim(str(ii))
+  883    บ  ณ  บ  ฺฤif pagado&lk>=cuota&lk
+  884    บ  ณ  ^อออออออloop
+  885    บ  ณ  บ  ภฤendif
+  886    บ  ณ  บ    select 2
+  887    บ  ณ  บ  ฺฤif (mpagado+pagado&lk);
+  888    บ  ณ  บ  ณ        >= cuota&lk
+  889    บ  ณ  บ  ณ    select 11
+  890    บ  ณ  บ  ณ    set order to codcuota
+  891    บ  ณ  บ  ณ    locate for  ;
+  892    บ  ณ  บ  ณ        lapso =  ;
+  893    บ  ณ  บ  ณ        lapmat  ;
+  894    บ  ณ  บ  ณ        .and.  ;
+  895    บ  ณ  บ  ณ        codigo =  ;
+  896    บ  ณ  บ  ณ        m.plancobro  ;
+  897    บ  ณ  บ  ณ        .and.  ;
+  898    บ  ณ  บ  ณ        cuota =  ;
+  899    บ  ณ  บ  ณ        ii
+  900    บ  ณ  บ  ณ    xpagado=(cuota&lk-pagado&lk)
+  901    บ  ณ  บ  ณ    mpagado=mpagado-(cuota&lk-pagado&lk)
+  902    บ  ณ  บ  ณ  ึฤfor ww = 1 to  ;
+  903    บ  ณ  บ  ณ  บ        10
+  904    บ  ณ  บ  ณ  บ    lw = ltrim(str(ww))
+  905    บ  ณ  บ  ณ  บ    select 11
+  906    บ  ณ  บ  ณ  บ  ฺฤif concepto&lw=space(2)
+  907    บ  ณ  บ  ณ  ^อออออออloop
+  908    บ  ณ  บ  ณ  บ  ภฤendif
+  909    บ  ณ  บ  ณ  บ    mcon=concepto&lw
+  910    บ  ณ  บ  ณ  บ    mmon=monto&lw
+  911    บ  ณ  บ  ณ  บ    select 12
+  912    บ  ณ  บ  ณ  บ  ฺฤif  .not.  ;
+  913    บ  ณ  บ  ณ  บ  ณ        seek(mcon)
+  914    บ  ณ  บ  ณ  บ  ณ    mds =  ;
+  915    บ  ณ  บ  ณ  บ  ณ        'SIN DESCRIPCION'
+  916    บ  ณ  บ  ณ  บ  รฤelse
+  917    บ  ณ  บ  ณ  บ  ณ    mds =  ;
+  918    บ  ณ  บ  ณ  บ  ณ        alltrim(descripcio)
+  919    บ  ณ  บ  ณ  บ  ภฤendif
+  920    บ  ณ  บ  ณ  บ  ฺฤif mdec1 >=  ;
+  921    บ  ณ  บ  ณ  บ  ณ        1  ;
+  922    บ  ณ  บ  ณ  บ  ณ        .and.  ;
+  923    บ  ณ  บ  ณ  บ  ณ        lin1 =  ;
+  924    บ  ณ  บ  ณ  บ  ณ        0  ;
+  925    บ  ณ  บ  ณ  บ  ณ        .and.  ;
+  926    บ  ณ  บ  ณ  บ  ณ        ww =  ;
+  927    บ  ณ  บ  ณ  บ  ณ        1
+  928    บ  ณ  บ  ณ  บ  ณ    @ li,  ;
+  929    บ  ณ  บ  ณ  บ  ณ        00  ;
+  930    บ  ณ  บ  ณ  บ  ณ        say  ;
+  931    บ  ณ  บ  ณ  บ  ณ        'CANCELACION MENSUALIDAD MATERIA ADICIONAL:'
+  932    บ  ณ  บ  ณ  บ  ณ    lin1 =  ;
+  933    บ  ณ  บ  ณ  บ  ณ        1
+  934    บ  ณ  บ  ณ  บ  ณ    li =  ;
+  935    บ  ณ  บ  ณ  บ  ณ        li +  ;
+  936    บ  ณ  บ  ณ  บ  ณ        1
+  937    บ  ณ  บ  ณ  บ  ภฤendif
+  938    บ  ณ  บ  ณ  บ  ฺฤif mdec1 >=  ;
+  939    บ  ณ  บ  ณ  บ  ณ        1  ;
+  940    บ  ณ  บ  ณ  บ  ณ        .and.  ;
+  941    บ  ณ  บ  ณ  บ  ณ        mdec2 >=  ;
+  942    บ  ณ  บ  ณ  บ  ณ        1  ;
+  943    บ  ณ  บ  ณ  บ  ณ        .and.  ;
+  944    บ  ณ  บ  ณ  บ  ณ        lin2 =  ;
+  945    บ  ณ  บ  ณ  บ  ณ        1  ;
+  946    บ  ณ  บ  ณ  บ  ณ        .and.  ;
+  947    บ  ณ  บ  ณ  บ  ณ        ww =  ;
+  948    บ  ณ  บ  ณ  บ  ณ        1
+  949    บ  ณ  บ  ณ  บ  ณ    @ li,  ;
+  950    บ  ณ  บ  ณ  บ  ณ        00  ;
+  951    บ  ณ  บ  ณ  บ  ณ        say  ;
+  952    บ  ณ  บ  ณ  บ  ณ        'ABONO MENSUALIDAD MATERIA ADICIONAL:'
+  953    บ  ณ  บ  ณ  บ  ณ    lin2 =  ;
+  954    บ  ณ  บ  ณ  บ  ณ        0
+  955    บ  ณ  บ  ณ  บ  ณ    li =  ;
+  956    บ  ณ  บ  ณ  บ  ณ        li +  ;
+  957    บ  ณ  บ  ณ  บ  ณ        1
+  958    บ  ณ  บ  ณ  บ  ภฤendif
+  959    บ  ณ  บ  ณ  บ  ฺฤif mdec1 =  ;
+  960    บ  ณ  บ  ณ  บ  ณ        0  ;
+  961    บ  ณ  บ  ณ  บ  ณ        .and.  ;
+  962    บ  ณ  บ  ณ  บ  ณ        mdec2 >=  ;
+  963    บ  ณ  บ  ณ  บ  ณ        1  ;
+  964    บ  ณ  บ  ณ  บ  ณ        .and.  ;
+  965    บ  ณ  บ  ณ  บ  ณ        lin3 =  ;
+  966    บ  ณ  บ  ณ  บ  ณ        0  ;
+  967    บ  ณ  บ  ณ  บ  ณ        .and.  ;
+  968    บ  ณ  บ  ณ  บ  ณ        ww =  ;
+  969    บ  ณ  บ  ณ  บ  ณ        1
+  970    บ  ณ  บ  ณ  บ  ณ    @ li,  ;
+  971    บ  ณ  บ  ณ  บ  ณ        00  ;
+  972    บ  ณ  บ  ณ  บ  ณ        say  ;
+  973    บ  ณ  บ  ณ  บ  ณ        'ABONO MENSUALIDAD MATERIA ADICIONAL:'
+  974    บ  ณ  บ  ณ  บ  ณ    li =  ;
+  975    บ  ณ  บ  ณ  บ  ณ        li +  ;
+  976    บ  ณ  บ  ณ  บ  ณ        1
+  977    บ  ณ  บ  ณ  บ  ณ    lin3 =  ;
+  978    บ  ณ  บ  ณ  บ  ณ        1
+  979    บ  ณ  บ  ณ  บ  ภฤendif
+  980    บ  ณ  บ  ณ  บ  ฺฤif ww =  ;
+  981    บ  ณ  บ  ณ  บ  ณ        1
+  982    บ  ณ  บ  ณ  บ  ณ    @ li,  ;
+  983    บ  ณ  บ  ณ  บ  ณ        02  ;
+  984    บ  ณ  บ  ณ  บ  ณ        say  ;
+  985    บ  ณ  บ  ณ  บ  ณ        mds  ;
+  986    บ  ณ  บ  ณ  บ  ณ        picture  ;
+  987    บ  ณ  บ  ณ  บ  ณ        '@!S32'
+  988    บ  ณ  บ  ณ  บ  ณ    tu =  ;
+  989    บ  ณ  บ  ณ  บ  ณ        tu +  ;
+  990    บ  ณ  บ  ณ  บ  ณ        1
+  991    บ  ณ  บ  ณ  บ  รฤelse
+  992    บ  ณ  บ  ณ  บ  ณ    @ li,  ;
+  993    บ  ณ  บ  ณ  บ  ณ        05  ;
+  994    บ  ณ  บ  ณ  บ  ณ        say  ;
+  995    บ  ณ  บ  ณ  บ  ณ        mds  ;
+  996    บ  ณ  บ  ณ  บ  ณ        picture  ;
+  997    บ  ณ  บ  ณ  บ  ณ        '@!S29'
+  998    บ  ณ  บ  ณ  บ  ภฤendif
+  999    บ  ณ  บ  ณ  บ  ฺฤif mpsaldo&lk;
+ 1000    บ  ณ  บ  ณ  บ  ณ        > 0 and ww=1
+ 1001    บ  ณ  บ  ณ  บ  ณ    @ li,  ;
+ 1002    บ  ณ  บ  ณ  บ  ณ        36  ;
+ 1003    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1004    บ  ณ  บ  ณ  บ  ณ        '('
+ 1005    บ  ณ  บ  ณ  บ  ณ    @li,38 say;
+ 1006    บ  ณ  บ  ณ  บ  ณ        mpsaldo&lk pict '9,999,999.99'
+ 1007    บ  ณ  บ  ณ  บ  ณ    @ li,  ;
+ 1008    บ  ณ  บ  ณ  บ  ณ        51  ;
+ 1009    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1010    บ  ณ  บ  ณ  บ  ณ        ')'
+ 1011    บ  ณ  บ  ณ  บ  ภฤendif
+ 1012    บ  ณ  บ  ณ  บ  ฺฤif ww =  ;
+ 1013    บ  ณ  บ  ณ  บ  ณ        1
+ 1014    บ  ณ  บ  ณ  บ  ณ    select  ;
+ 1015    บ  ณ  บ  ณ  บ  ณ        2
+ 1016    บ  ณ  บ  ณ  บ  ณ    @li,58 say;
+ 1017    บ  ณ  บ  ณ  บ  ณ        mpagrec&lk pict '9,999,999.99'
+ 1018    บ  ณ  บ  ณ  บ  ณ    imp&lk=1
+ 1019    บ  ณ  บ  ณ  บ  ภฤendif
+ 1020    บ  ณ  บ  ณ  บ  ฺฤif mdec2 >=  ;
+ 1021    บ  ณ  บ  ณ  บ  ณ        1  ;
+ 1022    บ  ณ  บ  ณ  บ  ณ        .and.  ;
+ 1023    บ  ณ  บ  ณ  บ  ณ        tu =  ;
+ 1024    บ  ณ  บ  ณ  บ  ณ        mdec1  ;
+ 1025    บ  ณ  บ  ณ  บ  ณ        .and.  ;
+ 1026    บ  ณ  บ  ณ  บ  ณ        ww =  ;
+ 1027    บ  ณ  บ  ณ  บ  ณ        1
+ 1028    บ  ณ  บ  ณ  บ  ณ    lin2 =  ;
+ 1029    บ  ณ  บ  ณ  บ  ณ        1
+ 1030    บ  ณ  บ  ณ  บ  ภฤendif
+ 1031    บ  ณ  บ  ณ  บ    li = li +  ;
+ 1032    บ  ณ  บ  ณ  บ        1
+ 1033    บ  ณ  บ  ณ  บ  ฺฤif li >  ;
+ 1034    บ  ณ  บ  ณ  บ  ณ        20
+ 1035    บ  ณ  บ  ณ  บ  ณ    @ 22,  ;
+ 1036    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1037    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1038    บ  ณ  บ  ณ  บ  ณ        'ษอออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออออออออป'
+ 1039    บ  ณ  บ  ณ  บ  ณ    @ 23,  ;
+ 1040    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1041    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1042    บ  ณ  บ  ณ  บ  ณ        'บ            N O T A            บ  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           บ'
+ 1043    บ  ณ  บ  ณ  บ  ณ  ฺฤif mtipop <>  ;
+ 1044    บ  ณ  บ  ณ  บ  ณ  ณ        'Efectivo'
+ 1045    บ  ณ  บ  ณ  บ  ณ  ณ    @ 23, 65 say 'X'
+ 1046    บ  ณ  บ  ณ  บ  ณ  รฤelse
+ 1047    บ  ณ  บ  ณ  บ  ณ  ณ    @ 23, 47 say 'X'
+ 1048    บ  ณ  บ  ณ  บ  ณ  ภฤendif
+ 1049    บ  ณ  บ  ณ  บ  ณ    @ 24,  ;
+ 1050    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1051    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1052    บ  ณ  บ  ณ  บ  ณ        'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ  NRO. :                                     บ'
+ 1053    บ  ณ  บ  ณ  บ  ณ    @ 24,  ;
+ 1054    บ  ณ  บ  ณ  บ  ณ        41  ;
+ 1055    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1056    บ  ณ  บ  ณ  บ  ณ        mnrode  ;
+ 1057    บ  ณ  บ  ณ  บ  ณ        picture  ;
+ 1058    บ  ณ  บ  ณ  บ  ณ        '@!'
+ 1059    บ  ณ  บ  ณ  บ  ณ    @ 25,  ;
+ 1060    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1061    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1062    บ  ณ  บ  ณ  บ  ณ        'บ                               บ  BANCO:                                     บ'
+ 1063    บ  ณ  บ  ณ  บ  ณ    @ 25,  ;
+ 1064    บ  ณ  บ  ณ  บ  ณ        41  ;
+ 1065    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1066    บ  ณ  บ  ณ  บ  ณ        mbandes
+ 1067    บ  ณ  บ  ณ  บ  ณ    @ 26,  ;
+ 1068    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1069    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1070    บ  ณ  บ  ณ  บ  ณ        'บ                               บ                                             บ'
+ 1071    บ  ณ  บ  ณ  บ  ณ    @ 26,  ;
+ 1072    บ  ณ  บ  ณ  บ  ณ        05  ;
+ 1073    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1074    บ  ณ  บ  ณ  บ  ณ        'CONTINUA ....'
+ 1075    บ  ณ  บ  ณ  บ  ณ    @ 27,  ;
+ 1076    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1077    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1078    บ  ณ  บ  ณ  บ  ณ        'บ                               บ                        ___________________  บ'
+ 1079    บ  ณ  บ  ณ  บ  ณ    @ 28,  ;
+ 1080    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1081    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1082    บ  ณ  บ  ณ  บ  ณ        'บ                               บ                           RECIBIDO POR:     บ'
+ 1083    บ  ณ  บ  ณ  บ  ณ    @ 29,  ;
+ 1084    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1085    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1086    บ  ณ  บ  ณ  บ  ณ        'ศอออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออผ'
+ 1087    บ  ณ  บ  ณ  บ  ณ    @ 30,  ;
+ 1088    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1089    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1090    บ  ณ  บ  ณ  บ  ณ        ' NOTA: Los Pagos Realizados no estan sujetos a devoluciones'
+ 1091    บ  ณ  บ  ณ  บ  ณ    select  ;
+ 1092    บ  ณ  บ  ณ  บ  ณ        9
+ 1093    บ  ณ  บ  ณ  บ  ณ    @ 0,  ;
+ 1094    บ  ณ  บ  ณ  บ  ณ        1  ;
+ 1095    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1096    บ  ณ  บ  ณ  บ  ณ        '  ' +  ;
+ 1097    บ  ณ  บ  ณ  บ  ณ        chr(27) +  ;
+ 1098    บ  ณ  บ  ณ  บ  ณ        chr(67) +  ;
+ 1099    บ  ณ  บ  ณ  บ  ณ        chr(33)
+ 1100    บ  ณ  บ  ณ  บ  ณ    @ 00,  ;
+ 1101    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1102    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1103    บ  ณ  บ  ณ  บ  ณ        chr(18) +  ;
+ 1104    บ  ณ  บ  ณ  บ  ณ        chr(20)
+ 1105    บ  ณ  บ  ณ  บ  ณ    @ 00,  ;
+ 1106    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1107    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1108    บ  ณ  บ  ณ  บ  ณ        chr(14) +  ;
+ 1109    บ  ณ  บ  ณ  บ  ณ        chr(15) +  ;
+ 1110    บ  ณ  บ  ณ  บ  ณ        titulo +  ;
+ 1111    บ  ณ  บ  ณ  บ  ณ        chr(18) +  ;
+ 1112    บ  ณ  บ  ณ  บ  ณ        chr(20) +  ;
+ 1113    บ  ณ  บ  ณ  บ  ณ        ' '
+ 1114    บ  ณ  บ  ณ  บ  ณ    @ 01,  ;
+ 1115    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1116    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1117    บ  ณ  บ  ณ  บ  ณ        'RIF .                                                   RECIBO Nro.:          '
+ 1118    บ  ณ  บ  ณ  บ  ณ    @ 01,  ;
+ 1119    บ  ณ  บ  ณ  บ  ณ        04  ;
+ 1120    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1121    บ  ณ  บ  ณ  บ  ณ        l_rif
+ 1122    บ  ณ  บ  ณ  บ  ณ    @ 01,  ;
+ 1123    บ  ณ  บ  ณ  บ  ณ        68  ;
+ 1124    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1125    บ  ณ  บ  ณ  บ  ณ        chr(14) +  ;
+ 1126    บ  ณ  บ  ณ  บ  ณ        ng +  ;
+ 1127    บ  ณ  บ  ณ  บ  ณ        ltrim(str(mrecibo)) +  ;
+ 1128    บ  ณ  บ  ณ  บ  ณ        ngn
+ 1129    บ  ณ  บ  ณ  บ  ณ    @ 02,  ;
+ 1130    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1131    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1132    บ  ณ  บ  ณ  บ  ณ        chr(15) +  ;
+ 1133    บ  ณ  บ  ณ  บ  ณ        ' '
+ 1134    บ  ณ  บ  ณ  บ  ณ    @ 02,  ;
+ 1135    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1136    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1137    บ  ณ  บ  ณ  บ  ณ        l_direccio
+ 1138    บ  ณ  บ  ณ  บ  ณ    @ 02,  ;
+ 1139    บ  ณ  บ  ณ  บ  ณ        pcol()  ;
+ 1140    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1141    บ  ณ  บ  ณ  บ  ณ        chr(18) +  ;
+ 1142    บ  ณ  บ  ณ  บ  ณ        chr(20) +  ;
+ 1143    บ  ณ  บ  ณ  บ  ณ        ' '
+ 1144    บ  ณ  บ  ณ  บ  ณ    @ 02,  ;
+ 1145    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1146    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1147    บ  ณ  บ  ณ  บ  ณ        '                                                        FECHA PAGO:          '
+ 1148    บ  ณ  บ  ณ  บ  ณ    @ 02,  ;
+ 1149    บ  ณ  บ  ณ  บ  ณ        68  ;
+ 1150    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1151    บ  ณ  บ  ณ  บ  ณ        mfechap  ;
+ 1152    บ  ณ  บ  ณ  บ  ณ        picture  ;
+ 1153    บ  ณ  บ  ณ  บ  ณ        '@E'
+ 1154    บ  ณ  บ  ณ  บ  ณ    @ 03,  ;
+ 1155    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1156    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1157    บ  ณ  บ  ณ  บ  ณ        '                                                      '
+ 1158    บ  ณ  บ  ณ  บ  ณ    @ 03,  ;
+ 1159    บ  ณ  บ  ณ  บ  ณ        28  ;
+ 1160    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1161    บ  ณ  บ  ณ  บ  ณ        chr(14) +  ;
+ 1162    บ  ณ  บ  ณ  บ  ณ        chr(15) +  ;
+ 1163    บ  ณ  บ  ณ  บ  ณ        'RECIBO DE PAGO' +  ;
+ 1164    บ  ณ  บ  ณ  บ  ณ        chr(18) +  ;
+ 1165    บ  ณ  บ  ณ  บ  ณ        chr(20) +  ;
+ 1166    บ  ณ  บ  ณ  บ  ณ        ' '
+ 1167    บ  ณ  บ  ณ  บ  ณ    @ 04,  ;
+ 1168    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1169    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1170    บ  ณ  บ  ณ  บ  ณ        '                                                      ษออออออออออออออออออออป '
+ 1171    บ  ณ  บ  ณ  บ  ณ    @ 05,  ;
+ 1172    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1173    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1174    บ  ณ  บ  ณ  บ  ณ        'C.I.:                                                 บ Bs.                บ '
+ 1175    บ  ณ  บ  ณ  บ  ณ    @ 05,  ;
+ 1176    บ  ณ  บ  ณ  บ  ณ        61  ;
+ 1177    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1178    บ  ณ  บ  ณ  บ  ณ        mmontop  ;
+ 1179    บ  ณ  บ  ณ  บ  ณ        picture  ;
+ 1180    บ  ณ  บ  ณ  บ  ณ        '9,999,999.99'
+ 1181    บ  ณ  บ  ณ  บ  ณ    @ 05,  ;
+ 1182    บ  ณ  บ  ณ  บ  ณ        06  ;
+ 1183    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1184    บ  ณ  บ  ณ  บ  ณ        m.cedula  ;
+ 1185    บ  ณ  บ  ณ  บ  ณ        picture  ;
+ 1186    บ  ณ  บ  ณ  บ  ณ        '!-99999999'
+ 1187    บ  ณ  บ  ณ  บ  ณ    @ 06,  ;
+ 1188    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1189    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1190    บ  ณ  บ  ณ  บ  ณ        'ALUMNO:                                               ศออออออออออออออออออออผ '
+ 1191    บ  ณ  บ  ณ  บ  ณ    @ 06,  ;
+ 1192    บ  ณ  บ  ณ  บ  ณ        08  ;
+ 1193    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1194    บ  ณ  บ  ณ  บ  ณ        m.nombres  ;
+ 1195    บ  ณ  บ  ณ  บ  ณ        picture  ;
+ 1196    บ  ณ  บ  ณ  บ  ณ        '@!s45'
+ 1197    บ  ณ  บ  ณ  บ  ณ    @ 07,  ;
+ 1198    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1199    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1200    บ  ณ  บ  ณ  บ  ณ        'SEMESTRE: ' +  ;
+ 1201    บ  ณ  บ  ณ  บ  ณ        m.semestre
+ 1202    บ  ณ  บ  ณ  บ  ณ    @ 08,  ;
+ 1203    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1204    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1205    บ  ณ  บ  ณ  บ  ณ        'TURNO   : ' +  ;
+ 1206    บ  ณ  บ  ณ  บ  ณ        m.turno
+ 1207    บ  ณ  บ  ณ  บ  ณ    @ 09,  ;
+ 1208    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1209    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1210    บ  ณ  บ  ณ  บ  ณ        'PLAN    : ' +  ;
+ 1211    บ  ณ  บ  ณ  บ  ณ        mdes1
+ 1212    บ  ณ  บ  ณ  บ  ณ    xcantidad =  ;
+ 1213    บ  ณ  บ  ณ  บ  ณ        letras(mmontop)
+ 1214    บ  ณ  บ  ณ  บ  ณ    xcantidad =  ;
+ 1215    บ  ณ  บ  ณ  บ  ณ        alltrim(xcantidad)
+ 1216    บ  ณ  บ  ณ  บ  ณ    @ 10,  ;
+ 1217    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1218    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1219    บ  ณ  บ  ณ  บ  ณ        'Hemos recibido la cantidad de:'
+ 1220    บ  ณ  บ  ณ  บ  ณ    @ 11,  ;
+ 1221    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1222    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1223    บ  ณ  บ  ณ  บ  ณ        xcantidad  ;
+ 1224    บ  ณ  บ  ณ  บ  ณ        picture  ;
+ 1225    บ  ณ  บ  ณ  บ  ณ        '@!'
+ 1226    บ  ณ  บ  ณ  บ  ณ    li =  ;
+ 1227    บ  ณ  บ  ณ  บ  ณ        12
+ 1228    บ  ณ  บ  ณ  บ  ณ    @ li,  ;
+ 1229    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1230    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1231    บ  ณ  บ  ณ  บ  ณ        'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ' +  ;
+ 1232    บ  ณ  บ  ณ  บ  ณ        ng
+ 1233    บ  ณ  บ  ณ  บ  ณ    li =  ;
+ 1234    บ  ณ  บ  ณ  บ  ณ        li +  ;
+ 1235    บ  ณ  บ  ณ  บ  ณ        1
+ 1236    บ  ณ  บ  ณ  บ  ณ    @ li,  ;
+ 1237    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1238    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1239    บ  ณ  บ  ณ  บ  ณ        '  C O N C E P T O S                   S A L D O              M O N T O       ' +  ;
+ 1240    บ  ณ  บ  ณ  บ  ณ        ngn
+ 1241    บ  ณ  บ  ณ  บ  ณ    li =  ;
+ 1242    บ  ณ  บ  ณ  บ  ณ        li +  ;
+ 1243    บ  ณ  บ  ณ  บ  ณ        1
+ 1244    บ  ณ  บ  ณ  บ  ณ    @ li,  ;
+ 1245    บ  ณ  บ  ณ  บ  ณ        00  ;
+ 1246    บ  ณ  บ  ณ  บ  ณ        say  ;
+ 1247    บ  ณ  บ  ณ  บ  ณ        'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ'
+ 1248    บ  ณ  บ  ณ  บ  ณ    li =  ;
+ 1249    บ  ณ  บ  ณ  บ  ณ        li +  ;
+ 1250    บ  ณ  บ  ณ  บ  ณ        1
+ 1251    บ  ณ  บ  ณ  บ  ภฤendif
+ 1252    บ  ณ  บ  ณ  ำฤendfor
+ 1253    บ  ณ  บ  รฤelse
+ 1254    บ  ณ  บ  ณ  ฺฤif mpagado >  ;
+ 1255    บ  ณ  บ  ณ  ณ        0
+ 1256    บ  ณ  บ  ณ  ณ    select 11
+ 1257    บ  ณ  บ  ณ  ณ    set order to;
+ 1258    บ  ณ  บ  ณ  ณ        codcuota
+ 1259    บ  ณ  บ  ณ  ณ    locate for  ;
+ 1260    บ  ณ  บ  ณ  ณ        lapso =  ;
+ 1261    บ  ณ  บ  ณ  ณ        lapmat  ;
+ 1262    บ  ณ  บ  ณ  ณ        .and.  ;
+ 1263    บ  ณ  บ  ณ  ณ        codigo =  ;
+ 1264    บ  ณ  บ  ณ  ณ        m.plancobro  ;
+ 1265    บ  ณ  บ  ณ  ณ        .and.  ;
+ 1266    บ  ณ  บ  ณ  ณ        cuota =  ;
+ 1267    บ  ณ  บ  ณ  ณ        ii
+ 1268    บ  ณ  บ  ณ  ณ    xpagado=pagado&lk+mpagado
+ 1269    บ  ณ  บ  ณ  ณ  ึฤfor ww =  ;
+ 1270    บ  ณ  บ  ณ  ณ  บ        1 to  ;
+ 1271    บ  ณ  บ  ณ  ณ  บ        10
+ 1272    บ  ณ  บ  ณ  ณ  บ    lw =  ;
+ 1273    บ  ณ  บ  ณ  ณ  บ        ltrim(str(ww))
+ 1274    บ  ณ  บ  ณ  ณ  บ    select  ;
+ 1275    บ  ณ  บ  ณ  ณ  บ        11
+ 1276    บ  ณ  บ  ณ  ณ  บ  ฺฤif concepto&lw=space(2)
+ 1277    บ  ณ  บ  ณ  ณ  ^อออออออloop
+ 1278    บ  ณ  บ  ณ  ณ  บ  ภฤendif
+ 1279    บ  ณ  บ  ณ  ณ  บ    mcon=concepto&lw
+ 1280    บ  ณ  บ  ณ  ณ  บ    mmon=monto&lw
+ 1281    บ  ณ  บ  ณ  ณ  บ    select  ;
+ 1282    บ  ณ  บ  ณ  ณ  บ        12
+ 1283    บ  ณ  บ  ณ  ณ  บ  ฺฤif   ;
+ 1284    บ  ณ  บ  ณ  ณ  บ  ณ        .not.  ;
+ 1285    บ  ณ  บ  ณ  ณ  บ  ณ        seek(mcon)
+ 1286    บ  ณ  บ  ณ  ณ  บ  ณ    mds = 'SIN DESCRIPCION'
+ 1287    บ  ณ  บ  ณ  ณ  บ  รฤelse
+ 1288    บ  ณ  บ  ณ  ณ  บ  ณ    mds = alltrim(descripcio)
+ 1289    บ  ณ  บ  ณ  ณ  บ  ภฤendif
+ 1290    บ  ณ  บ  ณ  ณ  บ  ฺฤif mdec1 >=  ;
+ 1291    บ  ณ  บ  ณ  ณ  บ  ณ        1  ;
+ 1292    บ  ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 1293    บ  ณ  บ  ณ  ณ  บ  ณ        lin1 =  ;
+ 1294    บ  ณ  บ  ณ  ณ  บ  ณ        0  ;
+ 1295    บ  ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 1296    บ  ณ  บ  ณ  ณ  บ  ณ        ww =  ;
+ 1297    บ  ณ  บ  ณ  ณ  บ  ณ        1
+ 1298    บ  ณ  บ  ณ  ณ  บ  ณ    @ li, 00 say 'CANCELACION MENSUALIDAD MATERIA ADICIONAL:'
+ 1299    บ  ณ  บ  ณ  ณ  บ  ณ    lin1 = 1
+ 1300    บ  ณ  บ  ณ  ณ  บ  ณ    li = li + 1
+ 1301    บ  ณ  บ  ณ  ณ  บ  ภฤendif
+ 1302    บ  ณ  บ  ณ  ณ  บ  ฺฤif mdec1 >=  ;
+ 1303    บ  ณ  บ  ณ  ณ  บ  ณ        1  ;
+ 1304    บ  ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 1305    บ  ณ  บ  ณ  ณ  บ  ณ        mdec2 >=  ;
+ 1306    บ  ณ  บ  ณ  ณ  บ  ณ        1  ;
+ 1307    บ  ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 1308    บ  ณ  บ  ณ  ณ  บ  ณ        lin2 =  ;
+ 1309    บ  ณ  บ  ณ  ณ  บ  ณ        1  ;
+ 1310    บ  ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 1311    บ  ณ  บ  ณ  ณ  บ  ณ        ww =  ;
+ 1312    บ  ณ  บ  ณ  ณ  บ  ณ        1
+ 1313    บ  ณ  บ  ณ  ณ  บ  ณ    @ li, 00 say 'ABONO MENSUALIDAD MATERIA ADICIONAL:'
+ 1314    บ  ณ  บ  ณ  ณ  บ  ณ    li = li + 1
+ 1315    บ  ณ  บ  ณ  ณ  บ  ณ    lin2 = 0
+ 1316    บ  ณ  บ  ณ  ณ  บ  ภฤendif
+ 1317    บ  ณ  บ  ณ  ณ  บ  ฺฤif mdec1 =  ;
+ 1318    บ  ณ  บ  ณ  ณ  บ  ณ        0  ;
+ 1319    บ  ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 1320    บ  ณ  บ  ณ  ณ  บ  ณ        mdec2 >=  ;
+ 1321    บ  ณ  บ  ณ  ณ  บ  ณ        1  ;
+ 1322    บ  ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 1323    บ  ณ  บ  ณ  ณ  บ  ณ        lin3 =  ;
+ 1324    บ  ณ  บ  ณ  ณ  บ  ณ        0  ;
+ 1325    บ  ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 1326    บ  ณ  บ  ณ  ณ  บ  ณ        ww =  ;
+ 1327    บ  ณ  บ  ณ  ณ  บ  ณ        1
+ 1328    บ  ณ  บ  ณ  ณ  บ  ณ    @ li, 00 say 'ABONO MENSUALIDAD MATERIA ADICIONAL:'
+ 1329    บ  ณ  บ  ณ  ณ  บ  ณ    li = li + 1
+ 1330    บ  ณ  บ  ณ  ณ  บ  ณ    lin3 = 1
+ 1331    บ  ณ  บ  ณ  ณ  บ  ภฤendif
+ 1332    บ  ณ  บ  ณ  ณ  บ  ฺฤif ww =  ;
+ 1333    บ  ณ  บ  ณ  ณ  บ  ณ        1
+ 1334    บ  ณ  บ  ณ  ณ  บ  ณ    @ li, 02 say mds picture '@!S32'
+ 1335    บ  ณ  บ  ณ  ณ  บ  ณ    tu = tu + 1
+ 1336    บ  ณ  บ  ณ  ณ  บ  รฤelse
+ 1337    บ  ณ  บ  ณ  ณ  บ  ณ    @ li, 05 say mds picture '@!S29'
+ 1338    บ  ณ  บ  ณ  ณ  บ  ภฤendif
+ 1339    บ  ณ  บ  ณ  ณ  บ    select  ;
+ 1340    บ  ณ  บ  ณ  ณ  บ        2
+ 1341    บ  ณ  บ  ณ  ณ  บ  ฺฤif mpsaldo&lk;
+ 1342    บ  ณ  บ  ณ  ณ  บ  ณ        > 0 and ww=1
+ 1343    บ  ณ  บ  ณ  ณ  บ  ณ    @ li, 36 say '('
+ 1344    บ  ณ  บ  ณ  ณ  บ  ณ    @li,38 say mpsaldo&lk pict '9,999,999.99'
+ 1345    บ  ณ  บ  ณ  ณ  บ  ณ    @ li, 51 say ')'
+ 1346    บ  ณ  บ  ณ  ณ  บ  ภฤendif
+ 1347    บ  ณ  บ  ณ  ณ  บ  ฺฤif ww =  ;
+ 1348    บ  ณ  บ  ณ  ณ  บ  ณ        1
+ 1349    บ  ณ  บ  ณ  ณ  บ  ณ    @li,58 say mpagrec&lk pict '9,999,999.99'
+ 1350    บ  ณ  บ  ณ  ณ  บ  ภฤendif
+ 1351    บ  ณ  บ  ณ  ณ  บ  ฺฤif mdec2 >=  ;
+ 1352    บ  ณ  บ  ณ  ณ  บ  ณ        1  ;
+ 1353    บ  ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 1354    บ  ณ  บ  ณ  ณ  บ  ณ        tu =  ;
+ 1355    บ  ณ  บ  ณ  ณ  บ  ณ        mdec1  ;
+ 1356    บ  ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 1357    บ  ณ  บ  ณ  ณ  บ  ณ        ww =  ;
+ 1358    บ  ณ  บ  ณ  ณ  บ  ณ        1
+ 1359    บ  ณ  บ  ณ  ณ  บ  ณ    lin2 = 1
+ 1360    บ  ณ  บ  ณ  ณ  บ  ภฤendif
+ 1361    บ  ณ  บ  ณ  ณ  บ    li =  ;
+ 1362    บ  ณ  บ  ณ  ณ  บ        li +  ;
+ 1363    บ  ณ  บ  ณ  ณ  บ        1
+ 1364    บ  ณ  บ  ณ  ณ  บ  ฺฤif li >  ;
+ 1365    บ  ณ  บ  ณ  ณ  บ  ณ        20
+ 1366    บ  ณ  บ  ณ  ณ  บ  ณ    @ 22, 00 say 'ษอออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออออออออป'
+ 1367    บ  ณ  บ  ณ  ณ  บ  ณ    @ 23, 00 say 'บ            N O T A            บ  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           บ'
+ 1368    บ  ณ  บ  ณ  ณ  บ  ณ  ฺฤif mtipop <> 'Efectivo'
+ 1369    บ  ณ  บ  ณ  ณ  บ  ณ  ณ    @ 23, 65 say 'X'
+ 1370    บ  ณ  บ  ณ  ณ  บ  ณ  รฤelse
+ 1371    บ  ณ  บ  ณ  ณ  บ  ณ  ณ    @ 23, 47 say 'X'
+ 1372    บ  ณ  บ  ณ  ณ  บ  ณ  ภฤendif
+ 1373    บ  ณ  บ  ณ  ณ  บ  ณ    @ 24, 00 say 'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ  NRO. :                                     บ'
+ 1374    บ  ณ  บ  ณ  ณ  บ  ณ    @ 24, 41 say mnrode picture '@!'
+ 1375    บ  ณ  บ  ณ  ณ  บ  ณ    @ 25, 00 say 'บ                               บ  BANCO:                                     บ'
+ 1376    บ  ณ  บ  ณ  ณ  บ  ณ    @ 25, 41 say mbandes
+ 1377    บ  ณ  บ  ณ  ณ  บ  ณ    @ 26, 00 say 'บ                               บ                                             บ'
+ 1378    บ  ณ  บ  ณ  ณ  บ  ณ    @ 26, 05 say 'CONTINUA ....'
+ 1379    บ  ณ  บ  ณ  ณ  บ  ณ    @ 27, 00 say 'บ                               บ                        ___________________  บ'
+ 1380    บ  ณ  บ  ณ  ณ  บ  ณ    @ 28, 00 say 'บ                               บ                           RECIBIDO POR:     บ'
+ 1381    บ  ณ  บ  ณ  ณ  บ  ณ    @ 29, 00 say 'ศอออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออผ'
+ 1382    บ  ณ  บ  ณ  ณ  บ  ณ    @ 30, 00 say ' NOTA: Los Pagos Realizados no estan sujetos a devoluciones'
+ 1383    บ  ณ  บ  ณ  ณ  บ  ณ    select 9
+ 1384    บ  ณ  บ  ณ  ณ  บ  ณ    @ 0, 1 say '  ' + chr(27) + chr(67) + chr(33)
+ 1385    บ  ณ  บ  ณ  ณ  บ  ณ    @ 00, 00 say chr(18) + chr(20)
+ 1386    บ  ณ  บ  ณ  ณ  บ  ณ    @ 00, 00 say chr(14) + chr(15) + titulo + chr(18) + chr(20) + ' '
+ 1387    บ  ณ  บ  ณ  ณ  บ  ณ    @ 01, 00 say 'RIF .                                                   RECIBO Nro.:          '
+ 1388    บ  ณ  บ  ณ  ณ  บ  ณ    @ 01, 04 say l_rif
+ 1389    บ  ณ  บ  ณ  ณ  บ  ณ    @ 01, 68 say chr(14) + ng + ltrim(str(mrecibo)) + ngn
+ 1390    บ  ณ  บ  ณ  ณ  บ  ณ    @ 02, 00 say chr(15) + ' '
+ 1391    บ  ณ  บ  ณ  ณ  บ  ณ    @ 02, 00 say l_direccio
+ 1392    บ  ณ  บ  ณ  ณ  บ  ณ    @ 02, pcol() say chr(18) + chr(20) + ' '
+ 1393    บ  ณ  บ  ณ  ณ  บ  ณ    @ 02, 00 say '                                                        FECHA PAGO:          '
+ 1394    บ  ณ  บ  ณ  ณ  บ  ณ    @ 02, 68 say mfechap picture '@E'
+ 1395    บ  ณ  บ  ณ  ณ  บ  ณ    @ 03, 00 say '                                                      '
+ 1396    บ  ณ  บ  ณ  ณ  บ  ณ    @ 03, 28 say chr(14) + chr(15) + 'RECIBO DE PAGO' + chr(18) + chr(20) + ' '
+ 1397    บ  ณ  บ  ณ  ณ  บ  ณ    @ 04, 00 say '                                                      ษออออออออออออออออออออป '
+ 1398    บ  ณ  บ  ณ  ณ  บ  ณ    @ 05, 00 say 'C.I.:                                                 บ Bs.                บ '
+ 1399    บ  ณ  บ  ณ  ณ  บ  ณ    @ 05, 61 say mmontop picture '9,999,999.99'
+ 1400    บ  ณ  บ  ณ  ณ  บ  ณ    @ 05, 06 say m.cedula picture '!-99999999'
+ 1401    บ  ณ  บ  ณ  ณ  บ  ณ    @ 06, 00 say 'ALUMNO:                                               ศออออออออออออออออออออผ '
+ 1402    บ  ณ  บ  ณ  ณ  บ  ณ    @ 06, 08 say m.nombres picture '@!s45'
+ 1403    บ  ณ  บ  ณ  ณ  บ  ณ    @ 07, 00 say 'SEMESTRE: ' + m.semestre
+ 1404    บ  ณ  บ  ณ  ณ  บ  ณ    @ 08, 00 say 'TURNO   : ' + m.turno
+ 1405    บ  ณ  บ  ณ  ณ  บ  ณ    @ 08, pcol() + 2 say m.representa picture '@!'
+ 1406    บ  ณ  บ  ณ  ณ  บ  ณ    @ 09, 00 say 'PLAN    : ' + mdes1
+ 1407    บ  ณ  บ  ณ  ณ  บ  ณ    xcantidad = letras(mmontop)
+ 1408    บ  ณ  บ  ณ  ณ  บ  ณ    xcantidad = alltrim(xcantidad)
+ 1409    บ  ณ  บ  ณ  ณ  บ  ณ    @ 10, 00 say 'Hemos recibido la cantidad de:'
+ 1410    บ  ณ  บ  ณ  ณ  บ  ณ    @ 11, 00 say xcantidad picture '@!'
+ 1411    บ  ณ  บ  ณ  ณ  บ  ณ    li = 12
+ 1412    บ  ณ  บ  ณ  ณ  บ  ณ    @ li, 00 say 'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ' + ng
+ 1413    บ  ณ  บ  ณ  ณ  บ  ณ    li = li + 1
+ 1414    บ  ณ  บ  ณ  ณ  บ  ณ    @ li, 00 say '  C O N C E P T O S                                          M O N T O       ' + ngn
+ 1415    บ  ณ  บ  ณ  ณ  บ  ณ    li = li + 1
+ 1416    บ  ณ  บ  ณ  ณ  บ  ณ    @ li, 00 say 'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ'
+ 1417    บ  ณ  บ  ณ  ณ  บ  ณ    li = li + 1
+ 1418    บ  ณ  บ  ณ  ณ  บ  ภฤendif
+ 1419    บ  ณ  บ  ณ  ณ  ำฤendfor
+ 1420    บ  ณ  บ  ณ  ภฤendif
+ 1421    บ  ณ  vอออออออexit
+ 1422    บ  ณ  บ  ภฤendif
+ 1423    บ  ณ  ำฤendfor
+ 1424    บ  ณ    @ 22, 00 say  ;
+ 1425    บ  ณ        'ษอออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออออออออป'
+ 1426    บ  ณ    @ 23, 00 say  ;
+ 1427    บ  ณ        'บ            N O T A            บ  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           บ'
+ 1428    บ  ณ  ฺฤif mtipop <> 'Efectivo'
+ 1429    บ  ณ  ณ    @ 23, 65 say 'X'
+ 1430    บ  ณ  รฤelse
+ 1431    บ  ณ  ณ    @ 23, 47 say 'X'
+ 1432    บ  ณ  ภฤendif
+ 1433    บ  ณ    @ 24, 00 say  ;
+ 1434    บ  ณ        'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ  NRO. :                                     บ'
+ 1435    บ  ณ    @ 24, 41 say mnrode  ;
+ 1436    บ  ณ        picture '@!'
+ 1437    บ  ณ    @ 25, 00 say  ;
+ 1438    บ  ณ        'บ                               บ  BANCO:                                     บ'
+ 1439    บ  ณ    @ 25, 41 say mbandes
+ 1440    บ  ณ    @ 26, 00 say  ;
+ 1441    บ  ณ        'บ                               บ                                             บ'
+ 1442    บ  ณ    @ 27, 00 say  ;
+ 1443    บ  ณ        'บ                               บ                        ___________________  บ'
+ 1444    บ  ณ    @ 28, 00 say  ;
+ 1445    บ  ณ        'บ                               บ                           RECIBIDO POR:     บ'
+ 1446    บ  ณ    @ 29, 00 say  ;
+ 1447    บ  ณ        'ศอออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออผ'
+ 1448    บ  ณ    @ 30, 00 say  ;
+ 1449    บ  ณ        ' NOTA: Los Pagos Realizados no estan sujetos a devoluciones'
+ 1450    บ  ณ    eject
+ 1451    บ  ณ    set device to screen
+ 1452    บ  ณ    @ 22, 00
+ 1453    บ  ณ    @ 22, 03 say  ;
+ 1454    บ  ณ        'F1 = HELP'
+ 1455    บ  ณ    @ 22, 25 say  ;
+ 1456    บ  ณ        'F3 = REIMPRIMIR RECIBO'
+ 1457    บ  ณ    @ 22, 58 say  ;
+ 1458    บ  ณ        'ENTER = CONTINUAR'
+ 1459    บ  ณ    on key label f3 do repite_recibo
+ 1460    บ  ณ    read
+ 1461    บ  ณ    set device to screen
+ 1462    บ  ภฤendif
+ 1463    บ    select 2
+ 1464    บ    mpagado = mmontop
+ 1465    บ    ii = 1
+ 1466    บ  ึฤfor ii = 1 to xnro
+ 1467    บ  บ    lk = ltrim(str(ii))
+ 1468    บ  บ  ฺฤif pagado&lk=cuota&lk
+ 1469    บ  ^อออออออloop
+ 1470    บ  บ  ภฤendif
+ 1471    บ  บ  ฺฤif (mpagado+pagado&lk) >= cuota&lk
+ 1472    บ  บ  ณ    xpagado=(cuota&lk-pagado&lk)
+ 1473    บ  บ  ณ    select 9
+ 1474    บ  บ  ณ  ษอdo while .t.
+ 1475    บ  บ  ณ  บ  ฺฤif flock()
+ 1476    บ  บ  ณ  บ  ณ    append blank
+ 1477    บ  บ  ณ  บ  ณ    replace recibo  ;
+ 1478    บ  บ  ณ  บ  ณ        with  ;
+ 1479    บ  บ  ณ  บ  ณ        mrecibo,  ;
+ 1480    บ  บ  ณ  บ  ณ        cedula  ;
+ 1481    บ  บ  ณ  บ  ณ        with  ;
+ 1482    บ  บ  ณ  บ  ณ        m.cedula
+ 1483    บ  บ  ณ  บ  ณ    replace curso  ;
+ 1484    บ  บ  ณ  บ  ณ        with  ;
+ 1485    บ  บ  ณ  บ  ณ        m.cur,  ;
+ 1486    บ  บ  ณ  บ  ณ        plancobro  ;
+ 1487    บ  บ  ณ  บ  ณ        with  ;
+ 1488    บ  บ  ณ  บ  ณ        m.plancobro
+ 1489    บ  บ  ณ  บ  ณ    replace seccion  ;
+ 1490    บ  บ  ณ  บ  ณ        with  ;
+ 1491    บ  บ  ณ  บ  ณ        m.semestre,  ;
+ 1492    บ  บ  ณ  บ  ณ        fecha_pago  ;
+ 1493    บ  บ  ณ  บ  ณ        with  ;
+ 1494    บ  บ  ณ  บ  ณ        mfechap
+ 1495    บ  บ  ณ  บ  ณ    replace nrocuota  ;
+ 1496    บ  บ  ณ  บ  ณ        with  ;
+ 1497    บ  บ  ณ  บ  ณ        ii,  ;
+ 1498    บ  บ  ณ  บ  ณ        tipo_pago  ;
+ 1499    บ  บ  ณ  บ  ณ        with  ;
+ 1500    บ  บ  ณ  บ  ณ        mtipop,  ;
+ 1501    บ  บ  ณ  บ  ณ        nro_depo  ;
+ 1502    บ  บ  ณ  บ  ณ        with  ;
+ 1503    บ  บ  ณ  บ  ณ        mnrode
+ 1504    บ  บ  ณ  บ  ณ    replace cod_banco  ;
+ 1505    บ  บ  ณ  บ  ณ        with  ;
+ 1506    บ  บ  ณ  บ  ณ        mbanco,  ;
+ 1507    บ  บ  ณ  บ  ณ        monto  ;
+ 1508    บ  บ  ณ  บ  ณ        with  ;
+ 1509    บ  บ  ณ  บ  ณ        xpagado,  ;
+ 1510    บ  บ  ณ  บ  ณ        transa  ;
+ 1511    บ  บ  ณ  บ  ณ        with  ;
+ 1512    บ  บ  ณ  บ  ณ        'AD'
+ 1513    บ  บ  ณ  บ  ณ    replace cobrador  ;
+ 1514    บ  บ  ณ  บ  ณ        with  ;
+ 1515    บ  บ  ณ  บ  ณ        mcobrador
+ 1516    บ  บ  ณ  บ  ณ    replace lapso  ;
+ 1517    บ  บ  ณ  บ  ณ        with  ;
+ 1518    บ  บ  ณ  บ  ณ        lapmat
+ 1519    บ  บ  ณ  บ  ณ    unlock
+ 1520    บ  บ  ณ  vอออออออexit
+ 1521    บ  บ  ณ  บ  ภฤendif
+ 1522    บ  บ  ณ  ศอenddo
+ 1523    บ  บ  ณ    select 2
+ 1524    บ  บ  ณ    mpagado=mpagado-(cuota&lk-pagado&lk)
+ 1525    บ  บ  รฤelse
+ 1526    บ  บ  ณ  ฺฤif mpagado > 0
+ 1527    บ  บ  ณ  ณ    select 9
+ 1528    บ  บ  ณ  ณ  ษอdo while .t.
+ 1529    บ  บ  ณ  ณ  บ  ฺฤif flock()
+ 1530    บ  บ  ณ  ณ  บ  ณ    append  ;
+ 1531    บ  บ  ณ  ณ  บ  ณ        blank
+ 1532    บ  บ  ณ  ณ  บ  ณ    replace  ;
+ 1533    บ  บ  ณ  ณ  บ  ณ        recibo  ;
+ 1534    บ  บ  ณ  ณ  บ  ณ        with  ;
+ 1535    บ  บ  ณ  ณ  บ  ณ        mrecibo,  ;
+ 1536    บ  บ  ณ  ณ  บ  ณ        cedula  ;
+ 1537    บ  บ  ณ  ณ  บ  ณ        with  ;
+ 1538    บ  บ  ณ  ณ  บ  ณ        m.cedula
+ 1539    บ  บ  ณ  ณ  บ  ณ    replace  ;
+ 1540    บ  บ  ณ  ณ  บ  ณ        curso  ;
+ 1541    บ  บ  ณ  ณ  บ  ณ        with  ;
+ 1542    บ  บ  ณ  ณ  บ  ณ        m.cur,  ;
+ 1543    บ  บ  ณ  ณ  บ  ณ        plancobro  ;
+ 1544    บ  บ  ณ  ณ  บ  ณ        with  ;
+ 1545    บ  บ  ณ  ณ  บ  ณ        m.plancobro
+ 1546    บ  บ  ณ  ณ  บ  ณ    replace  ;
+ 1547    บ  บ  ณ  ณ  บ  ณ        seccion  ;
+ 1548    บ  บ  ณ  ณ  บ  ณ        with  ;
+ 1549    บ  บ  ณ  ณ  บ  ณ        m.semestre,  ;
+ 1550    บ  บ  ณ  ณ  บ  ณ        fecha_pago  ;
+ 1551    บ  บ  ณ  ณ  บ  ณ        with  ;
+ 1552    บ  บ  ณ  ณ  บ  ณ        mfechap
+ 1553    บ  บ  ณ  ณ  บ  ณ    replace  ;
+ 1554    บ  บ  ณ  ณ  บ  ณ        tipo_pago  ;
+ 1555    บ  บ  ณ  ณ  บ  ณ        with  ;
+ 1556    บ  บ  ณ  ณ  บ  ณ        mtipop,  ;
+ 1557    บ  บ  ณ  ณ  บ  ณ        nro_depo  ;
+ 1558    บ  บ  ณ  ณ  บ  ณ        with  ;
+ 1559    บ  บ  ณ  ณ  บ  ณ        mnrode
+ 1560    บ  บ  ณ  ณ  บ  ณ    replace  ;
+ 1561    บ  บ  ณ  ณ  บ  ณ        cod_banco  ;
+ 1562    บ  บ  ณ  ณ  บ  ณ        with  ;
+ 1563    บ  บ  ณ  ณ  บ  ณ        mbanco,  ;
+ 1564    บ  บ  ณ  ณ  บ  ณ        monto  ;
+ 1565    บ  บ  ณ  ณ  บ  ณ        with  ;
+ 1566    บ  บ  ณ  ณ  บ  ณ        mpagado
+ 1567    บ  บ  ณ  ณ  บ  ณ    replace  ;
+ 1568    บ  บ  ณ  ณ  บ  ณ        nrocuota  ;
+ 1569    บ  บ  ณ  ณ  บ  ณ        with  ;
+ 1570    บ  บ  ณ  ณ  บ  ณ        ii,  ;
+ 1571    บ  บ  ณ  ณ  บ  ณ        transa  ;
+ 1572    บ  บ  ณ  ณ  บ  ณ        with  ;
+ 1573    บ  บ  ณ  ณ  บ  ณ        'BD'
+ 1574    บ  บ  ณ  ณ  บ  ณ    replace  ;
+ 1575    บ  บ  ณ  ณ  บ  ณ        cobrador  ;
+ 1576    บ  บ  ณ  ณ  บ  ณ        with  ;
+ 1577    บ  บ  ณ  ณ  บ  ณ        mcobrador
+ 1578    บ  บ  ณ  ณ  บ  ณ    replace  ;
+ 1579    บ  บ  ณ  ณ  บ  ณ        lapso  ;
+ 1580    บ  บ  ณ  ณ  บ  ณ        with  ;
+ 1581    บ  บ  ณ  ณ  บ  ณ        lapmat
+ 1582    บ  บ  ณ  ณ  บ  ณ    unlock
+ 1583    บ  บ  ณ  ณ  vอออออออexit
+ 1584    บ  บ  ณ  ณ  บ  ภฤendif
+ 1585    บ  บ  ณ  ณ  ศอenddo
+ 1586    บ  บ  ณ  ภฤendif
+ 1587    บ  บ  ณ    select 2
+ 1588    บ  vอออออออexit
+ 1589    บ  บ  ภฤendif
+ 1590    บ  ำฤendfor
+ 1591    บ    select 2
+ 1592    บ  ษอdo while .t.
+ 1593    บ  บ  ฺฤif rlock()
+ 1594    บ  บ  ณ    mpagado = mmontop
+ 1595    บ  บ  ณ    ii = 1
+ 1596    บ  บ  ณ  ึฤfor ii = 1 to xnro
+ 1597    บ  บ  ณ  บ    lk = ltrim(str(ii))
+ 1598    บ  บ  ณ  บ  ฺฤif pagado&lk>=cuota&lk
+ 1599    บ  บ  ณ  บ  ณ    li = li +  ;
+ 1600    บ  บ  ณ  บ  ณ        1
+ 1601    บ  บ  ณ  ^อออออออloop
+ 1602    บ  บ  ณ  บ  ภฤendif
+ 1603    บ  บ  ณ  บ  ฺฤif (mpagado+pagado&lk);
+ 1604    บ  บ  ณ  บ  ณ        >= cuota&lk
+ 1605    บ  บ  ณ  บ  ณ    mpagado=mpagado-(cuota&lk-pagado&lk)
+ 1606    บ  บ  ณ  บ  ณ    replace ultimacuot  ;
+ 1607    บ  บ  ณ  บ  ณ        with  ;
+ 1608    บ  บ  ณ  บ  ณ        ultimacuot +  ;
+ 1609    บ  บ  ณ  บ  ณ        1
+ 1610    บ  บ  ณ  บ  ณ    x=(cuota&lk-pagado&lk)
+ 1611    บ  บ  ณ  บ  ณ    replace monto_paga  ;
+ 1612    บ  บ  ณ  บ  ณ        with  ;
+ 1613    บ  บ  ณ  บ  ณ        monto_paga +  ;
+ 1614    บ  บ  ณ  บ  ณ        x
+ 1615    บ  บ  ณ  บ  ณ    repla pagado&lk;
+ 1616    บ  บ  ณ  บ  ณ        with cuota&lk
+ 1617    บ  บ  ณ  บ  ณ    replace nrorecibo  ;
+ 1618    บ  บ  ณ  บ  ณ        with  ;
+ 1619    บ  บ  ณ  บ  ณ        mrecibo
+ 1620    บ  บ  ณ  บ  ณ    replace fecha_ultp  ;
+ 1621    บ  บ  ณ  บ  ณ        with  ;
+ 1622    บ  บ  ณ  บ  ณ        mfechap
+ 1623    บ  บ  ณ  บ  ณ    replace total_deud  ;
+ 1624    บ  บ  ณ  บ  ณ        with  ;
+ 1625    บ  บ  ณ  บ  ณ        tdeuda
+ 1626    บ  บ  ณ  บ  รฤelse
+ 1627    บ  บ  ณ  บ  ณ    repla pagado&lk;
+ 1628    บ  บ  ณ  บ  ณ        with pagado&lk+mpagado
+ 1629    บ  บ  ณ  บ  ณ    replace monto_paga  ;
+ 1630    บ  บ  ณ  บ  ณ        with  ;
+ 1631    บ  บ  ณ  บ  ณ        monto_paga +  ;
+ 1632    บ  บ  ณ  บ  ณ        mpagado
+ 1633    บ  บ  ณ  บ  ณ    replace nrorecibo  ;
+ 1634    บ  บ  ณ  บ  ณ        with  ;
+ 1635    บ  บ  ณ  บ  ณ        mrecibo
+ 1636    บ  บ  ณ  บ  ณ    replace fecha_ultp  ;
+ 1637    บ  บ  ณ  บ  ณ        with  ;
+ 1638    บ  บ  ณ  บ  ณ        mfechap
+ 1639    บ  บ  ณ  บ  ณ    replace total_deud  ;
+ 1640    บ  บ  ณ  บ  ณ        with  ;
+ 1641    บ  บ  ณ  บ  ณ        tdeuda
+ 1642    บ  บ  ณ  vอออออออexit
+ 1643    บ  บ  ณ  บ  ภฤendif
+ 1644    บ  บ  ณ  ำฤendfor
+ 1645    บ  บ  ณ    unlock
+ 1646    บ  vอออออออexit
+ 1647    บ  บ  ภฤendif
+ 1648    บ  ศอenddo
+ 1649    บ    xcedula = space(12)
+ 1650    บ    m.swp = 0
+ 1651    บ    @ 06, 00 clear to 19,  ;
+ 1652    บ        wcols()
+ 1653    บ    _curobj = objnum(xcedula)
+ 1654    บ    show gets
+ 1655    บ    m.control = 0
+ 1656    บ    m.nac = 'V'
+ 1657    บ    m.ced = 0
+ 1658    บ    entra = .f.
+ 1659    ศอenddo
+ 1660      *
+ 1682  *!*****************************************************************************
+ 1683  *!
+ 1684  *!      Procedure: VALIDAR
+ 1685  *!
+ 1686  *!      Called by: SCP20033.PRG                      
+ 1687  *!               : VALIDAR            (procedure in SCP20033.PRG)
+ 1688  *!               : SCP20333.PRG                      
+ 1689  *!
+ 1690  *!          Calls: IIF()              (function  in ?)
+ 1691  *!               : LEN()              (function  in ?)
+ 1692  *!               : LTRIM()            (function  in ?)
+ 1693  *!               : STR()              (function  in ?)
+ 1694  *!               : SPACE()            (function  in ?)
+ 1695  *!               : BUSQUEDA()         (function  in ?)
+ 1696  *!               : SUBSTR()           (function  in ?)
+ 1697  *!               : VAL()              (function  in ?)
+ 1698  *!               : BOXFIELD()         (function  in ?)
+ 1699  *!               : VARREAD()          (function  in ?)
+ 1700  *!               : VALIDAR            (procedure in SCP20033.PRG)
+ 1701  *!
+ 1702  *!*****************************************************************************
+ 1682      procedure validar
+ 1683      parameter xvar
+ 1684    ีอdo case
+ 1685    ฦอcase xvar = 'NAC' .or. xvar =  ;
+ 1686    ณ        'CED'
+ 1687    ณ    on key label tab
+ 1688    ณ    m.ced = iif(len(ltrim(str(m.ced,  ;
+ 1689    ณ        10))) < 10,  ;
+ 1690    ณ        ltrim(str(m.ced,  ;
+ 1691    ณ        10)) + space(10 -  ;
+ 1692    ณ        len(ltrim(str(m.ced,  ;
+ 1693    ณ        10)))),  ;
+ 1694    ณ        ltrim(str(m.ced,  ;
+ 1695    ณ        10)))
+ 1696    ณ    xcedula = m.nac + '-' +  ;
+ 1697    ณ        m.ced
+ 1698    ณ    select 1
+ 1699    ณ    xcedula = busqueda()
+ 1700    ณ    m.nac = substr(xcedula,  ;
+ 1701    ณ        1, 1)
+ 1702    ณ    m.ced = val(substr(xcedula,  ;
+ 1703    ณ        3, 10))
+ 1704    ณ    show get m.nac
+ 1705    ณ    show get m.ced
+ 1706    ฦอcase xvar = 'PLANCOBRO'
+ 1707    ณ    on key label tab
+ 1708    ณ    m.planco = boxfield('PLANCOBR', ;
+ 1709    ณ        'CODIGO')
+ 1710    ณ    show get m.planco
+ 1711    ฦอcase xvar = 'MBANCO'
+ 1712    ณ    on key label tab
+ 1713    ณ    mbanco = boxfield('BANCOS', ;
+ 1714    ณ        'CODIGO')
+ 1715    ณ    show get mbanco
+ 1716    ฦอcase xvar = 'MCOBRADOR'
+ 1717    ณ    on key label tab
+ 1718    ณ    mcobrador = boxfield('COBRADOR', ;
+ 1719    ณ        'CODIGO')
+ 1720    ณ    show get mcobrador
+ 1721    ิอendcase
+ 1722      on key label tab do validar with varread()
+ 1723      return
+ 1724      *
+ 1739  *!*****************************************************************************
+ 1740  *!
+ 1741  *!       Function: MBANCOS()
+ 1742  *!
+ 1743  *!      Called by: SCP20033.PRG                      
+ 1744  *!               : DEUDA_VEN3()       (function  in SCP20033.PRG)
+ 1745  *!               : DEUDA_VEN1()       (function  in SCP20033.PRG)
+ 1746  *!               : DEUDA_VEN2()       (function  in SCP20033.PRG)
+ 1747  *!               : SCP20333.PRG                      
+ 1748  *!
+ 1749  *!          Calls: SEEK()             (function  in ?)
+ 1750  *!               : BOXFIELD()         (function  in ?)
+ 1751  *!
+ 1752  *!*****************************************************************************
+ 1739      function mbancos
+ 1740      parameter xban
+ 1741      select bancos
+ 1742    ฺฤif  .not. seek(xban)
+ 1743    ณ    mbanco = boxfield('BANCOS', ;
+ 1744    ณ        'CODIGO')
+ 1745    ภฤendif
+ 1746      show get mbanco
+ 1747      return .t.
+ 1748      *
+ 1763  *!*****************************************************************************
+ 1764  *!
+ 1765  *!       Function: MCOBRAD()
+ 1766  *!
+ 1767  *!      Called by: SCP20033.PRG                      
+ 1768  *!               : DEUDA_VEN3()       (function  in SCP20033.PRG)
+ 1769  *!               : DEUDA_VEN1()       (function  in SCP20033.PRG)
+ 1770  *!               : DEUDA_VEN2()       (function  in SCP20033.PRG)
+ 1771  *!               : SCP20333.PRG                      
+ 1772  *!
+ 1773  *!          Calls: SEEK()             (function  in ?)
+ 1774  *!               : BOXFIELD()         (function  in ?)
+ 1775  *!
+ 1776  *!*****************************************************************************
+ 1763      function mcobrad
+ 1764      parameter xban
+ 1765      select cobrador
+ 1766    ฺฤif  .not. seek(xban)
+ 1767    ณ    mcobrador = boxfield('COBRADOR', ;
+ 1768    ณ        'CODIGO')
+ 1769    ภฤendif
+ 1770      show get mcobrador
+ 1771      return .t.
+ 1772      *
+ 1810  *!*****************************************************************************
+ 1811  *!
+ 1812  *!       Function: DEUDA_VEN1()
+ 1813  *!
+ 1814  *!      Called by: SCP20033.PRG                      
+ 1815  *!               : SCP20333.PRG                      
+ 1816  *!
+ 1817  *!          Calls: LEFT()             (function  in ?)
+ 1818  *!               : ALLTRIM()          (function  in ?)
+ 1819  *!               : STR()              (function  in ?)
+ 1820  *!               : YEAR()             (function  in ?)
+ 1821  *!               : CTOD()             (function  in ?)
+ 1822  *!               : SUBSTR()           (function  in ?)
+ 1823  *!               : SPACE()            (function  in ?)
+ 1824  *!               : LTRIM()            (function  in ?)
+ 1825  *!               : SEEK()             (function  in ?)
+ 1826  *!               : DATE()             (function  in ?)
+ 1827  *!               : LASTKEY()          (function  in ?)
+ 1828  *!               : SALIDA()           (function  in ?)
+ 1829  *!               : MBANCOS()          (function  in SCP20033.PRG)
+ 1830  *!               : BOXFIELD()         (function  in ?)
+ 1831  *!               : MSGERRO()          (function  in ?)
+ 1832  *!               : COL()              (function  in ?)
+ 1833  *!               : MCOBRAD()          (function  in SCP20033.PRG)
+ 1834  *!               : ACEPTA()           (function  in ?)
+ 1835  *!               : PRINTER()          (function  in ?)
+ 1836  *!               : RLOCK()            (function  in ?)
+ 1837  *!               : CHR()              (function  in ?)
+ 1838  *!               : PCOL()             (function  in ?)
+ 1839  *!               : LETRAS()           (function  in ?)
+ 1840  *!               : FLOCK()            (function  in ?)
+ 1841  *!               : IIF()              (function  in ?)
+ 1842  *!               : RIGHT()            (function  in ?)
+ 1843  *!
+ 1844  *!           Uses: MP&XLAP.DBF            Alias: NUEVO
+ 1845  *!
+ 1846  *!*****************************************************************************
+ 1810      function deuda_ven1
+ 1811      define window deuda from 00, 00  ;
+ 1812          to 24, 79 shadow title  ;
+ 1813          'Registro de Control de Deuda Anterior'  ;
+ 1814          color scheme 5
+ 1815      activate window deuda
+ 1816      @ 00, 00 say  ;
+ 1817          'ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป'
+ 1818      @ 01, 00 say  ;
+ 1819          'บ C.I. :            Alumno:                                                  บ'
+ 1820      @ 02, 00 say  ;
+ 1821          'บ Menciขn :                   Semestre    Plan de Cobro:       Lapso:        บ'
+ 1822      @ 03, 00 say  ;
+ 1823          'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ'
+ 1824      @ 04, 00 say  ;
+ 1825          'บ    Total Deuda Vencida:               Fecha de Pago    :                   บ'
+ 1826      @ 05, 00 say  ;
+ 1827          'บ   Monto Pagado/Abonado:               Tipo Pago (E/D/C):                   บ'
+ 1828      @ 06, 00 say  ;
+ 1829          'บ  Saldo Pendiente Pagar:               Nro. Dep./Cheq   :                   บ'
+ 1830      @ 07, 00 say  ;
+ 1831          'บ            % Descuento:               Banco :                              บ'
+ 1832      @ 08, 00 say  ;
+ 1833          'บ  Monto Cancelar/Abonar:               Cobrador :                           บ'
+ 1834      @ 09, 00 say  ;
+ 1835          'บ  Nro. ณ  Descripciขn de Conceptos           ณ Fecha Vencmto. ณ Monto Cuota บ'  ;
+ 1836          color n/w
+ 1837      @ 10, 00 say  ;
+ 1838          'บ       ณ                                     ณ                ณ             บ'
+ 1839      @ 11, 00 say  ;
+ 1840          'บ       ณ                                     ณ                ณ             บ'
+ 1841      @ 12, 00 say  ;
+ 1842          'บ       ณ                                     ณ                ณ             บ'
+ 1843      @ 13, 00 say  ;
+ 1844          'บ       ณ                                     ณ                ณ             บ'
+ 1845      @ 14, 00 say  ;
+ 1846          'บ       ณ                                     ณ                ณ             บ'
+ 1847      @ 15, 00 say  ;
+ 1848          'บ       ณ                                     ณ                ณ             บ'
+ 1849      @ 16, 00 say  ;
+ 1850          'บ       ณ                                     ณ                ณ             บ'
+ 1851      @ 17, 00 say  ;
+ 1852          'บ       ณ                                     ณ                ณ             บ'
+ 1853      @ 18, 00 say  ;
+ 1854          'บ       ณ                                     ณ                ณ             บ'
+ 1855      @ 19, 00 say  ;
+ 1856          'บ       ณ                                     ณ                ณ             บ'
+ 1857      @ 20, 00 say  ;
+ 1858          'บ       ณ                                     ณ                ณ             บ'
+ 1859      @ 21, 00 say  ;
+ 1860          'วฤฤฤฤฤฤฤมฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤมฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤลฤฤฤฤฤฤฤฤฤฤฤฤฤถ'
+ 1861      @ 22, 00 say  ;
+ 1862          'บ                                                              ณ             บ'
+ 1863      select 7
+ 1864      m.saldo = total_d - monto_p
+ 1865      select 18
+ 1866      xlap = lapmat
+ 1867      ch1 = left(xlap, 2)
+ 1868      ch2 = alltrim(str(year(ctod( ;
+ 1869          '01/01/' + right(xlap,  ;
+ 1870          2)))))
+ 1871      use mp&xlap again alias nuevo order ced
+ 1872      seek xcedula
+ 1873      scatter memo memvar
+ 1874      m.curso = cur
+ 1875    ีอdo case
+ 1876    ฦอcase m.curso = '32012'
+ 1877    ณ    m.mencion = 'BASICA'
+ 1878    ฦอcase m.curso = '31022'
+ 1879    ณ    m.mencion = 'CIENCIAS'
+ 1880    ฦอcase m.curso = '31023'
+ 1881    ณ    m.mencion = 'HUMANIDADES'
+ 1882    ิอendcase
+ 1883      select 1
+ 1884      @ 01, 08 get m.cedula picture  ;
+ 1885          '@!'
+ 1886      @ 01, 27 get m.nombres picture  ;
+ 1887          '@!'
+ 1888      @ 02, 38 get m.semestre picture  ;
+ 1889          '@!'
+ 1890      @ 02, 56 get m.plancobro picture  ;
+ 1891          '@!'
+ 1892      @ 02, 70 get ch1 picture '@!'
+ 1893      @ 02, 72 say '-'
+ 1894      @ 02, 73 get ch2 picture '@!'
+ 1895      @ 04, 26 get m.total_d picture  ;
+ 1896          '99,999,999.99'
+ 1897      @ 05, 26 get m.monto_p picture  ;
+ 1898          '99,999,999.99'
+ 1899      @ 06, 26 get m.saldo picture  ;
+ 1900          '99,999,999.99'
+ 1901      clear gets
+ 1902      select 18
+ 1903      release datos
+ 1904      dimension datos( 7, 4)
+ 1905      external array datos
+ 1906    ึฤfor q = 1 to 7
+ 1907    บ    datos( q, 1) = space(30)
+ 1908    บ    datos( q, 2) = 0.00
+ 1909    บ    datos( q, 3) = space(30)
+ 1910    บ    datos( q, 4) = 0.00
+ 1911    ำฤendfor
+ 1912      li = 10
+ 1913      w = 1
+ 1914      z = 1
+ 1915    ึฤfor q = 1 to 12
+ 1916    บ    lq = ltrim(str(q))
+ 1917    บ  ฺฤif pagado&lq >= cuota&lq
+ 1918    ^อออออออloop
+ 1919    บ  ภฤendif
+ 1920    บ    mcuota = q
+ 1921    บ    select 11
+ 1922    บ    locate for lapso = xlap  ;
+ 1923    บ        .and. codigo =  ;
+ 1924    บ        m.plancobro .and.  ;
+ 1925    บ        cuota = q
+ 1926    บ    xfec = fecha_ven
+ 1927    บ    xcon = concepto1
+ 1928    บ    select 12
+ 1929    บ  ฺฤif  .not. seek(xcon)
+ 1930    บ  ณ    xdes = 'SIN DESCRIPCION'
+ 1931    บ  รฤelse
+ 1932    บ  ณ    xdes = alltrim(descripcio)
+ 1933    บ  ภฤendif
+ 1934    บ    select 18
+ 1935    บ    @ li, 02 say ltrim(str(q))  ;
+ 1936    บ        picture '99'
+ 1937    บ    @ li, 11 say xdes
+ 1938    บ    @ li, 51 say xfec picture  ;
+ 1939    บ        '@E'
+ 1940    บ    @li,65 say cuota&lq pict '99,999,999.99'
+ 1941    บ    li = li + 1
+ 1942    บ  ฺฤif w > 7
+ 1943    บ  ณ    datos( z, 3) = xdes
+ 1944    บ  ณ    datos(z,4)=cuota&lq
+ 1945    บ  ณ    z = z + 1
+ 1946    บ  รฤelse
+ 1947    บ  ณ    datos( w, 1) = xdes
+ 1948    บ  ณ    datos(w,2)=cuota&lq
+ 1949    บ  ภฤendif
+ 1950    บ    w = w + 1
+ 1951    ำฤendfor
+ 1952      @ 22, 65 say m.saldo picture  ;
+ 1953          '99,999,999.99'
+ 1954      m.fechap = date()
+ 1955      m.tipop = 'Efectivo'
+ 1956      m.nrode = space(20)
+ 1957      m.banco = space(2)
+ 1958      m.montop = 0.00
+ 1959      m.desban = space(20)
+ 1960      m.choice = 1
+ 1961      m.cobrador = space(2)
+ 1962      m.descuento = 0.00
+ 1963      save screen to ven
+ 1964    ษอdo while .t.
+ 1965    บ    restore screen from ven
+ 1966    บ    @ 04, 58 get m.fechap  ;
+ 1967    บ        picture '@E'
+ 1968    บ    @ 05, 58 get m.tipop default  ;
+ 1969    บ        'Efectivo' picture  ;
+ 1970    บ        '@!M Deposito,Cheque,Efectivo'
+ 1971    บ    read
+ 1972    บ  ฺฤif lastkey() = 27
+ 1973    บ  ณ    p = salida()
+ 1974    บ  ณ  ฺฤif p = 2
+ 1975    บ  ณ  ณ    entra = .f.
+ 1976    บ  ณ  ณ    release window  ;
+ 1977    บ  ณ  ณ        deuda
+ 1978  <ออออออออออออreturn .f.
+ 1979    บ  ณ  ภฤendif
+ 1980    ^อออออออloop
+ 1981    บ  ภฤendif
+ 1982    บ  ฺฤif m.tipop <> 'Efectivo'
+ 1983    บ  ณ    @ 06, 58 get m.nrode  ;
+ 1984    บ  ณ        picture '@!S15' valid  ;
+ 1985    บ  ณ        m.nrode <> space(20)  ;
+ 1986    บ  ณ        error  ;
+ 1987    บ  ณ        'El Nฃmero de la Transacciขn esta en blanco'
+ 1988    บ  ณ    @ 07, 47 get m.banco  ;
+ 1989    บ  ณ        picture '@!' valid  ;
+ 1990    บ  ณ        mbancos(m.banco)
+ 1991    บ  ณ    read
+ 1992    บ  ณ    select 10
+ 1993    บ  ณ  ฺฤif  .not. seek(m.banco)
+ 1994    บ  ณ  ณ    m.banco = boxfield('bancos', ;
+ 1995    บ  ณ  ณ        'codigo')
+ 1996    บ  ณ  ภฤendif
+ 1997    บ  ณ    select 9
+ 1998    บ  ณ    set order to bandepo
+ 1999    บ  ณ  ฺฤif seek(m.banco +  ;
+ 2000    บ  ณ  ณ        m.nrode)
+ 2001    บ  ณ  ณ  ฺฤif status <> 'D'
+ 2002    บ  ณ  ณ  ณ    = msgerro( ;
+ 2003    บ  ณ  ณ  ณ        'Ya existe un registro de pagos con este numero, verifique' ;
+ 2004    บ  ณ  ณ  ณ        )
+ 2005    ^อออออออออออออloop
+ 2006    บ  ณ  ณ  ภฤendif
+ 2007    บ  ณ  ภฤendif
+ 2008    บ  ณ    select 10
+ 2009    บ  ณ    @ 07, 47 say m.banco  ;
+ 2010    บ  ณ        picture '@!' color w+/ ;
+ 2011    บ  ณ        w
+ 2012    บ  ณ    @ 07, col() + 2 say  ;
+ 2013    บ  ณ        left(descripcio, 25)
+ 2014    บ  ภฤendif
+ 2015    บ  ฺฤif m.monto_p = 0
+ 2016    บ  ณ    @ 07, 26 get  ;
+ 2017    บ  ณ        m.descuento picture  ;
+ 2018    บ  ณ        '999' valid  ;
+ 2019    บ  ณ        m.descuento <= 100  ;
+ 2020    บ  ณ        error  ;
+ 2021    บ  ณ        'El Porcentaje de Descuento es invalido, verifique'
+ 2022    บ  ณ    read
+ 2023    บ  ณ  ฺฤif lastkey() = 27
+ 2024    บ  ณ  ณ    p = salida()
+ 2025    บ  ณ  ณ  ฺฤif p = 2
+ 2026    บ  ณ  ณ  ณ    entra = .f.
+ 2027    บ  ณ  ณ  ณ    release window  ;
+ 2028    บ  ณ  ณ  ณ        deuda
+ 2029  <อออออออออออออออreturn .f.
+ 2030    บ  ณ  ณ  ภฤendif
+ 2031    ^ออออออออออloop
+ 2032    บ  ณ  ภฤendif
+ 2033    บ  ณ    m.porc = m.descuento /  ;
+ 2034    บ  ณ        100
+ 2035    บ  ณ    m.montop = m.saldo *  ;
+ 2036    บ  ณ        m.porc
+ 2037    บ  ภฤendif
+ 2038    บ    @ 08, 26 get m.montop  ;
+ 2039    บ        picture '99,999,999.99'
+ 2040    บ    @ 08, 50 get m.cobrador  ;
+ 2041    บ        picture '@!' valid  ;
+ 2042    บ        mcobrad(m.cobrador)
+ 2043    บ    read
+ 2044    บ  ฺฤif lastkey() = 27
+ 2045    บ  ณ    p = salida()
+ 2046    บ  ณ  ฺฤif p = 2
+ 2047    บ  ณ  ณ    entra = .f.
+ 2048    บ  ณ  ณ    release window  ;
+ 2049    บ  ณ  ณ        deuda
+ 2050  <ออออออออออออreturn .f.
+ 2051    บ  ณ  ภฤendif
+ 2052    ^อออออออloop
+ 2053    บ  ภฤendif
+ 2054    บ  ฺฤif m.descuento > 0
+ 2055    บ  ณ    m.porc = m.descuento /  ;
+ 2056    บ  ณ        100
+ 2057    บ  ณ    nuevosaldo = m.saldo *  ;
+ 2058    บ  ณ        m.porc
+ 2059    บ  ณ  ฺฤif m.montop <= 0 .or.  ;
+ 2060    บ  ณ  ณ        m.montop >  ;
+ 2061    บ  ณ  ณ        nuevosaldo
+ 2062    บ  ณ  ณ    = msgerro( ;
+ 2063    บ  ณ  ณ        'El Monto a Pagar por Concepto de Mensualidad es invalido, verifique' ;
+ 2064    บ  ณ  ณ        )
+ 2065    ^ออออออออออloop
+ 2066    บ  ณ  ภฤendif
+ 2067    บ  ณ  ฺฤif nuevosaldo >  ;
+ 2068    บ  ณ  ณ        m.montop
+ 2069    บ  ณ  ณ    = msgerro( ;
+ 2070    บ  ณ  ณ        'El Monto a cancelar es invalido, no se permite abonos para esta modalidad' ;
+ 2071    บ  ณ  ณ        )
+ 2072    ^ออออออออออloop
+ 2073    บ  ณ  ภฤendif
+ 2074    บ  รฤelse
+ 2075    บ  ณ  ฺฤif m.montop = 0 .or.  ;
+ 2076    บ  ณ  ณ        m.montop > m.saldo
+ 2077    บ  ณ  ณ    = msgerro( ;
+ 2078    บ  ณ  ณ        'El Monto a Pagar por Concepto de Mensualidad es invalido, verifique' ;
+ 2079    บ  ณ  ณ        )
+ 2080    ^ออออออออออloop
+ 2081    บ  ณ  ภฤendif
+ 2082    บ  ภฤendif
+ 2083    บ    select cobrador
+ 2084    บ  ฺฤif  .not. seek(m.cobrador)
+ 2085    บ  ณ    m.cobrador = boxfield('cobrador', ;
+ 2086    บ  ณ        'codigo')
+ 2087    บ  ภฤendif
+ 2088    บ    select 14
+ 2089    บ    @ 08, 50 say m.cobrador  ;
+ 2090    บ        picture '@!' color w+/w
+ 2091    บ    @ 08, col() + 2 say  ;
+ 2092    บ        left(nombres, 20)
+ 2093    บ    mnomcob = alltrim(nombres)
+ 2094    บ    opc = acepta( ;
+ 2095    บ        'Esta correcto este Monto a Cancelar' ;
+ 2096    บ        )
+ 2097    บ  ฺฤif opc = 2
+ 2098    ^อออออออloop
+ 2099    บ  ภฤendif
+ 2100    vออออexit
+ 2101    ศอenddo
+ 2102    ฺฤif m.descuento > 0
+ 2103    ณ    m.porc = m.descuento / 100
+ 2104    ณ    nuevosaldo = (m.saldo *  ;
+ 2105    ณ        m.porc) -  ;
+ 2106    ณ        m.montop
+ 2107    รฤelse
+ 2108    ณ    nuevosaldo = m.saldo -  ;
+ 2109    ณ        m.montop
+ 2110    ภฤendif
+ 2111      opce = acepta( ;
+ 2112          'Proceso este Pago de Mensualidad' ;
+ 2113          )
+ 2114    ฺฤif opce = 2
+ 2115    ณ    release window deuda
+ 2116  <ออออออreturn .f.
+ 2117    ภฤendif
+ 2118      mrecibo = 0
+ 2119      select 18
+ 2120      p = printer()
+ 2121    ฺฤif p = 2
+ 2122    ณ    select 13
+ 2123    ณ  ษอdo while .t.
+ 2124    ณ  บ  ฺฤif rlock()
+ 2125    ณ  บ  ณ    replace recibo  ;
+ 2126    ณ  บ  ณ        with  ;
+ 2127    ณ  บ  ณ        recibo +  ;
+ 2128    ณ  บ  ณ        1
+ 2129    ณ  บ  ณ    mrecibo = recibo
+ 2130    ณ  บ  ณ    unlock
+ 2131    ณ  vอออออออexit
+ 2132    ณ  บ  ภฤendif
+ 2133    ณ  ศอenddo
+ 2134    ณ    select 18
+ 2135    ณ    wait window  ;
+ 2136    ณ        'Nro. del Recibo Generado: ' +  ;
+ 2137    ณ        ltrim(str(mrecibo)) +  ;
+ 2138    ณ        chr(13) +  ;
+ 2139    ณ        'Presione Cualquier Tecla para continuar..'
+ 2140    รฤelse
+ 2141    ณ    select 13
+ 2142    ณ  ษอdo while .t.
+ 2143    ณ  บ  ฺฤif rlock()
+ 2144    ณ  บ  ณ    replace recibo  ;
+ 2145    ณ  บ  ณ        with  ;
+ 2146    ณ  บ  ณ        recibo +  ;
+ 2147    ณ  บ  ณ        1
+ 2148    ณ  บ  ณ    mrecibo = recibo
+ 2149    ณ  บ  ณ    unlock
+ 2150    ณ  vอออออออexit
+ 2151    ณ  บ  ภฤendif
+ 2152    ณ  ศอenddo
+ 2153    ณ    select 18
+ 2154    ณ    set device to printer
+ 2155    ณ    @ 0, 1 say '  ' + chr(27) +  ;
+ 2156    ณ        chr(67) + chr(33)
+ 2157    ณ    @ 00, 00 say chr(18) +  ;
+ 2158    ณ        chr(20)
+ 2159    ณ    @ 00, 00 say chr(14) +  ;
+ 2160    ณ        chr(15) + titulo + chr(18) +  ;
+ 2161    ณ        chr(20) + ' '
+ 2162    ณ    @ 01, 00 say  ;
+ 2163    ณ        'RIF .                                                   RECIBO Nro.:          '
+ 2164    ณ    @ 01, 04 say l_rif
+ 2165    ณ    @ 01, 68 say chr(14) + ng +  ;
+ 2166    ณ        ltrim(str(mrecibo)) + ngn
+ 2167    ณ    @ 02, 00 say chr(15) + ' '
+ 2168    ณ    @ 02, 00 say l_direccio
+ 2169    ณ    @ 02, pcol() say chr(18) +  ;
+ 2170    ณ        chr(20) + ' '
+ 2171    ณ    @ 02, 00 say  ;
+ 2172    ณ        '                                                        FECHA PAGO:          '
+ 2173    ณ    @ 02, 68 say m.fechap  ;
+ 2174    ณ        picture '@E'
+ 2175    ณ    @ 03, 00 say  ;
+ 2176    ณ        '                                                      '
+ 2177    ณ    @ 03, 28 say chr(14) +  ;
+ 2178    ณ        chr(15) + 'RECIBO DE PAGO' +  ;
+ 2179    ณ        chr(18) + chr(20) + ' '
+ 2180    ณ    @ 04, 00 say  ;
+ 2181    ณ        '                                                      ษออออออออออออออออออออป '
+ 2182    ณ    @ 05, 00 say  ;
+ 2183    ณ        'C.I.:                                                 บ Bs.                บ '
+ 2184    ณ    @ 05, 61 say m.montop  ;
+ 2185    ณ        picture '9,999,999.99'
+ 2186    ณ    @ 05, 06 say m.cedula  ;
+ 2187    ณ        picture '!-99999999'
+ 2188    ณ    @ 06, 00 say  ;
+ 2189    ณ        'ALUMNO:                                               ศออออออออออออออออออออผ '
+ 2190    ณ    @ 06, 08 say m.nombres  ;
+ 2191    ณ        picture '@!s45'
+ 2192    ณ    @ 07, 00 say 'SEMESTRE: ' +  ;
+ 2193    ณ        m.semestre
+ 2194    ณ    @ 08, 00 say 'TURNO   : ' +  ;
+ 2195    ณ        m.turno
+ 2196    ณ    xcantidad = letras(m.montop)
+ 2197    ณ    xcantidad = alltrim(xcantidad)
+ 2198    ณ    @ 09, 00 say  ;
+ 2199    ณ        'Hemos recibido la cantidad de:'
+ 2200    ณ    @ 10, 00 say xcantidad  ;
+ 2201    ณ        picture '@!'
+ 2202    ณ    li = 11
+ 2203    ณ    @ li, 00 say  ;
+ 2204    ณ        'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ' +  ;
+ 2205    ณ        ng
+ 2206    ณ    li = li + 1
+ 2207    ณ    @ li, 00 say  ;
+ 2208    ณ        '  C O N C E P T O S                                          M O N T O       ' +  ;
+ 2209    ณ        ngn
+ 2210    ณ    li = li + 1
+ 2211    ณ    @ li, 00 say  ;
+ 2212    ณ        'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ'
+ 2213    ณ    li = li + 1
+ 2214    ณ    @ li, 00 say chr(15) + ' '
+ 2215    ณ  ึฤfor s = 1 to 7
+ 2216    ณ  บ    ls = ltrim(str(s))
+ 2217    ณ  บ  ฺฤif datos(s,1) =  ;
+ 2218    ณ  บ  ณ        space(30)
+ 2219    ณ  ^อออออออloop
+ 2220    ณ  บ  ภฤendif
+ 2221    ณ  บ    @ li, 01 say datos(s,1)  ;
+ 2222    ณ  บ        picture '@!s22'
+ 2223    ณ  บ    @ li, 24 say '('
+ 2224    ณ  บ    @ li, 25 say datos(s,2)  ;
+ 2225    ณ  บ        picture '999,999.99'
+ 2226    ณ  บ    @ li, 35 say ')'
+ 2227    ณ  บ  ฺฤif s <= 4
+ 2228    ณ  บ  ณ  ฺฤif datos(s,3) <>  ;
+ 2229    ณ  บ  ณ  ณ        space(30)
+ 2230    ณ  บ  ณ  ณ    @ li, 39 say  ;
+ 2231    ณ  บ  ณ  ณ        datos(s,3)  ;
+ 2232    ณ  บ  ณ  ณ        picture  ;
+ 2233    ณ  บ  ณ  ณ        '@!s22'
+ 2234    ณ  บ  ณ  ณ    @ li, 60 say  ;
+ 2235    ณ  บ  ณ  ณ        '('
+ 2236    ณ  บ  ณ  ณ    @ li, 61 say  ;
+ 2237    ณ  บ  ณ  ณ        datos(s,4)  ;
+ 2238    ณ  บ  ณ  ณ        picture  ;
+ 2239    ณ  บ  ณ  ณ        '999,999.99'
+ 2240    ณ  บ  ณ  ณ    @ li, 71 say  ;
+ 2241    ณ  บ  ณ  ณ        ')'
+ 2242    ณ  บ  ณ  ภฤendif
+ 2243    ณ  บ  ณ  ฺฤif s = 1
+ 2244    ณ  บ  ณ  ณ    @ li, 105 say  ;
+ 2245    ณ  บ  ณ  ณ        'Deuda Pendiente ->'
+ 2246    ณ  บ  ณ  ณ    @ li, 124 say  ;
+ 2247    ณ  บ  ณ  ณ        m.total_d  ;
+ 2248    ณ  บ  ณ  ณ        picture  ;
+ 2249    ณ  บ  ณ  ณ        '999,999.99'
+ 2250    ณ  บ  ณ  ภฤendif
+ 2251    ณ  บ  ณ  ฺฤif s = 2
+ 2252    ณ  บ  ณ  ณ  ฺฤif m.descuento >  ;
+ 2253    ณ  บ  ณ  ณ  ณ        0
+ 2254    ณ  บ  ณ  ณ  ณ    @ li,  ;
+ 2255    ณ  บ  ณ  ณ  ณ        102  ;
+ 2256    ณ  บ  ณ  ณ  ณ        say  ;
+ 2257    ณ  บ  ณ  ณ  ณ        m.descuento  ;
+ 2258    ณ  บ  ณ  ณ  ณ        picture  ;
+ 2259    ณ  บ  ณ  ณ  ณ        '999.99'
+ 2260    ณ  บ  ณ  ณ  ณ    @ li,  ;
+ 2261    ณ  บ  ณ  ณ  ณ        111  ;
+ 2262    ณ  บ  ณ  ณ  ณ        say  ;
+ 2263    ณ  บ  ณ  ณ  ณ        '% Descuento ->'
+ 2264    ณ  บ  ณ  ณ  ณ    @ li,  ;
+ 2265    ณ  บ  ณ  ณ  ณ        124  ;
+ 2266    ณ  บ  ณ  ณ  ณ        say  ;
+ 2267    ณ  บ  ณ  ณ  ณ        (m.saldo *  ;
+ 2268    ณ  บ  ณ  ณ  ณ        m.porc)  ;
+ 2269    ณ  บ  ณ  ณ  ณ        picture  ;
+ 2270    ณ  บ  ณ  ณ  ณ        '999,999.99'
+ 2271    ณ  บ  ณ  ณ  รฤelse
+ 2272    ณ  บ  ณ  ณ  ณ    @ li,  ;
+ 2273    ณ  บ  ณ  ณ  ณ        100  ;
+ 2274    ณ  บ  ณ  ณ  ณ        say  ;
+ 2275    ณ  บ  ณ  ณ  ณ        'Monto Pagado/Abonado ->'
+ 2276    ณ  บ  ณ  ณ  ณ    @ li,  ;
+ 2277    ณ  บ  ณ  ณ  ณ        124  ;
+ 2278    ณ  บ  ณ  ณ  ณ        say  ;
+ 2279    ณ  บ  ณ  ณ  ณ        m.montop  ;
+ 2280    ณ  บ  ณ  ณ  ณ        picture  ;
+ 2281    ณ  บ  ณ  ณ  ณ        '999,999.99'
+ 2282    ณ  บ  ณ  ณ  ภฤendif
+ 2283    ณ  บ  ณ  ภฤendif
+ 2284    ณ  บ  ณ  ฺฤif s = 3 .and.  ;
+ 2285    ณ  บ  ณ  ณ        m.descuento >  ;
+ 2286    ณ  บ  ณ  ณ        0
+ 2287    ณ  บ  ณ  ณ    @ li, 100 say  ;
+ 2288    ณ  บ  ณ  ณ        'Monto Pagado/Abonado ->'
+ 2289    ณ  บ  ณ  ณ    @ li, 124 say  ;
+ 2290    ณ  บ  ณ  ณ        m.montop  ;
+ 2291    ณ  บ  ณ  ณ        picture  ;
+ 2292    ณ  บ  ณ  ณ        '999,999.99'
+ 2293    ณ  บ  ณ  ภฤendif
+ 2294    ณ  บ  ภฤendif
+ 2295    ณ  บ    li = li + 1
+ 2296    ณ  ำฤendfor
+ 2297    ณ    @ li, 00 say chr(18) + ' '
+ 2298    ณ    @ 21, 00 say  ;
+ 2299    ณ        'ษอออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออออออออป'
+ 2300    ณ    @ 22, 00 say  ;
+ 2301    ณ        'บ            N O T A            บ  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           บ'
+ 2302    ณ  ฺฤif m.tipop <> 'Efectivo'
+ 2303    ณ  ณ    @ 22, 65 say 'X'
+ 2304    ณ  รฤelse
+ 2305    ณ  ณ    @ 22, 47 say 'X'
+ 2306    ณ  ภฤendif
+ 2307    ณ    @ 23, 00 say  ;
+ 2308    ณ        'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ  NRO. :                                     บ'
+ 2309    ณ    @ 23, 41 say m.nrode picture  ;
+ 2310    ณ        '@!'
+ 2311    ณ    @ 24, 00 say  ;
+ 2312    ณ        'บ                               บ  BANCO:                                     บ'
+ 2313    ณ    @ 24, 41 say m.desban
+ 2314    ณ    @ 25, 00 say  ;
+ 2315    ณ        'บ                               บ                                             บ'
+ 2316    ณ    @ 26, 00 say  ;
+ 2317    ณ        'บ                               บ                        ___________________  บ'
+ 2318    ณ    @ 27, 00 say  ;
+ 2319    ณ        'บ                               บ                           RECIBIDO POR:     บ'
+ 2320    ณ    @ 28, 00 say  ;
+ 2321    ณ        'ศอออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออผ'
+ 2322    ณ    @ 29, 00 say  ;
+ 2323    ณ        ' NOTA: Los Pagos Realizados no estan sujetos a devoluciones'
+ 2324    ณ    @ 30, 00 say ' '
+ 2325    ณ    eject
+ 2326    ณ    set device to screen
+ 2327    ภฤendif
+ 2328      select 9
+ 2329    ษอdo while .t.
+ 2330    บ  ฺฤif flock()
+ 2331    บ  ณ    append blank
+ 2332    บ  ณ    replace recibo with  ;
+ 2333    บ  ณ        mrecibo, cedula  ;
+ 2334    บ  ณ        with m.cedula
+ 2335    บ  ณ    replace curso with  ;
+ 2336    บ  ณ        m.curso,  ;
+ 2337    บ  ณ        plancobro with  ;
+ 2338    บ  ณ        m.plancobro
+ 2339    บ  ณ    replace seccion with  ;
+ 2340    บ  ณ        m.semestre,  ;
+ 2341    บ  ณ        fecha_pago with  ;
+ 2342    บ  ณ        m.fechap
+ 2343    บ  ณ    replace nrocuota with 0,  ;
+ 2344    บ  ณ        tipo_pago with  ;
+ 2345    บ  ณ        m.tipop,  ;
+ 2346    บ  ณ        nro_depo with  ;
+ 2347    บ  ณ        m.nrode
+ 2348    บ  ณ    replace cod_banco with  ;
+ 2349    บ  ณ        m.banco, monto  ;
+ 2350    บ  ณ        with m.montop,  ;
+ 2351    บ  ณ        transa with  ;
+ 2352    บ  ณ        'AT'
+ 2353    บ  ณ    replace cobrador with  ;
+ 2354    บ  ณ        m.cobrador
+ 2355    บ  ณ    replace lapso with  ;
+ 2356    บ  ณ        lapmat
+ 2357    บ  ณ    unlock
+ 2358    vอออออออexit
+ 2359    บ  ภฤendif
+ 2360    ศอenddo
+ 2361      select 7
+ 2362    ษอdo while .t.
+ 2363    บ  ฺฤif rlock()
+ 2364    บ  ณ    replace monto_p with  ;
+ 2365    บ  ณ        monto_p +  ;
+ 2366    บ  ณ        m.montop
+ 2367    บ  ณ    replace descto with  ;
+ 2368    บ  ณ        m.descuento
+ 2369    บ  ณ    unlock
+ 2370    vอออออออexit
+ 2371    บ  ภฤendif
+ 2372    ศอenddo
+ 2373      release window deuda
+ 2374      return iif(nuevosaldo = 0, .t.,  ;
+ 2375          .f.)
+ 2376      *
+ 2393  *!*****************************************************************************
+ 2394  *!
+ 2395  *!      Procedure: REPITE_REC
+ 2396  *!
+ 2397  *!          Calls: PRINTER()          (function  in ?)
+ 2398  *!               : RLOCK()            (function  in ?)
+ 2399  *!               : LTRIM()            (function  in ?)
+ 2400  *!               : STR()              (function  in ?)
+ 2401  *!               : CHR()              (function  in ?)
+ 2402  *!               : PCOL()             (function  in ?)
+ 2403  *!               : LETRAS()           (function  in ?)
+ 2404  *!               : ALLTRIM()          (function  in ?)
+ 2405  *!               : SPACE()            (function  in ?)
+ 2406  *!               : SEEK()             (function  in ?)
+ 2407  *!
+ 2408  *!*****************************************************************************
+ 2393      procedure repite_rec
+ 2394      set device to screen
+ 2395      mrecibo = 0
+ 2396      lin1 = 0
+ 2397      lin2 = 0
+ 2398      lin3 = 0
+ 2399      tu = 0
+ 2400      select 2
+ 2401      p = printer()
+ 2402    ฺฤif p = 2
+ 2403    ณ    select 13
+ 2404    ณ  ษอdo while .t.
+ 2405    ณ  บ  ฺฤif rlock()
+ 2406    ณ  บ  ณ    mrecibo = recibo
+ 2407    ณ  บ  ณ    unlock
+ 2408    ณ  vอออออออexit
+ 2409    ณ  บ  ภฤendif
+ 2410    ณ  ศอenddo
+ 2411    ณ    select 2
+ 2412    ณ    wait window  ;
+ 2413    ณ        'Nro. del Recibo Generado: ' +  ;
+ 2414    ณ        ltrim(str(mrecibo)) +  ;
+ 2415    ณ        chr(13) +  ;
+ 2416    ณ        'Presione Cualquier Tecla para continuar..'
+ 2417    รฤelse
+ 2418    ณ    select 13
+ 2419    ณ  ษอdo while .t.
+ 2420    ณ  บ  ฺฤif rlock()
+ 2421    ณ  บ  ณ    mrecibo = recibo
+ 2422    ณ  บ  ณ    unlock
+ 2423    ณ  vอออออออexit
+ 2424    ณ  บ  ภฤendif
+ 2425    ณ  ศอenddo
+ 2426    ณ    select 2
+ 2427    ณ    set device to printer
+ 2428    ณ    @ 0, 1 say '  ' + chr(27) +  ;
+ 2429    ณ        chr(67) + chr(33)
+ 2430    ณ    @ 00, 00 say chr(18) +  ;
+ 2431    ณ        chr(20)
+ 2432    ณ    @ 00, 00 say chr(14) +  ;
+ 2433    ณ        chr(15) + titulo + chr(18) +  ;
+ 2434    ณ        chr(20) + ' '
+ 2435    ณ    @ 01, 00 say  ;
+ 2436    ณ        'RIF                                                     RECIBO Nro.:          '
+ 2437    ณ    @ 01, 04 say l_rif
+ 2438    ณ    @ 01, 68 say chr(14) + ng +  ;
+ 2439    ณ        ltrim(str(mrecibo)) + ngn
+ 2440    ณ    @ 02, 00 say chr(15) + ' '
+ 2441    ณ    @ 02, 00 say l_direccio
+ 2442    ณ    @ 02, pcol() say chr(18) +  ;
+ 2443    ณ        chr(20) + ' '
+ 2444    ณ    @ 02, 00 say  ;
+ 2445    ณ        '                                                        FECHA PAGO :          '
+ 2446    ณ    @ 02, 68 say mfechap picture  ;
+ 2447    ณ        '@E'
+ 2448    ณ    @ 03, 00 say  ;
+ 2449    ณ        '                                                      '
+ 2450    ณ    @ 03, 28 say chr(14) +  ;
+ 2451    ณ        chr(15) + 'RECIBO DE PAGO' +  ;
+ 2452    ณ        chr(18) + chr(20) + ' '
+ 2453    ณ    @ 04, 00 say  ;
+ 2454    ณ        '                                                      ษออออออออออออออออออออป '
+ 2455    ณ    @ 05, 00 say  ;
+ 2456    ณ        'C.I.:                                                 บ Bs.                บ '
+ 2457    ณ    @ 05, 61 say mmontop picture  ;
+ 2458    ณ        '9,999,999.99'
+ 2459    ณ    @ 05, 06 say m.cedula  ;
+ 2460    ณ        picture '!-99999999'
+ 2461    ณ    @ 06, 00 say  ;
+ 2462    ณ        'ALUMNO:                                               ศออออออออออออออออออออผ '
+ 2463    ณ    @ 06, 08 say m.nombres  ;
+ 2464    ณ        picture '@!s45'
+ 2465    ณ    @ 07, 00 say 'SEMESTRE: ' +  ;
+ 2466    ณ        m.semestre
+ 2467    ณ    @ 08, 00 say 'TURNO   : ' +  ;
+ 2468    ณ        m.turno
+ 2469    ณ    @ 09, 00 say 'PLAN    : ' +  ;
+ 2470    ณ        mdes1
+ 2471    ณ    xcantidad = letras(mmontop)
+ 2472    ณ    xcantidad = alltrim(xcantidad)
+ 2473    ณ    @ 10, 00 say  ;
+ 2474    ณ        'Hemos recibido la cantidad de:'
+ 2475    ณ    @ 11, 00 say xcantidad  ;
+ 2476    ณ        picture '@!'
+ 2477    ณ    li = 12
+ 2478    ณ    @ li, 00 say  ;
+ 2479    ณ        'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ' +  ;
+ 2480    ณ        ng
+ 2481    ณ    li = li + 1
+ 2482    ณ    @ li, 00 say  ;
+ 2483    ณ        '  C O N C E P T O S                   S A L D O              M O N T O       ' +  ;
+ 2484    ณ        ngn
+ 2485    ณ    li = li + 1
+ 2486    ณ    @ li, 00 say  ;
+ 2487    ณ        'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ'
+ 2488    ณ    mpagado = mmontop
+ 2489    ณ    ii = 1
+ 2490    ณ    li = li + 1
+ 2491    ณ    xsaldo = 0
+ 2492    ณ  ึฤfor ii = 1 to xnro
+ 2493    ณ  บ    lk = ltrim(str(ii))
+ 2494    ณ  บ  ฺฤif pagado&lk>=cuota&lk
+ 2495    ณ  ^อออออออloop
+ 2496    ณ  บ  ภฤendif
+ 2497    ณ  บ  ฺฤif (mpagado+pagado&lk) >= cuota&lk
+ 2498    ณ  บ  ณ    select 11
+ 2499    ณ  บ  ณ    set order to codcuota
+ 2500    ณ  บ  ณ    locate for lapso =  ;
+ 2501    ณ  บ  ณ        lapmat  ;
+ 2502    ณ  บ  ณ        .and.  ;
+ 2503    ณ  บ  ณ        codigo =  ;
+ 2504    ณ  บ  ณ        m.plancobro  ;
+ 2505    ณ  บ  ณ        .and. cuota =  ;
+ 2506    ณ  บ  ณ        ii
+ 2507    ณ  บ  ณ    xpagado=(cuota&lk-pagado&lk)
+ 2508    ณ  บ  ณ    mpagado=mpagado-(cuota&lk-pagado&lk)
+ 2509    ณ  บ  ณ  ึฤfor ww = 1 to 10
+ 2510    ณ  บ  ณ  บ    lw = ltrim(str(ww))
+ 2511    ณ  บ  ณ  บ    select 11
+ 2512    ณ  บ  ณ  บ  ฺฤif concepto&lw=space(2)
+ 2513    ณ  บ  ณ  ^อออออออloop
+ 2514    ณ  บ  ณ  บ  ภฤendif
+ 2515    ณ  บ  ณ  บ    mcon=concepto&lw
+ 2516    ณ  บ  ณ  บ    mmon=monto&lw
+ 2517    ณ  บ  ณ  บ    select 12
+ 2518    ณ  บ  ณ  บ  ฺฤif  .not.  ;
+ 2519    ณ  บ  ณ  บ  ณ        seek(mcon)
+ 2520    ณ  บ  ณ  บ  ณ    mds = 'SIN DESCRIPCION'
+ 2521    ณ  บ  ณ  บ  รฤelse
+ 2522    ณ  บ  ณ  บ  ณ    mds = alltrim(descripcio)
+ 2523    ณ  บ  ณ  บ  ภฤendif
+ 2524    ณ  บ  ณ  บ  ฺฤif mdec1 >= 1  ;
+ 2525    ณ  บ  ณ  บ  ณ        .and. lin1 =  ;
+ 2526    ณ  บ  ณ  บ  ณ        0 .and. ww =  ;
+ 2527    ณ  บ  ณ  บ  ณ        1
+ 2528    ณ  บ  ณ  บ  ณ    @ li, 00  ;
+ 2529    ณ  บ  ณ  บ  ณ        say  ;
+ 2530    ณ  บ  ณ  บ  ณ        'CANCELACION MENSUALIDAD MATERIA ADICIONAL:'
+ 2531    ณ  บ  ณ  บ  ณ    lin1 = 1
+ 2532    ณ  บ  ณ  บ  ณ    li = li +  ;
+ 2533    ณ  บ  ณ  บ  ณ        1
+ 2534    ณ  บ  ณ  บ  ภฤendif
+ 2535    ณ  บ  ณ  บ  ฺฤif mdec1 >= 1  ;
+ 2536    ณ  บ  ณ  บ  ณ        .and.  ;
+ 2537    ณ  บ  ณ  บ  ณ        mdec2 >= 1  ;
+ 2538    ณ  บ  ณ  บ  ณ        .and. lin2 =  ;
+ 2539    ณ  บ  ณ  บ  ณ        1 .and. ww =  ;
+ 2540    ณ  บ  ณ  บ  ณ        1
+ 2541    ณ  บ  ณ  บ  ณ    @ li, 00  ;
+ 2542    ณ  บ  ณ  บ  ณ        say  ;
+ 2543    ณ  บ  ณ  บ  ณ        'ABONO MENSUALIDAD MATERIA ADICIONAL:'
+ 2544    ณ  บ  ณ  บ  ณ    lin2 = 0
+ 2545    ณ  บ  ณ  บ  ณ    li = li +  ;
+ 2546    ณ  บ  ณ  บ  ณ        1
+ 2547    ณ  บ  ณ  บ  ภฤendif
+ 2548    ณ  บ  ณ  บ  ฺฤif mdec1 = 0  ;
+ 2549    ณ  บ  ณ  บ  ณ        .and.  ;
+ 2550    ณ  บ  ณ  บ  ณ        mdec2 >= 1  ;
+ 2551    ณ  บ  ณ  บ  ณ        .and. lin3 =  ;
+ 2552    ณ  บ  ณ  บ  ณ        0 .and. ww =  ;
+ 2553    ณ  บ  ณ  บ  ณ        1
+ 2554    ณ  บ  ณ  บ  ณ    @ li, 00  ;
+ 2555    ณ  บ  ณ  บ  ณ        say  ;
+ 2556    ณ  บ  ณ  บ  ณ        'ABONO MENSUALIDAD MATERIA ADICIONAL:'
+ 2557    ณ  บ  ณ  บ  ณ    li = li +  ;
+ 2558    ณ  บ  ณ  บ  ณ        1
+ 2559    ณ  บ  ณ  บ  ณ    lin3 = 1
+ 2560    ณ  บ  ณ  บ  ภฤendif
+ 2561    ณ  บ  ณ  บ  ฺฤif ww = 1
+ 2562    ณ  บ  ณ  บ  ณ    @ li, 02  ;
+ 2563    ณ  บ  ณ  บ  ณ        say  ;
+ 2564    ณ  บ  ณ  บ  ณ        mds  ;
+ 2565    ณ  บ  ณ  บ  ณ        picture  ;
+ 2566    ณ  บ  ณ  บ  ณ        '@!S32'
+ 2567    ณ  บ  ณ  บ  ณ    tu = tu +  ;
+ 2568    ณ  บ  ณ  บ  ณ        1
+ 2569    ณ  บ  ณ  บ  รฤelse
+ 2570    ณ  บ  ณ  บ  ณ    @ li, 05  ;
+ 2571    ณ  บ  ณ  บ  ณ        say  ;
+ 2572    ณ  บ  ณ  บ  ณ        mds  ;
+ 2573    ณ  บ  ณ  บ  ณ        picture  ;
+ 2574    ณ  บ  ณ  บ  ณ        '@!S29'
+ 2575    ณ  บ  ณ  บ  ภฤendif
+ 2576    ณ  บ  ณ  บ  ฺฤif mpsaldo&lk > 0;
+ 2577    ณ  บ  ณ  บ  ณ        and ww=1
+ 2578    ณ  บ  ณ  บ  ณ    @ li, 36  ;
+ 2579    ณ  บ  ณ  บ  ณ        say  ;
+ 2580    ณ  บ  ณ  บ  ณ        '('
+ 2581    ณ  บ  ณ  บ  ณ    @li,38 say mpsaldo&lk;
+ 2582    ณ  บ  ณ  บ  ณ        pict '9,999,999.99'
+ 2583    ณ  บ  ณ  บ  ณ    @ li, 51  ;
+ 2584    ณ  บ  ณ  บ  ณ        say  ;
+ 2585    ณ  บ  ณ  บ  ณ        ')'
+ 2586    ณ  บ  ณ  บ  ภฤendif
+ 2587    ณ  บ  ณ  บ  ฺฤif ww = 1
+ 2588    ณ  บ  ณ  บ  ณ    select 2
+ 2589    ณ  บ  ณ  บ  ณ    @li,58 say mpagrec&lk;
+ 2590    ณ  บ  ณ  บ  ณ        pict '9,999,999.99'
+ 2591    ณ  บ  ณ  บ  ณ    imp&lk=1
+ 2592    ณ  บ  ณ  บ  ภฤendif
+ 2593    ณ  บ  ณ  บ  ฺฤif mdec2 >= 1  ;
+ 2594    ณ  บ  ณ  บ  ณ        .and. tu =  ;
+ 2595    ณ  บ  ณ  บ  ณ        mdec1  ;
+ 2596    ณ  บ  ณ  บ  ณ        .and. ww =  ;
+ 2597    ณ  บ  ณ  บ  ณ        1
+ 2598    ณ  บ  ณ  บ  ณ    lin2 = 1
+ 2599    ณ  บ  ณ  บ  ภฤendif
+ 2600    ณ  บ  ณ  บ    li = li + 1
+ 2601    ณ  บ  ณ  บ  ฺฤif li > 20
+ 2602    ณ  บ  ณ  บ  ณ    @ 22, 00  ;
+ 2603    ณ  บ  ณ  บ  ณ        say  ;
+ 2604    ณ  บ  ณ  บ  ณ        'ษอออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออออออออป'
+ 2605    ณ  บ  ณ  บ  ณ    @ 23, 00  ;
+ 2606    ณ  บ  ณ  บ  ณ        say  ;
+ 2607    ณ  บ  ณ  บ  ณ        'บ            N O T A            บ  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           บ'
+ 2608    ณ  บ  ณ  บ  ณ  ฺฤif mtipop <>  ;
+ 2609    ณ  บ  ณ  บ  ณ  ณ        'Efectivo'
+ 2610    ณ  บ  ณ  บ  ณ  ณ    @ 23,  ;
+ 2611    ณ  บ  ณ  บ  ณ  ณ        65  ;
+ 2612    ณ  บ  ณ  บ  ณ  ณ        say  ;
+ 2613    ณ  บ  ณ  บ  ณ  ณ        'X'
+ 2614    ณ  บ  ณ  บ  ณ  รฤelse
+ 2615    ณ  บ  ณ  บ  ณ  ณ    @ 23,  ;
+ 2616    ณ  บ  ณ  บ  ณ  ณ        47  ;
+ 2617    ณ  บ  ณ  บ  ณ  ณ        say  ;
+ 2618    ณ  บ  ณ  บ  ณ  ณ        'X'
+ 2619    ณ  บ  ณ  บ  ณ  ภฤendif
+ 2620    ณ  บ  ณ  บ  ณ    @ 24, 00  ;
+ 2621    ณ  บ  ณ  บ  ณ        say  ;
+ 2622    ณ  บ  ณ  บ  ณ        'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ  NRO. :                                     บ'
+ 2623    ณ  บ  ณ  บ  ณ    @ 24, 41  ;
+ 2624    ณ  บ  ณ  บ  ณ        say  ;
+ 2625    ณ  บ  ณ  บ  ณ        mnrode  ;
+ 2626    ณ  บ  ณ  บ  ณ        picture  ;
+ 2627    ณ  บ  ณ  บ  ณ        '@!'
+ 2628    ณ  บ  ณ  บ  ณ    @ 25, 00  ;
+ 2629    ณ  บ  ณ  บ  ณ        say  ;
+ 2630    ณ  บ  ณ  บ  ณ        'บ                               บ  BANCO:                                     บ'
+ 2631    ณ  บ  ณ  บ  ณ    @ 25, 41  ;
+ 2632    ณ  บ  ณ  บ  ณ        say  ;
+ 2633    ณ  บ  ณ  บ  ณ        mbandes
+ 2634    ณ  บ  ณ  บ  ณ    @ 26, 00  ;
+ 2635    ณ  บ  ณ  บ  ณ        say  ;
+ 2636    ณ  บ  ณ  บ  ณ        'บ                               บ                                             บ'
+ 2637    ณ  บ  ณ  บ  ณ    @ 26, 05  ;
+ 2638    ณ  บ  ณ  บ  ณ        say  ;
+ 2639    ณ  บ  ณ  บ  ณ        'CONTINUA ....'
+ 2640    ณ  บ  ณ  บ  ณ    @ 27, 00  ;
+ 2641    ณ  บ  ณ  บ  ณ        say  ;
+ 2642    ณ  บ  ณ  บ  ณ        'บ                               บ                        ___________________  บ'
+ 2643    ณ  บ  ณ  บ  ณ    @ 28, 00  ;
+ 2644    ณ  บ  ณ  บ  ณ        say  ;
+ 2645    ณ  บ  ณ  บ  ณ        'บ                               บ                           RECIBIDO POR:     บ'
+ 2646    ณ  บ  ณ  บ  ณ    @ 29, 00  ;
+ 2647    ณ  บ  ณ  บ  ณ        say  ;
+ 2648    ณ  บ  ณ  บ  ณ        'ศอออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออผ'
+ 2649    ณ  บ  ณ  บ  ณ    @ 30, 00  ;
+ 2650    ณ  บ  ณ  บ  ณ        say  ;
+ 2651    ณ  บ  ณ  บ  ณ        ' NOTA: Los Pagos Realizados no estan sujetos a devoluciones'
+ 2652    ณ  บ  ณ  บ  ณ    select 9
+ 2653    ณ  บ  ณ  บ  ณ    @ 0, 1  ;
+ 2654    ณ  บ  ณ  บ  ณ        say  ;
+ 2655    ณ  บ  ณ  บ  ณ        '  ' +  ;
+ 2656    ณ  บ  ณ  บ  ณ        chr(27) +  ;
+ 2657    ณ  บ  ณ  บ  ณ        chr(67) +  ;
+ 2658    ณ  บ  ณ  บ  ณ        chr(33)
+ 2659    ณ  บ  ณ  บ  ณ    @ 00, 00  ;
+ 2660    ณ  บ  ณ  บ  ณ        say  ;
+ 2661    ณ  บ  ณ  บ  ณ        chr(18) +  ;
+ 2662    ณ  บ  ณ  บ  ณ        chr(20)
+ 2663    ณ  บ  ณ  บ  ณ    @ 00, 00  ;
+ 2664    ณ  บ  ณ  บ  ณ        say  ;
+ 2665    ณ  บ  ณ  บ  ณ        chr(14) +  ;
+ 2666    ณ  บ  ณ  บ  ณ        chr(15) +  ;
+ 2667    ณ  บ  ณ  บ  ณ        titulo +  ;
+ 2668    ณ  บ  ณ  บ  ณ        chr(18) +  ;
+ 2669    ณ  บ  ณ  บ  ณ        chr(20) +  ;
+ 2670    ณ  บ  ณ  บ  ณ        ' '
+ 2671    ณ  บ  ณ  บ  ณ    @ 01, 00  ;
+ 2672    ณ  บ  ณ  บ  ณ        say  ;
+ 2673    ณ  บ  ณ  บ  ณ        'RIF .                                                   RECIBO Nro.:          '
+ 2674    ณ  บ  ณ  บ  ณ    @ 01, 04  ;
+ 2675    ณ  บ  ณ  บ  ณ        say  ;
+ 2676    ณ  บ  ณ  บ  ณ        l_rif
+ 2677    ณ  บ  ณ  บ  ณ    @ 01, 68  ;
+ 2678    ณ  บ  ณ  บ  ณ        say  ;
+ 2679    ณ  บ  ณ  บ  ณ        chr(14) +  ;
+ 2680    ณ  บ  ณ  บ  ณ        ng +  ;
+ 2681    ณ  บ  ณ  บ  ณ        ltrim(str(mrecibo)) +  ;
+ 2682    ณ  บ  ณ  บ  ณ        ngn
+ 2683    ณ  บ  ณ  บ  ณ    @ 02, 00  ;
+ 2684    ณ  บ  ณ  บ  ณ        say  ;
+ 2685    ณ  บ  ณ  บ  ณ        chr(15) +  ;
+ 2686    ณ  บ  ณ  บ  ณ        ' '
+ 2687    ณ  บ  ณ  บ  ณ    @ 02, 00  ;
+ 2688    ณ  บ  ณ  บ  ณ        say  ;
+ 2689    ณ  บ  ณ  บ  ณ        l_direccio
+ 2690    ณ  บ  ณ  บ  ณ    @ 02,  ;
+ 2691    ณ  บ  ณ  บ  ณ        pcol()  ;
+ 2692    ณ  บ  ณ  บ  ณ        say  ;
+ 2693    ณ  บ  ณ  บ  ณ        chr(18) +  ;
+ 2694    ณ  บ  ณ  บ  ณ        chr(20) +  ;
+ 2695    ณ  บ  ณ  บ  ณ        ' '
+ 2696    ณ  บ  ณ  บ  ณ    @ 02, 00  ;
+ 2697    ณ  บ  ณ  บ  ณ        say  ;
+ 2698    ณ  บ  ณ  บ  ณ        '                                                        FECHA PAGO:          '
+ 2699    ณ  บ  ณ  บ  ณ    @ 02, 68  ;
+ 2700    ณ  บ  ณ  บ  ณ        say  ;
+ 2701    ณ  บ  ณ  บ  ณ        mfechap  ;
+ 2702    ณ  บ  ณ  บ  ณ        picture  ;
+ 2703    ณ  บ  ณ  บ  ณ        '@E'
+ 2704    ณ  บ  ณ  บ  ณ    @ 03, 00  ;
+ 2705    ณ  บ  ณ  บ  ณ        say  ;
+ 2706    ณ  บ  ณ  บ  ณ        '                                                      '
+ 2707    ณ  บ  ณ  บ  ณ    @ 03, 28  ;
+ 2708    ณ  บ  ณ  บ  ณ        say  ;
+ 2709    ณ  บ  ณ  บ  ณ        chr(14) +  ;
+ 2710    ณ  บ  ณ  บ  ณ        chr(15) +  ;
+ 2711    ณ  บ  ณ  บ  ณ        'RECIBO DE PAGO' +  ;
+ 2712    ณ  บ  ณ  บ  ณ        chr(18) +  ;
+ 2713    ณ  บ  ณ  บ  ณ        chr(20) +  ;
+ 2714    ณ  บ  ณ  บ  ณ        ' '
+ 2715    ณ  บ  ณ  บ  ณ    @ 04, 00  ;
+ 2716    ณ  บ  ณ  บ  ณ        say  ;
+ 2717    ณ  บ  ณ  บ  ณ        '                                                      ษออออออออออออออออออออป '
+ 2718    ณ  บ  ณ  บ  ณ    @ 05, 00  ;
+ 2719    ณ  บ  ณ  บ  ณ        say  ;
+ 2720    ณ  บ  ณ  บ  ณ        'C.I.:                                                 บ Bs.                บ '
+ 2721    ณ  บ  ณ  บ  ณ    @ 05, 61  ;
+ 2722    ณ  บ  ณ  บ  ณ        say  ;
+ 2723    ณ  บ  ณ  บ  ณ        mmontop  ;
+ 2724    ณ  บ  ณ  บ  ณ        picture  ;
+ 2725    ณ  บ  ณ  บ  ณ        '9,999,999.99'
+ 2726    ณ  บ  ณ  บ  ณ    @ 05, 06  ;
+ 2727    ณ  บ  ณ  บ  ณ        say  ;
+ 2728    ณ  บ  ณ  บ  ณ        m.cedula  ;
+ 2729    ณ  บ  ณ  บ  ณ        picture  ;
+ 2730    ณ  บ  ณ  บ  ณ        '!-99999999'
+ 2731    ณ  บ  ณ  บ  ณ    @ 06, 00  ;
+ 2732    ณ  บ  ณ  บ  ณ        say  ;
+ 2733    ณ  บ  ณ  บ  ณ        'ALUMNO:                                               ศออออออออออออออออออออผ '
+ 2734    ณ  บ  ณ  บ  ณ    @ 06, 08  ;
+ 2735    ณ  บ  ณ  บ  ณ        say  ;
+ 2736    ณ  บ  ณ  บ  ณ        m.nombres  ;
+ 2737    ณ  บ  ณ  บ  ณ        picture  ;
+ 2738    ณ  บ  ณ  บ  ณ        '@!s45'
+ 2739    ณ  บ  ณ  บ  ณ    @ 07, 00  ;
+ 2740    ณ  บ  ณ  บ  ณ        say  ;
+ 2741    ณ  บ  ณ  บ  ณ        'SEMESTRE: ' +  ;
+ 2742    ณ  บ  ณ  บ  ณ        m.semestre
+ 2743    ณ  บ  ณ  บ  ณ    @ 08, 00  ;
+ 2744    ณ  บ  ณ  บ  ณ        say  ;
+ 2745    ณ  บ  ณ  บ  ณ        'TURNO   : ' +  ;
+ 2746    ณ  บ  ณ  บ  ณ        m.turno
+ 2747    ณ  บ  ณ  บ  ณ    @ 09, 00  ;
+ 2748    ณ  บ  ณ  บ  ณ        say  ;
+ 2749    ณ  บ  ณ  บ  ณ        'PLAN    : ' +  ;
+ 2750    ณ  บ  ณ  บ  ณ        mdes1
+ 2751    ณ  บ  ณ  บ  ณ    xcantidad =  ;
+ 2752    ณ  บ  ณ  บ  ณ        letras(mmontop)
+ 2753    ณ  บ  ณ  บ  ณ    xcantidad =  ;
+ 2754    ณ  บ  ณ  บ  ณ        alltrim(xcantidad)
+ 2755    ณ  บ  ณ  บ  ณ    @ 10, 00  ;
+ 2756    ณ  บ  ณ  บ  ณ        say  ;
+ 2757    ณ  บ  ณ  บ  ณ        'Hemos recibido la cantidad de:'
+ 2758    ณ  บ  ณ  บ  ณ    @ 11, 00  ;
+ 2759    ณ  บ  ณ  บ  ณ        say  ;
+ 2760    ณ  บ  ณ  บ  ณ        xcantidad  ;
+ 2761    ณ  บ  ณ  บ  ณ        picture  ;
+ 2762    ณ  บ  ณ  บ  ณ        '@!'
+ 2763    ณ  บ  ณ  บ  ณ    li = 12
+ 2764    ณ  บ  ณ  บ  ณ    @ li, 00  ;
+ 2765    ณ  บ  ณ  บ  ณ        say  ;
+ 2766    ณ  บ  ณ  บ  ณ        'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ' +  ;
+ 2767    ณ  บ  ณ  บ  ณ        ng
+ 2768    ณ  บ  ณ  บ  ณ    li = li +  ;
+ 2769    ณ  บ  ณ  บ  ณ        1
+ 2770    ณ  บ  ณ  บ  ณ    @ li, 00  ;
+ 2771    ณ  บ  ณ  บ  ณ        say  ;
+ 2772    ณ  บ  ณ  บ  ณ        '  C O N C E P T O S                   S A L D O              M O N T O       ' +  ;
+ 2773    ณ  บ  ณ  บ  ณ        ngn
+ 2774    ณ  บ  ณ  บ  ณ    li = li +  ;
+ 2775    ณ  บ  ณ  บ  ณ        1
+ 2776    ณ  บ  ณ  บ  ณ    @ li, 00  ;
+ 2777    ณ  บ  ณ  บ  ณ        say  ;
+ 2778    ณ  บ  ณ  บ  ณ        'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ'
+ 2779    ณ  บ  ณ  บ  ณ    li = li +  ;
+ 2780    ณ  บ  ณ  บ  ณ        1
+ 2781    ณ  บ  ณ  บ  ภฤendif
+ 2782    ณ  บ  ณ  ำฤendfor
+ 2783    ณ  บ  รฤelse
+ 2784    ณ  บ  ณ  ฺฤif mpagado > 0
+ 2785    ณ  บ  ณ  ณ    select 11
+ 2786    ณ  บ  ณ  ณ    set order to codcuota
+ 2787    ณ  บ  ณ  ณ    locate for  ;
+ 2788    ณ  บ  ณ  ณ        lapso =  ;
+ 2789    ณ  บ  ณ  ณ        lapmat  ;
+ 2790    ณ  บ  ณ  ณ        .and.  ;
+ 2791    ณ  บ  ณ  ณ        codigo =  ;
+ 2792    ณ  บ  ณ  ณ        m.plancobro  ;
+ 2793    ณ  บ  ณ  ณ        .and.  ;
+ 2794    ณ  บ  ณ  ณ        cuota =  ;
+ 2795    ณ  บ  ณ  ณ        ii
+ 2796    ณ  บ  ณ  ณ    xpagado=pagado&lk+mpagado
+ 2797    ณ  บ  ณ  ณ  ึฤfor ww = 1 to  ;
+ 2798    ณ  บ  ณ  ณ  บ        10
+ 2799    ณ  บ  ณ  ณ  บ    lw = ltrim(str(ww))
+ 2800    ณ  บ  ณ  ณ  บ    select 11
+ 2801    ณ  บ  ณ  ณ  บ  ฺฤif concepto&lw=space(2)
+ 2802    ณ  บ  ณ  ณ  ^อออออออloop
+ 2803    ณ  บ  ณ  ณ  บ  ภฤendif
+ 2804    ณ  บ  ณ  ณ  บ    mcon=concepto&lw
+ 2805    ณ  บ  ณ  ณ  บ    mmon=monto&lw
+ 2806    ณ  บ  ณ  ณ  บ    select 12
+ 2807    ณ  บ  ณ  ณ  บ  ฺฤif  .not.  ;
+ 2808    ณ  บ  ณ  ณ  บ  ณ        seek(mcon)
+ 2809    ณ  บ  ณ  ณ  บ  ณ    mds =  ;
+ 2810    ณ  บ  ณ  ณ  บ  ณ        'SIN DESCRIPCION'
+ 2811    ณ  บ  ณ  ณ  บ  รฤelse
+ 2812    ณ  บ  ณ  ณ  บ  ณ    mds =  ;
+ 2813    ณ  บ  ณ  ณ  บ  ณ        alltrim(descripcio)
+ 2814    ณ  บ  ณ  ณ  บ  ภฤendif
+ 2815    ณ  บ  ณ  ณ  บ  ฺฤif mdec1 >=  ;
+ 2816    ณ  บ  ณ  ณ  บ  ณ        1  ;
+ 2817    ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 2818    ณ  บ  ณ  ณ  บ  ณ        lin1 =  ;
+ 2819    ณ  บ  ณ  ณ  บ  ณ        0  ;
+ 2820    ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 2821    ณ  บ  ณ  ณ  บ  ณ        ww =  ;
+ 2822    ณ  บ  ณ  ณ  บ  ณ        1
+ 2823    ณ  บ  ณ  ณ  บ  ณ    @ li,  ;
+ 2824    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 2825    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2826    ณ  บ  ณ  ณ  บ  ณ        'CANCELACION MENSUALIDAD MATERIA ADICIONAL:'
+ 2827    ณ  บ  ณ  ณ  บ  ณ    lin1 =  ;
+ 2828    ณ  บ  ณ  ณ  บ  ณ        1
+ 2829    ณ  บ  ณ  ณ  บ  ณ    li =  ;
+ 2830    ณ  บ  ณ  ณ  บ  ณ        li +  ;
+ 2831    ณ  บ  ณ  ณ  บ  ณ        1
+ 2832    ณ  บ  ณ  ณ  บ  ภฤendif
+ 2833    ณ  บ  ณ  ณ  บ  ฺฤif mdec1 >=  ;
+ 2834    ณ  บ  ณ  ณ  บ  ณ        1  ;
+ 2835    ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 2836    ณ  บ  ณ  ณ  บ  ณ        mdec2 >=  ;
+ 2837    ณ  บ  ณ  ณ  บ  ณ        1  ;
+ 2838    ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 2839    ณ  บ  ณ  ณ  บ  ณ        lin2 =  ;
+ 2840    ณ  บ  ณ  ณ  บ  ณ        1  ;
+ 2841    ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 2842    ณ  บ  ณ  ณ  บ  ณ        ww =  ;
+ 2843    ณ  บ  ณ  ณ  บ  ณ        1
+ 2844    ณ  บ  ณ  ณ  บ  ณ    @ li,  ;
+ 2845    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 2846    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2847    ณ  บ  ณ  ณ  บ  ณ        'ABONO MENSUALIDAD MATERIA ADICIONAL:'
+ 2848    ณ  บ  ณ  ณ  บ  ณ    lin2 =  ;
+ 2849    ณ  บ  ณ  ณ  บ  ณ        0
+ 2850    ณ  บ  ณ  ณ  บ  ณ    li =  ;
+ 2851    ณ  บ  ณ  ณ  บ  ณ        li +  ;
+ 2852    ณ  บ  ณ  ณ  บ  ณ        1
+ 2853    ณ  บ  ณ  ณ  บ  ภฤendif
+ 2854    ณ  บ  ณ  ณ  บ  ฺฤif mdec1 =  ;
+ 2855    ณ  บ  ณ  ณ  บ  ณ        0  ;
+ 2856    ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 2857    ณ  บ  ณ  ณ  บ  ณ        mdec2 >=  ;
+ 2858    ณ  บ  ณ  ณ  บ  ณ        1  ;
+ 2859    ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 2860    ณ  บ  ณ  ณ  บ  ณ        lin3 =  ;
+ 2861    ณ  บ  ณ  ณ  บ  ณ        0  ;
+ 2862    ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 2863    ณ  บ  ณ  ณ  บ  ณ        ww =  ;
+ 2864    ณ  บ  ณ  ณ  บ  ณ        1
+ 2865    ณ  บ  ณ  ณ  บ  ณ    @ li,  ;
+ 2866    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 2867    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2868    ณ  บ  ณ  ณ  บ  ณ        'ABONO MENSUALIDAD MATERIA ADICIONAL:'
+ 2869    ณ  บ  ณ  ณ  บ  ณ    li =  ;
+ 2870    ณ  บ  ณ  ณ  บ  ณ        li +  ;
+ 2871    ณ  บ  ณ  ณ  บ  ณ        1
+ 2872    ณ  บ  ณ  ณ  บ  ณ    lin3 =  ;
+ 2873    ณ  บ  ณ  ณ  บ  ณ        1
+ 2874    ณ  บ  ณ  ณ  บ  ภฤendif
+ 2875    ณ  บ  ณ  ณ  บ  ฺฤif ww =  ;
+ 2876    ณ  บ  ณ  ณ  บ  ณ        1
+ 2877    ณ  บ  ณ  ณ  บ  ณ    @ li,  ;
+ 2878    ณ  บ  ณ  ณ  บ  ณ        02  ;
+ 2879    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2880    ณ  บ  ณ  ณ  บ  ณ        mds  ;
+ 2881    ณ  บ  ณ  ณ  บ  ณ        picture  ;
+ 2882    ณ  บ  ณ  ณ  บ  ณ        '@!S32'
+ 2883    ณ  บ  ณ  ณ  บ  ณ    tu =  ;
+ 2884    ณ  บ  ณ  ณ  บ  ณ        tu +  ;
+ 2885    ณ  บ  ณ  ณ  บ  ณ        1
+ 2886    ณ  บ  ณ  ณ  บ  รฤelse
+ 2887    ณ  บ  ณ  ณ  บ  ณ    @ li,  ;
+ 2888    ณ  บ  ณ  ณ  บ  ณ        05  ;
+ 2889    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2890    ณ  บ  ณ  ณ  บ  ณ        mds  ;
+ 2891    ณ  บ  ณ  ณ  บ  ณ        picture  ;
+ 2892    ณ  บ  ณ  ณ  บ  ณ        '@!S29'
+ 2893    ณ  บ  ณ  ณ  บ  ภฤendif
+ 2894    ณ  บ  ณ  ณ  บ    select 2
+ 2895    ณ  บ  ณ  ณ  บ  ฺฤif mpsaldo&lk;
+ 2896    ณ  บ  ณ  ณ  บ  ณ        > 0 and ww=1
+ 2897    ณ  บ  ณ  ณ  บ  ณ    @ li,  ;
+ 2898    ณ  บ  ณ  ณ  บ  ณ        36  ;
+ 2899    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2900    ณ  บ  ณ  ณ  บ  ณ        '('
+ 2901    ณ  บ  ณ  ณ  บ  ณ    @li,38 say;
+ 2902    ณ  บ  ณ  ณ  บ  ณ        mpsaldo&lk pict '9,999,999.99'
+ 2903    ณ  บ  ณ  ณ  บ  ณ    @ li,  ;
+ 2904    ณ  บ  ณ  ณ  บ  ณ        51  ;
+ 2905    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2906    ณ  บ  ณ  ณ  บ  ณ        ')'
+ 2907    ณ  บ  ณ  ณ  บ  ภฤendif
+ 2908    ณ  บ  ณ  ณ  บ  ฺฤif ww =  ;
+ 2909    ณ  บ  ณ  ณ  บ  ณ        1
+ 2910    ณ  บ  ณ  ณ  บ  ณ    @li,58 say;
+ 2911    ณ  บ  ณ  ณ  บ  ณ        mpagrec&lk pict '9,999,999.99'
+ 2912    ณ  บ  ณ  ณ  บ  ภฤendif
+ 2913    ณ  บ  ณ  ณ  บ  ฺฤif mdec2 >=  ;
+ 2914    ณ  บ  ณ  ณ  บ  ณ        1  ;
+ 2915    ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 2916    ณ  บ  ณ  ณ  บ  ณ        tu =  ;
+ 2917    ณ  บ  ณ  ณ  บ  ณ        mdec1  ;
+ 2918    ณ  บ  ณ  ณ  บ  ณ        .and.  ;
+ 2919    ณ  บ  ณ  ณ  บ  ณ        ww =  ;
+ 2920    ณ  บ  ณ  ณ  บ  ณ        1
+ 2921    ณ  บ  ณ  ณ  บ  ณ    lin2 =  ;
+ 2922    ณ  บ  ณ  ณ  บ  ณ        1
+ 2923    ณ  บ  ณ  ณ  บ  ภฤendif
+ 2924    ณ  บ  ณ  ณ  บ    li = li +  ;
+ 2925    ณ  บ  ณ  ณ  บ        1
+ 2926    ณ  บ  ณ  ณ  บ  ฺฤif li >  ;
+ 2927    ณ  บ  ณ  ณ  บ  ณ        20
+ 2928    ณ  บ  ณ  ณ  บ  ณ    @ 22,  ;
+ 2929    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 2930    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2931    ณ  บ  ณ  ณ  บ  ณ        'ษอออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออออออออป'
+ 2932    ณ  บ  ณ  ณ  บ  ณ    @ 23,  ;
+ 2933    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 2934    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2935    ณ  บ  ณ  ณ  บ  ณ        'บ            N O T A            บ  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           บ'
+ 2936    ณ  บ  ณ  ณ  บ  ณ  ฺฤif mtipop <>  ;
+ 2937    ณ  บ  ณ  ณ  บ  ณ  ณ        'Efectivo'
+ 2938    ณ  บ  ณ  ณ  บ  ณ  ณ    @ 23, 65 say 'X'
+ 2939    ณ  บ  ณ  ณ  บ  ณ  รฤelse
+ 2940    ณ  บ  ณ  ณ  บ  ณ  ณ    @ 23, 47 say 'X'
+ 2941    ณ  บ  ณ  ณ  บ  ณ  ภฤendif
+ 2942    ณ  บ  ณ  ณ  บ  ณ    @ 24,  ;
+ 2943    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 2944    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2945    ณ  บ  ณ  ณ  บ  ณ        'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ  NRO. :                                     บ'
+ 2946    ณ  บ  ณ  ณ  บ  ณ    @ 24,  ;
+ 2947    ณ  บ  ณ  ณ  บ  ณ        41  ;
+ 2948    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2949    ณ  บ  ณ  ณ  บ  ณ        mnrode  ;
+ 2950    ณ  บ  ณ  ณ  บ  ณ        picture  ;
+ 2951    ณ  บ  ณ  ณ  บ  ณ        '@!'
+ 2952    ณ  บ  ณ  ณ  บ  ณ    @ 25,  ;
+ 2953    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 2954    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2955    ณ  บ  ณ  ณ  บ  ณ        'บ                               บ  BANCO:                                     บ'
+ 2956    ณ  บ  ณ  ณ  บ  ณ    @ 25,  ;
+ 2957    ณ  บ  ณ  ณ  บ  ณ        41  ;
+ 2958    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2959    ณ  บ  ณ  ณ  บ  ณ        mbandes
+ 2960    ณ  บ  ณ  ณ  บ  ณ    @ 26,  ;
+ 2961    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 2962    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2963    ณ  บ  ณ  ณ  บ  ณ        'บ                               บ                                             บ'
+ 2964    ณ  บ  ณ  ณ  บ  ณ    @ 26,  ;
+ 2965    ณ  บ  ณ  ณ  บ  ณ        05  ;
+ 2966    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2967    ณ  บ  ณ  ณ  บ  ณ        'CONTINUA ....'
+ 2968    ณ  บ  ณ  ณ  บ  ณ    @ 27,  ;
+ 2969    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 2970    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2971    ณ  บ  ณ  ณ  บ  ณ        'บ                               บ                        ___________________  บ'
+ 2972    ณ  บ  ณ  ณ  บ  ณ    @ 28,  ;
+ 2973    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 2974    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2975    ณ  บ  ณ  ณ  บ  ณ        'บ                               บ                           RECIBIDO POR:     บ'
+ 2976    ณ  บ  ณ  ณ  บ  ณ    @ 29,  ;
+ 2977    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 2978    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2979    ณ  บ  ณ  ณ  บ  ณ        'ศอออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออผ'
+ 2980    ณ  บ  ณ  ณ  บ  ณ    @ 30,  ;
+ 2981    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 2982    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2983    ณ  บ  ณ  ณ  บ  ณ        ' NOTA: Los Pagos Realizados no estan sujetos a devoluciones'
+ 2984    ณ  บ  ณ  ณ  บ  ณ    select  ;
+ 2985    ณ  บ  ณ  ณ  บ  ณ        9
+ 2986    ณ  บ  ณ  ณ  บ  ณ    @ 0,  ;
+ 2987    ณ  บ  ณ  ณ  บ  ณ        1  ;
+ 2988    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2989    ณ  บ  ณ  ณ  บ  ณ        '  ' +  ;
+ 2990    ณ  บ  ณ  ณ  บ  ณ        chr(27) +  ;
+ 2991    ณ  บ  ณ  ณ  บ  ณ        chr(67) +  ;
+ 2992    ณ  บ  ณ  ณ  บ  ณ        chr(33)
+ 2993    ณ  บ  ณ  ณ  บ  ณ    @ 00,  ;
+ 2994    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 2995    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 2996    ณ  บ  ณ  ณ  บ  ณ        chr(18) +  ;
+ 2997    ณ  บ  ณ  ณ  บ  ณ        chr(20)
+ 2998    ณ  บ  ณ  ณ  บ  ณ    @ 00,  ;
+ 2999    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 3000    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3001    ณ  บ  ณ  ณ  บ  ณ        chr(14) +  ;
+ 3002    ณ  บ  ณ  ณ  บ  ณ        chr(15) +  ;
+ 3003    ณ  บ  ณ  ณ  บ  ณ        titulo +  ;
+ 3004    ณ  บ  ณ  ณ  บ  ณ        chr(18) +  ;
+ 3005    ณ  บ  ณ  ณ  บ  ณ        chr(20) +  ;
+ 3006    ณ  บ  ณ  ณ  บ  ณ        ' '
+ 3007    ณ  บ  ณ  ณ  บ  ณ    @ 01,  ;
+ 3008    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 3009    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3010    ณ  บ  ณ  ณ  บ  ณ        'RIF .                                                   RECIBO Nro.:          '
+ 3011    ณ  บ  ณ  ณ  บ  ณ    @ 01,  ;
+ 3012    ณ  บ  ณ  ณ  บ  ณ        04  ;
+ 3013    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3014    ณ  บ  ณ  ณ  บ  ณ        l_rif
+ 3015    ณ  บ  ณ  ณ  บ  ณ    @ 01,  ;
+ 3016    ณ  บ  ณ  ณ  บ  ณ        68  ;
+ 3017    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3018    ณ  บ  ณ  ณ  บ  ณ        chr(14) +  ;
+ 3019    ณ  บ  ณ  ณ  บ  ณ        ng +  ;
+ 3020    ณ  บ  ณ  ณ  บ  ณ        ltrim(str(mrecibo)) +  ;
+ 3021    ณ  บ  ณ  ณ  บ  ณ        ngn
+ 3022    ณ  บ  ณ  ณ  บ  ณ    @ 02,  ;
+ 3023    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 3024    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3025    ณ  บ  ณ  ณ  บ  ณ        chr(15) +  ;
+ 3026    ณ  บ  ณ  ณ  บ  ณ        ' '
+ 3027    ณ  บ  ณ  ณ  บ  ณ    @ 02,  ;
+ 3028    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 3029    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3030    ณ  บ  ณ  ณ  บ  ณ        l_direccio
+ 3031    ณ  บ  ณ  ณ  บ  ณ    @ 02,  ;
+ 3032    ณ  บ  ณ  ณ  บ  ณ        pcol()  ;
+ 3033    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3034    ณ  บ  ณ  ณ  บ  ณ        chr(18) +  ;
+ 3035    ณ  บ  ณ  ณ  บ  ณ        chr(20) +  ;
+ 3036    ณ  บ  ณ  ณ  บ  ณ        ' '
+ 3037    ณ  บ  ณ  ณ  บ  ณ    @ 02,  ;
+ 3038    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 3039    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3040    ณ  บ  ณ  ณ  บ  ณ        '                                                        FECHA PAGO:          '
+ 3041    ณ  บ  ณ  ณ  บ  ณ    @ 02,  ;
+ 3042    ณ  บ  ณ  ณ  บ  ณ        68  ;
+ 3043    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3044    ณ  บ  ณ  ณ  บ  ณ        mfechap  ;
+ 3045    ณ  บ  ณ  ณ  บ  ณ        picture  ;
+ 3046    ณ  บ  ณ  ณ  บ  ณ        '@E'
+ 3047    ณ  บ  ณ  ณ  บ  ณ    @ 03,  ;
+ 3048    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 3049    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3050    ณ  บ  ณ  ณ  บ  ณ        '                                                      '
+ 3051    ณ  บ  ณ  ณ  บ  ณ    @ 03,  ;
+ 3052    ณ  บ  ณ  ณ  บ  ณ        28  ;
+ 3053    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3054    ณ  บ  ณ  ณ  บ  ณ        chr(14) +  ;
+ 3055    ณ  บ  ณ  ณ  บ  ณ        chr(15) +  ;
+ 3056    ณ  บ  ณ  ณ  บ  ณ        'RECIBO DE PAGO' +  ;
+ 3057    ณ  บ  ณ  ณ  บ  ณ        chr(18) +  ;
+ 3058    ณ  บ  ณ  ณ  บ  ณ        chr(20) +  ;
+ 3059    ณ  บ  ณ  ณ  บ  ณ        ' '
+ 3060    ณ  บ  ณ  ณ  บ  ณ    @ 04,  ;
+ 3061    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 3062    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3063    ณ  บ  ณ  ณ  บ  ณ        '                                                      ษออออออออออออออออออออป '
+ 3064    ณ  บ  ณ  ณ  บ  ณ    @ 05,  ;
+ 3065    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 3066    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3067    ณ  บ  ณ  ณ  บ  ณ        'C.I.:                                                 บ Bs.                บ '
+ 3068    ณ  บ  ณ  ณ  บ  ณ    @ 05,  ;
+ 3069    ณ  บ  ณ  ณ  บ  ณ        61  ;
+ 3070    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3071    ณ  บ  ณ  ณ  บ  ณ        mmontop  ;
+ 3072    ณ  บ  ณ  ณ  บ  ณ        picture  ;
+ 3073    ณ  บ  ณ  ณ  บ  ณ        '9,999,999.99'
+ 3074    ณ  บ  ณ  ณ  บ  ณ    @ 05,  ;
+ 3075    ณ  บ  ณ  ณ  บ  ณ        06  ;
+ 3076    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3077    ณ  บ  ณ  ณ  บ  ณ        m.cedula  ;
+ 3078    ณ  บ  ณ  ณ  บ  ณ        picture  ;
+ 3079    ณ  บ  ณ  ณ  บ  ณ        '!-99999999'
+ 3080    ณ  บ  ณ  ณ  บ  ณ    @ 06,  ;
+ 3081    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 3082    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3083    ณ  บ  ณ  ณ  บ  ณ        'ALUMNO:                                               ศออออออออออออออออออออผ '
+ 3084    ณ  บ  ณ  ณ  บ  ณ    @ 06,  ;
+ 3085    ณ  บ  ณ  ณ  บ  ณ        08  ;
+ 3086    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3087    ณ  บ  ณ  ณ  บ  ณ        m.nombres  ;
+ 3088    ณ  บ  ณ  ณ  บ  ณ        picture  ;
+ 3089    ณ  บ  ณ  ณ  บ  ณ        '@!s45'
+ 3090    ณ  บ  ณ  ณ  บ  ณ    @ 07,  ;
+ 3091    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 3092    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3093    ณ  บ  ณ  ณ  บ  ณ        'SEMESTRE: ' +  ;
+ 3094    ณ  บ  ณ  ณ  บ  ณ        m.semestre
+ 3095    ณ  บ  ณ  ณ  บ  ณ    @ 08,  ;
+ 3096    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 3097    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3098    ณ  บ  ณ  ณ  บ  ณ        'TURNO   : ' +  ;
+ 3099    ณ  บ  ณ  ณ  บ  ณ        m.turno
+ 3100    ณ  บ  ณ  ณ  บ  ณ    @ 08,  ;
+ 3101    ณ  บ  ณ  ณ  บ  ณ        pcol() +  ;
+ 3102    ณ  บ  ณ  ณ  บ  ณ        2  ;
+ 3103    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3104    ณ  บ  ณ  ณ  บ  ณ        m.representa  ;
+ 3105    ณ  บ  ณ  ณ  บ  ณ        picture  ;
+ 3106    ณ  บ  ณ  ณ  บ  ณ        '@!'
+ 3107    ณ  บ  ณ  ณ  บ  ณ    @ 09,  ;
+ 3108    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 3109    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3110    ณ  บ  ณ  ณ  บ  ณ        'PLAN    : ' +  ;
+ 3111    ณ  บ  ณ  ณ  บ  ณ        mdes1
+ 3112    ณ  บ  ณ  ณ  บ  ณ    xcantidad =  ;
+ 3113    ณ  บ  ณ  ณ  บ  ณ        letras(mmontop)
+ 3114    ณ  บ  ณ  ณ  บ  ณ    xcantidad =  ;
+ 3115    ณ  บ  ณ  ณ  บ  ณ        alltrim(xcantidad)
+ 3116    ณ  บ  ณ  ณ  บ  ณ    @ 10,  ;
+ 3117    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 3118    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3119    ณ  บ  ณ  ณ  บ  ณ        'Hemos recibido la cantidad de:'
+ 3120    ณ  บ  ณ  ณ  บ  ณ    @ 11,  ;
+ 3121    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 3122    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3123    ณ  บ  ณ  ณ  บ  ณ        xcantidad  ;
+ 3124    ณ  บ  ณ  ณ  บ  ณ        picture  ;
+ 3125    ณ  บ  ณ  ณ  บ  ณ        '@!'
+ 3126    ณ  บ  ณ  ณ  บ  ณ    li =  ;
+ 3127    ณ  บ  ณ  ณ  บ  ณ        12
+ 3128    ณ  บ  ณ  ณ  บ  ณ    @ li,  ;
+ 3129    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 3130    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3131    ณ  บ  ณ  ณ  บ  ณ        'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ' +  ;
+ 3132    ณ  บ  ณ  ณ  บ  ณ        ng
+ 3133    ณ  บ  ณ  ณ  บ  ณ    li =  ;
+ 3134    ณ  บ  ณ  ณ  บ  ณ        li +  ;
+ 3135    ณ  บ  ณ  ณ  บ  ณ        1
+ 3136    ณ  บ  ณ  ณ  บ  ณ    @ li,  ;
+ 3137    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 3138    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3139    ณ  บ  ณ  ณ  บ  ณ        '  C O N C E P T O S                                          M O N T O       ' +  ;
+ 3140    ณ  บ  ณ  ณ  บ  ณ        ngn
+ 3141    ณ  บ  ณ  ณ  บ  ณ    li =  ;
+ 3142    ณ  บ  ณ  ณ  บ  ณ        li +  ;
+ 3143    ณ  บ  ณ  ณ  บ  ณ        1
+ 3144    ณ  บ  ณ  ณ  บ  ณ    @ li,  ;
+ 3145    ณ  บ  ณ  ณ  บ  ณ        00  ;
+ 3146    ณ  บ  ณ  ณ  บ  ณ        say  ;
+ 3147    ณ  บ  ณ  ณ  บ  ณ        'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ'
+ 3148    ณ  บ  ณ  ณ  บ  ณ    li =  ;
+ 3149    ณ  บ  ณ  ณ  บ  ณ        li +  ;
+ 3150    ณ  บ  ณ  ณ  บ  ณ        1
+ 3151    ณ  บ  ณ  ณ  บ  ภฤendif
+ 3152    ณ  บ  ณ  ณ  ำฤendfor
+ 3153    ณ  บ  ณ  ภฤendif
+ 3154    ณ  vอออออออexit
+ 3155    ณ  บ  ภฤendif
+ 3156    ณ  ำฤendfor
+ 3157    ณ    @ 22, 00 say  ;
+ 3158    ณ        'ษอออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออออออออป'
+ 3159    ณ    @ 23, 00 say  ;
+ 3160    ณ        'บ            N O T A            บ  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           บ'
+ 3161    ณ  ฺฤif mtipop <> 'Efectivo'
+ 3162    ณ  ณ    @ 23, 65 say 'X'
+ 3163    ณ  รฤelse
+ 3164    ณ  ณ    @ 23, 47 say 'X'
+ 3165    ณ  ภฤendif
+ 3166    ณ    @ 24, 00 say  ;
+ 3167    ณ        'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ  NRO. :                                     บ'
+ 3168    ณ    @ 24, 41 say mnrode picture  ;
+ 3169    ณ        '@!'
+ 3170    ณ    @ 25, 00 say  ;
+ 3171    ณ        'บ                               บ  BANCO:                                     บ'
+ 3172    ณ    @ 25, 41 say mbandes
+ 3173    ณ    @ 26, 00 say  ;
+ 3174    ณ        'บ                               บ                                             บ'
+ 3175    ณ    @ 27, 00 say  ;
+ 3176    ณ        'บ                               บ                        ___________________  บ'
+ 3177    ณ    @ 28, 00 say  ;
+ 3178    ณ        'บ                               บ                           RECIBIDO POR:     บ'
+ 3179    ณ    @ 29, 00 say  ;
+ 3180    ณ        'ศอออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออผ'
+ 3181    ณ    @ 30, 00 say  ;
+ 3182    ณ        ' NOTA: Los Pagos Realizados no estan sujetos a devoluciones'
+ 3183    ณ    eject
+ 3184    ภฤendif
+ 3185      return
+ 3186      *
+ 3187      *: EOF: SCP20333.ACT

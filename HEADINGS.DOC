@@ -1,0 +1,440 @@
+*:*****************************************************************************
+*:
+*: Procedure file: Z:\SISTEMA\SCP20033.PRG
+*:
+*:         System: 
+*:         Author: 
+*:      Copyright (c) 1910, 
+*:  Last modified: 25/04/107     11:21
+*:
+*:  Procs & Fncts: VALIDAR
+*:               : DEUDA_VEN3()
+*:               : DEUDA_VEN1()
+*:               : DEUDA_VEN2()
+*:               : MBANCOS()
+*:               : MCOBRAD()
+*:               : REPITE_REC
+*:
+*:         Set by: SCP20333.PRG                      
+*:
+*:          Calls: SPACE()            (function  in ?)
+*:               : CHR()              (function  in ?)
+*:               : VARREAD()          (function  in ?)
+*:               : VALIDAR            (procedure in SCP20033.PRG)
+*:               : LASTKEY()          (function  in ?)
+*:               : IIF()              (function  in ?)
+*:               : LEN()              (function  in ?)
+*:               : LTRIM()            (function  in ?)
+*:               : STR()              (function  in ?)
+*:               : BUSQUEDA()         (function  in ?)
+*:               : SUBSTR()           (function  in ?)
+*:               : VAL()              (function  in ?)
+*:               : MSGERRO()          (function  in ?)
+*:               : FOUND()            (function  in ?)
+*:               : LEFT()             (function  in ?)
+*:               : SEEK()             (function  in ?)
+*:               : DEUDA_VEN3()       (function  in SCP20033.PRG)
+*:               : DEUDA_VEN1()       (function  in SCP20033.PRG)
+*:               : DEUDA_VEN2()       (function  in SCP20033.PRG)
+*:               : ALLTRIM()          (function  in ?)
+*:               : DATE()             (function  in ?)
+*:               : EOF()              (function  in ?)
+*:               : COL()              (function  in ?)
+*:               : ACEPTA()           (function  in ?)
+*:               : SCP20333.PRG
+*:               : MBANCOS()          (function  in SCP20033.PRG)
+*:               : SALIDA()           (function  in ?)
+*:               : BOXFIELD()         (function  in ?)
+*:               : MCOBRAD()          (function  in SCP20033.PRG)
+*:               : ACEPTA1()          (function  in ?)
+*:               : RLOCK()            (function  in ?)
+*:               : PRINTER()          (function  in ?)
+*:               : PCOL()             (function  in ?)
+*:               : LETRAS()           (function  in ?)
+*:               : FLOCK()            (function  in ?)
+*:               : REPITE_RECIBO.PRG
+*:               : WCOLS()            (function  in ?)
+*:               : OBJNUM()           (function  in ?)
+*:
+*:           Uses: LAPSO1.DBF         
+*:               : DATOS.DBF          
+*:               : MP&LAPMAT.DBF      
+*:               : CONTDEUD.DBF           Alias: CONTDEUD
+*:               : PLANCOBR.DBF           Alias: PLANCOBR
+*:               : DETACOBR.DBF           Alias: DETACOBR
+*:               : CONCEPTO.DBF           Alias: CONCEPTO
+*:               : LICEO.DBF          
+*:               : COBRADOR.DBF           Alias: COBRADOR
+*:               : REGPAGOS.DBF           Alias: REGDATOS
+*:               : BANCOS.DBF             Alias: BANCOS
+*:               : AD&LAPMAT.DBF      
+*:
+*:      CDX files: DATOS.CDX
+*:               : CONTDEUD.CDX
+*:               : PLANCOBR.CDX
+*:               : DETACOBR.CDX
+*:               : CONCEPTO.CDX
+*:               : COBRADOR.CDX
+*:               : REGPAGOS.CDX
+*:               : BANCOS.CDX
+*:
+*:      Documented 25/04/10 at 11:21               FoxDoc  version 2.10f
+*:*****************************************************************************
+
+*!*****************************************************************************
+*!
+*!      Procedure: VALIDAR
+*!
+*!      Called by: SCP20033.PRG                      
+*!               : VALIDAR            (procedure in SCP20033.PRG)
+*!               : SCP20333.PRG                      
+*!
+*!          Calls: IIF()              (function  in ?)
+*!               : LEN()              (function  in ?)
+*!               : LTRIM()            (function  in ?)
+*!               : STR()              (function  in ?)
+*!               : SPACE()            (function  in ?)
+*!               : BUSQUEDA()         (function  in ?)
+*!               : SUBSTR()           (function  in ?)
+*!               : VAL()              (function  in ?)
+*!               : BOXFIELD()         (function  in ?)
+*!               : VARREAD()          (function  in ?)
+*!               : VALIDAR            (procedure in SCP20033.PRG)
+*!
+*!*****************************************************************************
+
+*!*****************************************************************************
+*!
+*!       Function: MBANCOS()
+*!
+*!      Called by: SCP20033.PRG                      
+*!               : DEUDA_VEN3()       (function  in SCP20033.PRG)
+*!               : DEUDA_VEN1()       (function  in SCP20033.PRG)
+*!               : DEUDA_VEN2()       (function  in SCP20033.PRG)
+*!               : SCP20333.PRG                      
+*!
+*!          Calls: SEEK()             (function  in ?)
+*!               : BOXFIELD()         (function  in ?)
+*!
+*!*****************************************************************************
+
+*!*****************************************************************************
+*!
+*!       Function: MCOBRAD()
+*!
+*!      Called by: SCP20033.PRG                      
+*!               : DEUDA_VEN3()       (function  in SCP20033.PRG)
+*!               : DEUDA_VEN1()       (function  in SCP20033.PRG)
+*!               : DEUDA_VEN2()       (function  in SCP20033.PRG)
+*!               : SCP20333.PRG                      
+*!
+*!          Calls: SEEK()             (function  in ?)
+*!               : BOXFIELD()         (function  in ?)
+*!
+*!*****************************************************************************
+
+*!*****************************************************************************
+*!
+*!       Function: DEUDA_VEN1()
+*!
+*!      Called by: SCP20033.PRG                      
+*!               : SCP20333.PRG                      
+*!
+*!          Calls: LEFT()             (function  in ?)
+*!               : ALLTRIM()          (function  in ?)
+*!               : STR()              (function  in ?)
+*!               : YEAR()             (function  in ?)
+*!               : CTOD()             (function  in ?)
+*!               : SUBSTR()           (function  in ?)
+*!               : SPACE()            (function  in ?)
+*!               : LTRIM()            (function  in ?)
+*!               : SEEK()             (function  in ?)
+*!               : DATE()             (function  in ?)
+*!               : LASTKEY()          (function  in ?)
+*!               : SALIDA()           (function  in ?)
+*!               : MBANCOS()          (function  in SCP20033.PRG)
+*!               : BOXFIELD()         (function  in ?)
+*!               : MSGERRO()          (function  in ?)
+*!               : COL()              (function  in ?)
+*!               : MCOBRAD()          (function  in SCP20033.PRG)
+*!               : ACEPTA()           (function  in ?)
+*!               : PRINTER()          (function  in ?)
+*!               : RLOCK()            (function  in ?)
+*!               : CHR()              (function  in ?)
+*!               : PCOL()             (function  in ?)
+*!               : LETRAS()           (function  in ?)
+*!               : FLOCK()            (function  in ?)
+*!               : IIF()              (function  in ?)
+*!               : RIGHT()            (function  in ?)
+*!
+*!           Uses: MP&XLAP.DBF            Alias: NUEVO
+*!
+*!*****************************************************************************
+
+*!*****************************************************************************
+*!
+*!       Function: DEUDA_VEN2()
+*!
+*!      Called by: SCP20033.PRG                      
+*!
+*!          Calls: LEFT()             (function  in ?)
+*!               : ALLTRIM()          (function  in ?)
+*!               : STR()              (function  in ?)
+*!               : YEAR()             (function  in ?)
+*!               : CTOD()             (function  in ?)
+*!               : SUBSTR()           (function  in ?)
+*!               : SPACE()            (function  in ?)
+*!               : LTRIM()            (function  in ?)
+*!               : SEEK()             (function  in ?)
+*!               : DATE()             (function  in ?)
+*!               : LASTKEY()          (function  in ?)
+*!               : SALIDA()           (function  in ?)
+*!               : MBANCOS()          (function  in SCP20033.PRG)
+*!               : BOXFIELD()         (function  in ?)
+*!               : MSGERRO()          (function  in ?)
+*!               : COL()              (function  in ?)
+*!               : MCOBRAD()          (function  in SCP20033.PRG)
+*!               : ACEPTA()           (function  in ?)
+*!               : PRINTER()          (function  in ?)
+*!               : RLOCK()            (function  in ?)
+*!               : CHR()              (function  in ?)
+*!               : PCOL()             (function  in ?)
+*!               : LETRAS()           (function  in ?)
+*!               : FLOCK()            (function  in ?)
+*!               : IIF()              (function  in ?)
+*!
+*!           Uses: AD&XLAP.DBF            Alias: NUEVO
+*!
+*!*****************************************************************************
+
+*!*****************************************************************************
+*!
+*!       Function: DEUDA_VEN3()
+*!
+*!      Called by: SCP20033.PRG                      
+*!
+*!          Calls: LEFT()             (function  in ?)
+*!               : ALLTRIM()          (function  in ?)
+*!               : STR()              (function  in ?)
+*!               : YEAR()             (function  in ?)
+*!               : CTOD()             (function  in ?)
+*!               : SUBSTR()           (function  in ?)
+*!               : SPACE()            (function  in ?)
+*!               : LTRIM()            (function  in ?)
+*!               : SEEK()             (function  in ?)
+*!               : DATE()             (function  in ?)
+*!               : LASTKEY()          (function  in ?)
+*!               : SALIDA()           (function  in ?)
+*!               : MBANCOS()          (function  in SCP20033.PRG)
+*!               : BOXFIELD()         (function  in ?)
+*!               : MSGERRO()          (function  in ?)
+*!               : COL()              (function  in ?)
+*!               : MCOBRAD()          (function  in SCP20033.PRG)
+*!               : ACEPTA()           (function  in ?)
+*!               : PRINTER()          (function  in ?)
+*!               : RLOCK()            (function  in ?)
+*!               : CHR()              (function  in ?)
+*!               : PCOL()             (function  in ?)
+*!               : LETRAS()           (function  in ?)
+*!               : FLOCK()            (function  in ?)
+*!               : IIF()              (function  in ?)
+*!
+*!*****************************************************************************
+
+*!*****************************************************************************
+*!
+*!      Procedure: REPITE_REC
+*!
+*!          Calls: PRINTER()          (function  in ?)
+*!               : RLOCK()            (function  in ?)
+*!               : LTRIM()            (function  in ?)
+*!               : STR()              (function  in ?)
+*!               : CHR()              (function  in ?)
+*!               : PCOL()             (function  in ?)
+*!               : LETRAS()           (function  in ?)
+*!               : ALLTRIM()          (function  in ?)
+*!               : SPACE()            (function  in ?)
+*!               : SEEK()             (function  in ?)
+*!
+*!*****************************************************************************
+
+
+*:*****************************************************************************
+*:
+*: Procedure file: Z:\SISTEMA\SCP20333.PRG
+*:
+*:         System: 
+*:         Author: 
+*:      Copyright (c) 1910, 
+*:  Last modified: 19/12/106     13:34
+*:
+*:         Set by: SCP20033.PRG                      
+*:
+*:          Calls: SPACE()            (function  in ?)
+*:               : CHR()              (function  in ?)
+*:               : VARREAD()          (function  in ?)
+*:               : VALIDAR            (procedure in SCP20033.PRG)
+*:               : LASTKEY()          (function  in ?)
+*:               : IIF()              (function  in ?)
+*:               : LEN()              (function  in ?)
+*:               : LTRIM()            (function  in ?)
+*:               : STR()              (function  in ?)
+*:               : BUSQUEDA()         (function  in ?)
+*:               : SUBSTR()           (function  in ?)
+*:               : VAL()              (function  in ?)
+*:               : MSGERRO()          (function  in ?)
+*:               : FOUND()            (function  in ?)
+*:               : LEFT()             (function  in ?)
+*:               : SEEK()             (function  in ?)
+*:               : DEUDA_VEN1()       (function  in SCP20033.PRG)
+*:               : ALLTRIM()          (function  in ?)
+*:               : DATE()             (function  in ?)
+*:               : EOF()              (function  in ?)
+*:               : COL()              (function  in ?)
+*:               : ACEPTA()           (function  in ?)
+*:               : SCP20033.PRG
+*:               : MBANCOS()          (function  in SCP20033.PRG)
+*:               : SALIDA()           (function  in ?)
+*:               : BOXFIELD()         (function  in ?)
+*:               : MCOBRAD()          (function  in SCP20033.PRG)
+*:               : ACEPTA1()          (function  in ?)
+*:               : PRINTER()          (function  in ?)
+*:               : RLOCK()            (function  in ?)
+*:               : PCOL()             (function  in ?)
+*:               : LETRAS()           (function  in ?)
+*:               : REPITE_RECIBO.PRG
+*:               : FLOCK()            (function  in ?)
+*:               : WCOLS()            (function  in ?)
+*:               : OBJNUM()           (function  in ?)
+*:
+*:           Uses: LAPSO1.DBF         
+*:               : DATOS.DBF          
+*:               : AD&LAPMAT.DBF      
+*:               : CONTDEUD.DBF           Alias: CONTDEUD
+*:               : PLANCOBR.DBF           Alias: PLANCOBR
+*:               : DETACOBR.DBF           Alias: DETACOBR
+*:               : CONCEPTO.DBF           Alias: CONCEPTO
+*:               : LICEO.DBF          
+*:               : COBRADOR.DBF           Alias: COBRADOR
+*:               : REGPAGOS.DBF           Alias: REGDATOS
+*:               : BANCOS.DBF             Alias: BANCOS
+*:               : MP&LAPMAT.DBF      
+*:
+*:      CDX files: DATOS.CDX
+*:               : CONTDEUD.CDX
+*:               : PLANCOBR.CDX
+*:               : DETACOBR.CDX
+*:               : CONCEPTO.CDX
+*:               : COBRADOR.CDX
+*:               : REGPAGOS.CDX
+*:               : BANCOS.CDX
+*:
+*:      Documented 25/04/10 at 11:21               FoxDoc  version 2.10f
+*:*****************************************************************************
+
+*!*****************************************************************************
+*!
+*!      Procedure: VALIDAR
+*!
+*!      Called by: SCP20033.PRG                      
+*!               : VALIDAR            (procedure in SCP20033.PRG)
+*!               : SCP20333.PRG                      
+*!
+*!          Calls: IIF()              (function  in ?)
+*!               : LEN()              (function  in ?)
+*!               : LTRIM()            (function  in ?)
+*!               : STR()              (function  in ?)
+*!               : SPACE()            (function  in ?)
+*!               : BUSQUEDA()         (function  in ?)
+*!               : SUBSTR()           (function  in ?)
+*!               : VAL()              (function  in ?)
+*!               : BOXFIELD()         (function  in ?)
+*!               : VARREAD()          (function  in ?)
+*!               : VALIDAR            (procedure in SCP20033.PRG)
+*!
+*!*****************************************************************************
+
+*!*****************************************************************************
+*!
+*!       Function: MBANCOS()
+*!
+*!      Called by: SCP20033.PRG                      
+*!               : DEUDA_VEN3()       (function  in SCP20033.PRG)
+*!               : DEUDA_VEN1()       (function  in SCP20033.PRG)
+*!               : DEUDA_VEN2()       (function  in SCP20033.PRG)
+*!               : SCP20333.PRG                      
+*!
+*!          Calls: SEEK()             (function  in ?)
+*!               : BOXFIELD()         (function  in ?)
+*!
+*!*****************************************************************************
+
+*!*****************************************************************************
+*!
+*!       Function: MCOBRAD()
+*!
+*!      Called by: SCP20033.PRG                      
+*!               : DEUDA_VEN3()       (function  in SCP20033.PRG)
+*!               : DEUDA_VEN1()       (function  in SCP20033.PRG)
+*!               : DEUDA_VEN2()       (function  in SCP20033.PRG)
+*!               : SCP20333.PRG                      
+*!
+*!          Calls: SEEK()             (function  in ?)
+*!               : BOXFIELD()         (function  in ?)
+*!
+*!*****************************************************************************
+
+*!*****************************************************************************
+*!
+*!       Function: DEUDA_VEN1()
+*!
+*!      Called by: SCP20033.PRG                      
+*!               : SCP20333.PRG                      
+*!
+*!          Calls: LEFT()             (function  in ?)
+*!               : ALLTRIM()          (function  in ?)
+*!               : STR()              (function  in ?)
+*!               : YEAR()             (function  in ?)
+*!               : CTOD()             (function  in ?)
+*!               : SUBSTR()           (function  in ?)
+*!               : SPACE()            (function  in ?)
+*!               : LTRIM()            (function  in ?)
+*!               : SEEK()             (function  in ?)
+*!               : DATE()             (function  in ?)
+*!               : LASTKEY()          (function  in ?)
+*!               : SALIDA()           (function  in ?)
+*!               : MBANCOS()          (function  in SCP20033.PRG)
+*!               : BOXFIELD()         (function  in ?)
+*!               : MSGERRO()          (function  in ?)
+*!               : COL()              (function  in ?)
+*!               : MCOBRAD()          (function  in SCP20033.PRG)
+*!               : ACEPTA()           (function  in ?)
+*!               : PRINTER()          (function  in ?)
+*!               : RLOCK()            (function  in ?)
+*!               : CHR()              (function  in ?)
+*!               : PCOL()             (function  in ?)
+*!               : LETRAS()           (function  in ?)
+*!               : FLOCK()            (function  in ?)
+*!               : IIF()              (function  in ?)
+*!               : RIGHT()            (function  in ?)
+*!
+*!           Uses: MP&XLAP.DBF            Alias: NUEVO
+*!
+*!*****************************************************************************
+
+*!*****************************************************************************
+*!
+*!      Procedure: REPITE_REC
+*!
+*!          Calls: PRINTER()          (function  in ?)
+*!               : RLOCK()            (function  in ?)
+*!               : LTRIM()            (function  in ?)
+*!               : STR()              (function  in ?)
+*!               : CHR()              (function  in ?)
+*!               : PCOL()             (function  in ?)
+*!               : LETRAS()           (function  in ?)
+*!               : ALLTRIM()          (function  in ?)
+*!               : SPACE()            (function  in ?)
+*!               : SEEK()             (function  in ?)
+*!
+*!*****************************************************************************

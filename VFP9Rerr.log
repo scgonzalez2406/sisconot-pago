@@ -1,0 +1,11 @@
+
+
+Error grave: código de excepción=C0000005 @ 03/03/2010 07:38:24 AM. Archivo de registro de errores: C:\Administra\controcalf\VFP9Rerr.log
+	Llamado desde -  vista_previa line 19  {C:\Administra\controcalf\vista_previa.prg vista_previa.fxp}
+	Llamado desde -  sclof003.m_impresion line 587  {c:\administra\controcalf\sclof003rep.sct c:\administra\controcalf\sclof003rep.sct}
+	Llamado desde -  sclof003.cmdpreview.click line 1  {c:\administra\controcalf\sclof003rep.sct c:\administra\controcalf\sclof003rep.sct}
+	Llamado desde -  sist2006 line 509  {C:\Administra\controcalf\sist2006.prg c:\administra\controcalf\sist2009.exe}
+
+
+Error grave: código de excepción=C0000005 @ 22/04/2010 12:12:12 PM. Archivo de registro de errores: C:\Administra\controcalf\VFP9Rerr.log
+	Llamado desde -  sist2006 line 509  {C:\Administra\controcalf\sist2006.prg c:\administra\controcalf\sist2009.exe}

@@ -1,0 +1,745 @@
+  U.E.C. SIGLO XXI                                                                                                   PAGINA:   1
+CONTROL DE PAGO                                           FECHA : 11/11/2015
+SCP20009                                                  HORA  : 11:54:09
+                          ERELACION DEL CIERRE DE CAJAF
+                      EDESDE: 02/09/2015 HASTA: 30/09/2015F
+ 
+
+ีออออออออัออออออออออออัออออออออออออัอออออออออออออัอออออออออออออออัออออออออออออออออออออออัออออออออออออออออออออออออออออออัอออออออออออออออธ
+ณ    Nง  ณ     Nง     ณ    Fecha   ณ    Tipo     ณ       Nง      ณ                      ณ                              ณ     Monto     ณ
+ณ Recibo ณ   Cedula   ณ   de Pago  ณ   de Pago   ณ    Dep/Cheq   ณ Banco                ณ Cobrador                     ณ    Cobrado    ณ
+ิออออออออฯออออออออออออฯออออออออออออฯอออออออออออออฯอออออออออออออออฯออออออออออออออออออออออฯออออออออออออออออออออออออออออออฯอออออออออออออออพ
+ 81536     V-26329974   02/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     900.00
+ 81537     V-26329974   02/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81538     V-26599866   02/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81538     V-26599866   02/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81538     V-26599866   02/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81539     V-26599866   02/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81540     V-28611528   02/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81541     V-21250922   02/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81541     V-21250922   02/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81541     V-21250922   02/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81541     V-21250922   02/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81542     V-21250922   02/09/2015    EFECTIVO                                            SIN NOMBRE                            400.00
+ 81543     V-27923403   04/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81544     V-26513112   04/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81544     V-26513112   04/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81544     V-26513112   04/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81544     V-26513112   04/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81545     V-26513112   04/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81546     V-26264962   05/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81546     V-26264962   05/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81546     V-26264962   05/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81547     V-26264962   05/09/2015    EFECTIVO                                            SIN NOMBRE                            400.00
+ 81548     V-26562292   05/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81548     V-26562292   05/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81548     V-26562292   05/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81549     V-26562292   05/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81550     V-28086285   07/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81550     V-28086285   07/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81550     V-28086285   07/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81551     V-28086285   07/09/2015    EFECTIVO                                            SIN NOMBRE                            500.00
+ 81552     V-27390406   07/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81552     V-27390406   07/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81552     V-27390406   07/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81552     V-27390406   07/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81553     V-27390406   07/09/2015    EFECTIVO                                            SIN NOMBRE                            500.00
+ 81554     V-27308354   07/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81555     V-20503102   07/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81555     V-20503102   07/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81555     V-20503102   07/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81555     V-20503102   07/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81556     V-20503102   07/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81557     V-25397390   08/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81558     V-20035289   08/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81559     V-30994200   08/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81560     V-30994179   08/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ ------------------------------------------------------------------------------------------------------------------------------------------  U.E.C. SIGLO XXI                                                                                                   PAGINA:   2
+CONTROL DE PAGO                                           FECHA : 11/11/2015
+SCP20009                                                  HORA  : 11:54:09
+                          ERELACION DEL CIERRE DE CAJAF
+                      EDESDE: 02/09/2015 HASTA: 30/09/2015F
+ 
+
+ีออออออออัออออออออออออัออออออออออออัอออออออออออออัอออออออออออออออัออออออออออออออออออออออัออออออออออออออออออออออออออออออัอออออออออออออออธ
+ณ    Nง  ณ     Nง     ณ    Fecha   ณ    Tipo     ณ       Nง      ณ                      ณ                              ณ     Monto     ณ
+ณ Recibo ณ   Cedula   ณ   de Pago  ณ   de Pago   ณ    Dep/Cheq   ณ Banco                ณ Cobrador                     ณ    Cobrado    ณ
+ิออออออออฯออออออออออออฯออออออออออออฯอออออออออออออฯอออออออออออออออฯออออออออออออออออออออออฯออออออออออออออออออออออออออออออฯอออออออออออออออพ
+ 81561     V-20806742   08/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81562     V-25555494   09/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81563     V-26720131   09/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81563     V-26720131   09/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81563     V-26720131   09/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81564     V-25936264   11/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81565     V-28429133   11/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81565     V-28429133   11/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81565     V-28429133   11/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81565     V-28429133   11/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81566     V-28429133   11/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81567     V-24964288   11/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81567     V-24964288   11/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81567     V-24964288   11/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81568     V-24964288   11/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81569     V-27514901   11/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81570     V-14986094   11/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81570     V-14986094   11/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81570     V-14986094   11/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81571     V-14986094   11/09/2015    EFECTIVO                                            SIN NOMBRE                            100.00
+ 81572     V-27293120   12/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81573     V-27729093   12/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81574     V-26969965   12/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81574     V-26969965   12/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81574     V-26969965   12/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81575     V-26969965   12/09/2015    EFECTIVO                                            SIN NOMBRE                            520.00
+ 81576     V-25934197   12/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     350.00
+ 81576     V-25934197   12/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81576     V-25934197   12/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81576     V-25934197   12/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81576     V-25934197   12/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81577     V-25935006   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81577     V-25935006   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     250.00
+ 81577     V-25935006   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     150.00
+ 81578     V-25933193   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     350.00
+ 81578     V-25933193   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81578     V-25933193   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     150.00
+ 81579     V-28162602   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81580     V-27390541   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81580     V-27390541   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     300.00
+ 81580     V-27390541   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     350.00
+ 81581     V-27390541   14/09/2015    EFECTIVO                                            SIN NOMBRE                            400.00
+ 81582     V-25391839   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81582     V-25391839   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     350.00
+ 81582     V-25391839   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     350.00
+ ------------------------------------------------------------------------------------------------------------------------------------------  U.E.C. SIGLO XXI                                                                                                   PAGINA:   3
+CONTROL DE PAGO                                           FECHA : 11/11/2015
+SCP20009                                                  HORA  : 11:54:09
+                          ERELACION DEL CIERRE DE CAJAF
+                      EDESDE: 02/09/2015 HASTA: 30/09/2015F
+ 
+
+ีออออออออัออออออออออออัออออออออออออัอออออออออออออัอออออออออออออออัออออออออออออออออออออออัออออออออออออออออออออออออออออออัอออออออออออออออธ
+ณ    Nง  ณ     Nง     ณ    Fecha   ณ    Tipo     ณ       Nง      ณ                      ณ                              ณ     Monto     ณ
+ณ Recibo ณ   Cedula   ณ   de Pago  ณ   de Pago   ณ    Dep/Cheq   ณ Banco                ณ Cobrador                     ณ    Cobrado    ณ
+ิออออออออฯออออออออออออฯออออออออออออฯอออออออออออออฯอออออออออออออออฯออออออออออออออออออออออฯออออออออออออออออออออออออออออออฯอออออออออออออออพ
+ 81583     V-25391839   14/09/2015    EFECTIVO                                            SIN NOMBRE                            600.00
+ 81584     V-27341993   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81584     V-27341993   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81584     V-27341993   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81585     V-27341993   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81586     V-26332628   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     900.00
+ 81587     V-26332628   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81588     V-22590761   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     450.00
+ 81588     V-22590761   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81589     V-22590761   14/09/2015    EFECTIVO                                            SIN NOMBRE                            400.00
+ 81590     V-27923258   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81591     V-24560899   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                      50.00
+ 81592     C-284553     14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81592     C-284553     14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81592     C-284553     14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81593     C-284553     14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81594     V-27308302   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81594     V-27308302   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81594     V-27308302   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81595     V-27308302   14/09/2015    EFECTIVO                                            SIN NOMBRE                            100.00
+ 81596     V-27935130   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81596     V-27935130   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81596     V-27935130   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81596     V-27935130   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81597     V-27935130   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81598     V-14986094   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     700.00
+ 81599     V-25084932   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81599     V-25084932   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81599     V-25084932   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81599     V-25084932   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81600     V-22587030   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81601     V-27968658   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     100.00
+ 81601     V-27968658   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81601     V-27968658   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81602     V-26753412   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81602     V-26753412   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81602     V-26753412   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81602     V-26753412   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81603     V-27077392   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81603     V-27077392   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81603     V-27077392   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81604     V-27077392   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81604     V-27077392   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00
+ 81604     V-27077392   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81605     V-26753412   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ ------------------------------------------------------------------------------------------------------------------------------------------  U.E.C. SIGLO XXI                                                                                                   PAGINA:   4
+CONTROL DE PAGO                                           FECHA : 11/11/2015
+SCP20009                                                  HORA  : 11:54:09
+                          ERELACION DEL CIERRE DE CAJAF
+                      EDESDE: 02/09/2015 HASTA: 30/09/2015F
+ 
+
+ีออออออออัออออออออออออัออออออออออออัอออออออออออออัอออออออออออออออัออออออออออออออออออออออัออออออออออออออออออออออออออออออัอออออออออออออออธ
+ณ    Nง  ณ     Nง     ณ    Fecha   ณ    Tipo     ณ       Nง      ณ                      ณ                              ณ     Monto     ณ
+ณ Recibo ณ   Cedula   ณ   de Pago  ณ   de Pago   ณ    Dep/Cheq   ณ Banco                ณ Cobrador                     ณ    Cobrado    ณ
+ิออออออออฯออออออออออออฯออออออออออออฯอออออออออออออฯอออออออออออออออฯออออออออออออออออออออออฯออออออออออออออออออออออออออออออฯอออออออออออออออพ
+ 81606     V-20840885   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81607     V-26455026   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81608     C-4050       15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81609     V-25512994   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81610     V-27390541   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81611     V-25391839   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     200.00
+ 81612     V-30851595   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81612     V-30851595   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81612     V-30851595   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     150.00
+ 81612     V-30851595   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81613     V-30851595   16/09/2015    EFECTIVO                                            SIN NOMBRE                            150.00
+ 81614     V-27077392   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81614     V-27077392   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00
+ 81614     V-27077392   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81615     V-27077392   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81616     V-26362049   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ 81616     V-26362049   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81616     V-26362049   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81617     V-28343388   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                   1,500.00
+ 81618     V-28343388   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81619     V-25745795   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81619     V-25745795   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81619     V-25745795   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81619     V-25745795   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81620     V-27975931   16/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81621     V-28459921   17/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     900.00
+ 81622     V-28459921   17/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81623     V-27506162   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81624     V-28385831   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81624     V-28385831   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81624     V-28385831   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81624     V-28385831   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81625     V-28385831   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81626     V-25933027   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81627     V-27602338   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81628     V-20804260   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81628     V-20804260   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81628     V-20804260   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81628     V-20804260   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81629     V-20804260   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81630     V-26552258   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81630     V-26552258   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81630     V-26552258   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81631     V-26552258   17/09/2015    EFECTIVO                                            SIN NOMBRE                            400.00
+ 81632     V-26513655   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ ------------------------------------------------------------------------------------------------------------------------------------------  U.E.C. SIGLO XXI                                                                                                   PAGINA:   5
+CONTROL DE PAGO                                           FECHA : 11/11/2015
+SCP20009                                                  HORA  : 11:54:09
+                          ERELACION DEL CIERRE DE CAJAF
+                      EDESDE: 02/09/2015 HASTA: 30/09/2015F
+ 
+
+ีออออออออัออออออออออออัออออออออออออัอออออออออออออัอออออออออออออออัออออออออออออออออออออออัออออออออออออออออออออออออออออออัอออออออออออออออธ
+ณ    Nง  ณ     Nง     ณ    Fecha   ณ    Tipo     ณ       Nง      ณ                      ณ                              ณ     Monto     ณ
+ณ Recibo ณ   Cedula   ณ   de Pago  ณ   de Pago   ณ    Dep/Cheq   ณ Banco                ณ Cobrador                     ณ    Cobrado    ณ
+ิออออออออฯออออออออออออฯออออออออออออฯอออออออออออออฯอออออออออออออออฯออออออออออออออออออออออฯออออออออออออออออออออออออออออออฯอออออออออออออออพ
+ 81632     V-26513655   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81632     V-26513655   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81632     V-26513655   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     100.00
+ 81633     V-26513655   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81634     V-28534851   17/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81634     V-28534851   17/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81634     V-28534851   17/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81635     V-28534851   17/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81636     V-27219700   17/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81637     V-4942230    18/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81637     V-4942230    18/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81637     V-4942230    18/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81637     V-4942230    18/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81638     V-4942230    18/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81639     V-26330901   18/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81639     V-26330901   18/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81640     V-26330901   18/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81641     V-18961686   18/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81641     V-18961686   18/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81641     V-18961686   18/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81641     V-18961686   18/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81642     V-18961686   18/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81643     V-27506096   18/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81643     V-27506096   18/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81643     V-27506096   18/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81643     V-27506096   18/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81644     V-27506096   18/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81645     V-20805886   18/09/2015    EFECTIVO                                            SIN NOMBRE                            600.00
+ 81646     V-27112525   18/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81647     V-27765212   18/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81648     V-25266600   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     650.00
+ 81649     V-27814191   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81649     V-27814191   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81649     V-27814191   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81649     V-27814191   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81650     V-26139403   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81651     V-26969965   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     280.00
+ 81652     V-26132776   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81653     V-23502858   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     150.00
+ 81654     V-18666135   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81654     V-18666135   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81654     V-18666135   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81655     V-18666135   19/09/2015    EFECTIVO                                            SIN NOMBRE                            400.00
+ 81656     V-19158559   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81656     V-19158559   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ ------------------------------------------------------------------------------------------------------------------------------------------  U.E.C. SIGLO XXI                                                                                                   PAGINA:   6
+CONTROL DE PAGO                                           FECHA : 11/11/2015
+SCP20009                                                  HORA  : 11:54:09
+                          ERELACION DEL CIERRE DE CAJAF
+                      EDESDE: 02/09/2015 HASTA: 30/09/2015F
+ 
+
+ีออออออออัออออออออออออัออออออออออออัอออออออออออออัอออออออออออออออัออออออออออออออออออออออัออออออออออออออออออออออออออออออัอออออออออออออออธ
+ณ    Nง  ณ     Nง     ณ    Fecha   ณ    Tipo     ณ       Nง      ณ                      ณ                              ณ     Monto     ณ
+ณ Recibo ณ   Cedula   ณ   de Pago  ณ   de Pago   ณ    Dep/Cheq   ณ Banco                ณ Cobrador                     ณ    Cobrado    ณ
+ิออออออออฯออออออออออออฯออออออออออออฯอออออออออออออฯอออออออออออออออฯออออออออออออออออออออออฯออออออออออออออออออออออออออออออฯอออออออออออออออพ
+ 81656     V-19158559   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81657     V-12952693   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81657     V-12952693   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81657     V-12952693   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81658     V-12952693   19/09/2015    EFECTIVO                                            SIN NOMBRE                            400.00
+ 81659     V-22588693   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81660     V-19158559   19/09/2015    EFECTIVO                                            SIN NOMBRE                            300.00
+ 81661     V-26936331   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81661     V-26936331   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81661     V-26936331   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81661     V-26936331   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81662     V-26936331   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81663     V-30104863   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     350.00
+ 81663     V-30104863   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81663     V-30104863   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                      50.00
+ 81664     V-26936412   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81665     V-26513135   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81665     V-26513135   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81665     V-26513135   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81666     V-26513135   19/09/2015    EFECTIVO                                            SIN NOMBRE                            600.00
+ 81667     V-27936994   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81667     V-27936994   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81667     V-27936994   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81667     V-27936994   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81668     V-28671003   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81669     V-27765753   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                   1,500.00
+ 81670     V-20701921   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81670     V-20701921   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81670     V-20701921   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81671     V-28615575   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81671     V-28615575   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81671     V-28615575   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81672     V-27296787   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81672     V-27296787   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81672     V-27296787   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81673     V-20701921   21/09/2015    EFECTIVO                                            SIN NOMBRE                            600.00
+ 81674     V-28162570   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81675     V-28615575   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81676     V-27514281   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81676     V-27514281   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     150.00
+ 81676     V-27514281   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81676     V-27514281   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81677     V-25745795   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81678     V-26533316   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81679     R-201102     21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ ------------------------------------------------------------------------------------------------------------------------------------------  U.E.C. SIGLO XXI                                                                                                   PAGINA:   7
+CONTROL DE PAGO                                           FECHA : 11/11/2015
+SCP20009                                                  HORA  : 11:54:09
+                          ERELACION DEL CIERRE DE CAJAF
+                      EDESDE: 02/09/2015 HASTA: 30/09/2015F
+ 
+
+ีออออออออัออออออออออออัออออออออออออัอออออออออออออัอออออออออออออออัออออออออออออออออออออออัออออออออออออออออออออออออออออออัอออออออออออออออธ
+ณ    Nง  ณ     Nง     ณ    Fecha   ณ    Tipo     ณ       Nง      ณ                      ณ                              ณ     Monto     ณ
+ณ Recibo ณ   Cedula   ณ   de Pago  ณ   de Pago   ณ    Dep/Cheq   ณ Banco                ณ Cobrador                     ณ    Cobrado    ณ
+ิออออออออฯออออออออออออฯออออออออออออฯอออออออออออออฯอออออออออออออออฯออออออออออออออออออออออฯออออออออออออออออออออออออออออออฯอออออออออออออออพ
+ 81679     R-201102     21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81679     R-201102     21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81679     R-201102     21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81679     R-201102     21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81680     R-201102     21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81681     V-27936439   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ 81681     V-27936439   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81681     V-27936439   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81681     V-27936439   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00
+ 81682     V-20855140   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81682     V-20855140   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81682     V-20855140   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81682     V-20855140   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81683     V-20855140   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81684     V-27921676   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81685     V-25393219   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81685     V-25393219   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81685     V-25393219   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81685     V-25393219   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81686     V-25393219   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81687     V-25935006   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81687     V-25935006   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81687     V-25935006   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     250.00
+ 81687     V-25935006   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     300.00
+ 81688     V-25935006   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81689     V-25933193   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     250.00
+ 81689     V-25933193   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81689     V-25933193   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81690     V-25933193   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81691     V-27296787   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81692     V-15136664   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81692     V-15136664   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81692     V-15136664   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81693     V-15136664   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81694     V-26154379   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81695     V-25793383   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81696     V-24235848   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     180.00
+ 81697     V-24235848   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81698     V-30997427   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00
+ 81698     V-30997427   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81698     V-30997427   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81698     V-30997427   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81698     V-30997427   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81699     V-26444582   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81699     V-26444582   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ ------------------------------------------------------------------------------------------------------------------------------------------  U.E.C. SIGLO XXI                                                                                                   PAGINA:   8
+CONTROL DE PAGO                                           FECHA : 11/11/2015
+SCP20009                                                  HORA  : 11:54:09
+                          ERELACION DEL CIERRE DE CAJAF
+                      EDESDE: 02/09/2015 HASTA: 30/09/2015F
+ 
+
+ีออออออออัออออออออออออัออออออออออออัอออออออออออออัอออออออออออออออัออออออออออออออออออออออัออออออออออออออออออออออออออออออัอออออออออออออออธ
+ณ    Nง  ณ     Nง     ณ    Fecha   ณ    Tipo     ณ       Nง      ณ                      ณ                              ณ     Monto     ณ
+ณ Recibo ณ   Cedula   ณ   de Pago  ณ   de Pago   ณ    Dep/Cheq   ณ Banco                ณ Cobrador                     ณ    Cobrado    ณ
+ิออออออออฯออออออออออออฯออออออออออออฯอออออออออออออฯอออออออออออออออฯออออออออออออออออออออออฯออออออออออออออออออออออออออออออฯอออออออออออออออพ
+ 81699     V-26444582   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81699     V-26444582   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81700     V-26444582   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81701     C-466225     22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81702     V-27189487   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81703     V-25745798   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81703     V-25745798   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81703     V-25745798   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81704     V-26770068   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81704     V-26770068   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81704     V-26770068   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81705     V-26770068   23/09/2015    EFECTIVO                                            SIN NOMBRE                            400.00
+ 81706     V-28534655   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81707     V-30997427   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81708     V-27936994   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81709     V-25502695   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     620.00
+ 81710     V-26444875   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                   1,000.00
+ 81711     V-27514281   23/09/2015    EFECTIVO                                            SIN NOMBRE                            400.00
+ 81712     V-28606733   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81713     V-28606732   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81714     V-26753258   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81714     V-26753258   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00
+ 81714     V-26753258   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81715     V-26753258   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81716     V-25595065   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81716     V-25595065   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81716     V-25595065   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81716     V-25595065   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81717     V-28385888   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81718     V-27201297   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81719     V-25744551   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     900.00
+ 81720     V-27186096   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81721     V-26500167   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81722     V-26513876   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ 81722     V-26513876   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     100.00
+ 81723     V-27256514   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81724     V-25708126   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81725     V-25900115   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ 81725     V-25900115   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81725     V-25900115   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81725     V-25900115   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81725     V-25900115   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81726     V-26138306   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81727     V-25081311   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ 81727     V-25081311   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ ------------------------------------------------------------------------------------------------------------------------------------------  U.E.C. SIGLO XXI                                                                                                   PAGINA:   9
+CONTROL DE PAGO                                           FECHA : 11/11/2015
+SCP20009                                                  HORA  : 11:54:09
+                          ERELACION DEL CIERRE DE CAJAF
+                      EDESDE: 02/09/2015 HASTA: 30/09/2015F
+ 
+
+ีออออออออัออออออออออออัออออออออออออัอออออออออออออัอออออออออออออออัออออออออออออออออออออออัออออออออออออออออออออออออออออออัอออออออออออออออธ
+ณ    Nง  ณ     Nง     ณ    Fecha   ณ    Tipo     ณ       Nง      ณ                      ณ                              ณ     Monto     ณ
+ณ Recibo ณ   Cedula   ณ   de Pago  ณ   de Pago   ณ    Dep/Cheq   ณ Banco                ณ Cobrador                     ณ    Cobrado    ณ
+ิออออออออฯออออออออออออฯออออออออออออฯอออออออออออออฯอออออออออออออออฯออออออออออออออออออออออฯออออออออออออออออออออออออออออออฯอออออออออออออออพ
+ 81727     V-25081311   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81727     V-25081311   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81727     V-25081311   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81728     V-25081311   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81729     V-26623377   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     200.00
+ 81730     V-27644891   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81731     V-26753648   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81732     V-28086512   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81732     V-28086512   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81732     V-28086512   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81733     V-26047402   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ 81733     V-26047402   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81734     V-27728770   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                   1,500.00
+ 81735     V-28086515   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81736     V-26599712   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81737     V-25934088   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81737     V-25934088   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81737     V-25934088   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81737     V-25934088   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81738     V-16698125   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81738     V-16698125   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81738     V-16698125   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81738     V-16698125   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81739     V-26863843   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81739     V-26863843   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81739     V-26863843   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ 81740     V-26863843   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81741     V-26228197   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81741     V-26228197   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81741     V-26228197   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81742     V-22833265   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81743     V-27656656   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81744     V-27077502   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81745     V-30183997   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                   1,600.00
+ 81746     V-27728770   25/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81747     V-19079642   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81747     V-19079642   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81747     V-19079642   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81748     V-19159567   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81749     V-27407742   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     300.00
+ 81750     V-17337710   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81751     V-18905596   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81751     V-18905596   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81751     V-18905596   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     350.00
+ 81752     V-26688146   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ ------------------------------------------------------------------------------------------------------------------------------------------  U.E.C. SIGLO XXI                                                                                                   PAGINA:  10
+CONTROL DE PAGO                                           FECHA : 11/11/2015
+SCP20009                                                  HORA  : 11:54:09
+                          ERELACION DEL CIERRE DE CAJAF
+                      EDESDE: 02/09/2015 HASTA: 30/09/2015F
+ 
+
+ีออออออออัออออออออออออัออออออออออออัอออออออออออออัอออออออออออออออัออออออออออออออออออออออัออออออออออออออออออออออออออออออัอออออออออออออออธ
+ณ    Nง  ณ     Nง     ณ    Fecha   ณ    Tipo     ณ       Nง      ณ                      ณ                              ณ     Monto     ณ
+ณ Recibo ณ   Cedula   ณ   de Pago  ณ   de Pago   ณ    Dep/Cheq   ณ Banco                ณ Cobrador                     ณ    Cobrado    ณ
+ิออออออออฯออออออออออออฯออออออออออออฯอออออออออออออฯอออออออออออออออฯออออออออออออออออออออออฯออออออออออออออออออออออออออออออฯอออออออออออออออพ
+ 81752     V-26688146   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81752     V-26688146   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81752     V-26688146   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81753     V-26688146   26/09/2015    EFECTIVO                                            SIN NOMBRE                            400.00
+ 81754     V-19159567   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     800.00
+ 81755     V-25745790   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81755     V-25745790   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     100.00
+ 81755     V-25745790   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81755     V-25745790   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81756     V-27407742   26/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81757     V-25744910   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81757     V-25744910   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81757     V-25744910   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81758     V-25744910   26/09/2015    EFECTIVO                                            SIN NOMBRE                            300.00
+ 81759     V-18905596   26/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81760     V-27814191   26/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81761     V-26513110   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81761     V-26513110   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81761     V-26513110   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81761     V-26513110   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81762     V-26513110   26/09/2015    EFECTIVO                                            SIN NOMBRE                            100.00
+ 81763     V-18171158   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81763     V-18171158   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81763     V-18171158   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81764     V-18171158   26/09/2015    EFECTIVO                                            SIN NOMBRE                            600.00
+ 81765     V-19803386   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81765     V-19803386   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81765     V-19803386   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81765     V-19803386   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81766     V-19803386   26/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81767     V-25361519   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81767     V-25361519   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81767     V-25361519   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81768     V-25361519   26/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81769     V-27935523   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                       0.00
+ 81769     V-27935523   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81769     V-27935523   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81770     V-26623873   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                      50.00
+ 81770     V-26623873   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     300.00
+ 81770     V-26623873   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     400.00
+ 81771     V-26623873   26/09/2015    EFECTIVO                                            SIN NOMBRE                             50.00
+ 81772     V-30104863   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ 81772     V-30104863   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81772     V-30104863   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00
+ 81773     V-20223651   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ ------------------------------------------------------------------------------------------------------------------------------------------  U.E.C. SIGLO XXI                                                                                                   PAGINA:  11
+CONTROL DE PAGO                                           FECHA : 11/11/2015
+SCP20009                                                  HORA  : 11:54:09
+                          ERELACION DEL CIERRE DE CAJAF
+                      EDESDE: 02/09/2015 HASTA: 30/09/2015F
+ 
+
+ีออออออออัออออออออออออัออออออออออออัอออออออออออออัอออออออออออออออัออออออออออออออออออออออัออออออออออออออออออออออออออออออัอออออออออออออออธ
+ณ    Nง  ณ     Nง     ณ    Fecha   ณ    Tipo     ณ       Nง      ณ                      ณ                              ณ     Monto     ณ
+ณ Recibo ณ   Cedula   ณ   de Pago  ณ   de Pago   ณ    Dep/Cheq   ณ Banco                ณ Cobrador                     ณ    Cobrado    ณ
+ิออออออออฯออออออออออออฯออออออออออออฯอออออออออออออฯอออออออออออออออฯออออออออออออออออออออออฯออออออออออออออออออออออออออออออฯอออออออออออออออพ
+ 81773     V-20223651   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81774     V-20223651   26/09/2015    EFECTIVO                                            SIN NOMBRE                            500.00
+ 81775     V-26533232   26/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81776     V-26138441   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     150.00
+ 81776     V-26138441   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ 81777     V-21196984   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     500.00
+ 81778     V-27935523   26/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81779     V-23504109   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81779     V-23504109   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81779     V-23504109   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81779     V-23504109   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81780     V-25084932   26/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81781     V-26047957   26/09/2015    R E C I B O   A N U L A D O
+ 81782     V-27341993   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81783     V-22587030   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81784     V-26839837   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81784     V-26839837   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81784     V-26839837   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81784     V-26839837   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81785     V-26839837   26/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81786     V-27390642   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                   1,600.00
+ 81787     V-28415911   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81787     V-28415911   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81787     V-28415911   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81787     V-28415911   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81788     V-28415911   26/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81789     V-27093710   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81789     V-27093710   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81789     V-27093710   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81790     V-27093710   26/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81792     V-27186131   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     850.00
+ 81793     V-25745798   28/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81794     V-25084968   28/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81795     V-26190588   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ 81795     V-26190588   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81795     V-26190588   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     250.00
+ 81796     V-27936717   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81796     V-27936717   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ 81796     V-27936717   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ 81797     V-25936395   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                   1,500.00
+ 81798     V-25936395   28/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81799     V-27733544   28/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81800     V-27110384   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ 81800     V-27110384   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81801     V-27110384   28/09/2015    EFECTIVO                                            SIN NOMBRE                            300.00
+ ------------------------------------------------------------------------------------------------------------------------------------------  U.E.C. SIGLO XXI                                                                                                   PAGINA:  12
+CONTROL DE PAGO                                           FECHA : 11/11/2015
+SCP20009                                                  HORA  : 11:54:09
+                          ERELACION DEL CIERRE DE CAJAF
+                      EDESDE: 02/09/2015 HASTA: 30/09/2015F
+ 
+
+ีออออออออัออออออออออออัออออออออออออัอออออออออออออัอออออออออออออออัออออออออออออออออออออออัออออออออออออออออออออออออออออออัอออออออออออออออธ
+ณ    Nง  ณ     Nง     ณ    Fecha   ณ    Tipo     ณ       Nง      ณ                      ณ                              ณ     Monto     ณ
+ณ Recibo ณ   Cedula   ณ   de Pago  ณ   de Pago   ณ    Dep/Cheq   ณ Banco                ณ Cobrador                     ณ    Cobrado    ณ
+ิออออออออฯออออออออออออฯออออออออออออฯอออออออออออออฯอออออออออออออออฯออออออออออออออออออออออฯออออออออออออออออออออออออออออออฯอออออออออออออออพ
+ 81802     V-27506208   28/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81803     V-28575740   28/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81804     V-26513110   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     700.00
+ 81806     V-28533379   28/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81808     V-28518195   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81808     V-28518195   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81808     V-28518195   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81808     V-28518195   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81809     V-28518194   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81809     V-28518194   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81809     V-28518194   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81809     V-28518194   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81810     V-26154625   28/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81811     V-24179298   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81811     V-24179298   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81811     V-24179298   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81811     V-24179298   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81812     V-24179298   28/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81813     V-27840146   28/09/2015    EFECTIVO                                            SIN NOMBRE                            700.00
+ 81814     V-28575742   28/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81815     V-26599866   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81816     V-28518195   28/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81817     V-28518194   28/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81818     V-25445370   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     200.00
+ 81818     V-25445370   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ 81818     V-25445370   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81818     V-25445370   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81818     V-25445370   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81818     V-25445370   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81819     V-25445370   28/09/2015    EFECTIVO                                            SIN NOMBRE                             80.00
+ 81820     V-25445370   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     720.00
+ 81822     V-28255118   28/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81823     V-21197635   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81823     V-21197635   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81823     V-21197635   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81824     V-21197635   28/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81825     V-26662451   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ 81825     V-26662451   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81825     V-26662451   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81825     V-26662451   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00
+ 81815     V-26599866   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81815     V-26599866   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81826     V-27644514   29/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81827     V-28550546   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     150.00
+ 81827     V-28550546   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ ------------------------------------------------------------------------------------------------------------------------------------------  U.E.C. SIGLO XXI                                                                                                   PAGINA:  13
+CONTROL DE PAGO                                           FECHA : 11/11/2015
+SCP20009                                                  HORA  : 11:54:09
+                          ERELACION DEL CIERRE DE CAJAF
+                      EDESDE: 02/09/2015 HASTA: 30/09/2015F
+ 
+
+ีออออออออัออออออออออออัออออออออออออัอออออออออออออัอออออออออออออออัออออออออออออออออออออออัออออออออออออออออออออออออออออออัอออออออออออออออธ
+ณ    Nง  ณ     Nง     ณ    Fecha   ณ    Tipo     ณ       Nง      ณ                      ณ                              ณ     Monto     ณ
+ณ Recibo ณ   Cedula   ณ   de Pago  ณ   de Pago   ณ    Dep/Cheq   ณ Banco                ณ Cobrador                     ณ    Cobrado    ณ
+ิออออออออฯออออออออออออฯออออออออออออฯอออออออออออออฯอออออออออออออออฯออออออออออออออออออออออฯออออออออออออออออออออออออออออออฯอออออออออออออออพ
+ 81827     V-28550546   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81827     V-28550546   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81827     V-28550546   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     250.00
+ 81828     V-28550546   29/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81830     V-25222210   29/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81831     V-27602640   29/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81832     V-27296581   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81832     V-27296581   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81832     V-27296581   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     150.00
+ 81832     V-27296581   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81833     V-30736119   29/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81834     V-28343198   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81834     V-28343198   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81834     V-28343198   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81834     V-28343198   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81835     V-27506902   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                   1,600.00
+ 81836     V-25744742   29/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81837     V-25745779   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                       0.00
+ 81837     V-25745779   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81837     V-25745779   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81837     V-25745779   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81838     V-28534898   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                   1,600.00
+ 81839     V-25391985   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     600.00
+ 81840     V-25391985   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                   1,600.00
+ 81841     V-26444805   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                   1,600.00
+ 81842     V-27923862   29/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81844     V-25745798   30/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     800.00
+ 81845     V-27730615   30/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81846     V-27010604   30/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81847     V-26770703   30/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81848     V-27593360   30/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81849     V-28030920   30/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81850     V-28459659   30/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81851     V-23871565   30/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ 81852     V-25017143   30/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     600.00
+ 81853     V-27837713   30/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     200.00
+ 81853     V-27837713   30/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ 81853     V-27837713   30/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     250.00
+ 81854     C-4050       30/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     700.00
+ 81855     V-27334090   30/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     350.00
+ 81855     V-27334090   30/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81855     V-27334090   30/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81855     V-27334090   30/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     250.00
+ 81856     V-20853232   30/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     400.00
+ 81857     V-20853232   30/09/2015    EFECTIVO                                            SIN NOMBRE                            800.00
+ ------------------------------------------------------------------------------------------------------------------------------------------  U.E.C. SIGLO XXI                                                                                                   PAGINA:  14
+CONTROL DE PAGO                                           FECHA : 11/11/2015
+SCp20009                                                  HORA  : 11:54:09
+                          ERELACION DE ENTREGA DE CAJAF
+                          EFECHA DE PROCESO: 02/09/2015F
+ 
+
+ีออออออออัออออออออออออัออออออออออออัอออออออออออออัอออออออออออออออัออออออออออออออออออออออัออออออออออออออออออออออออออออออัอออออออออออออออธ
+ณ    Nง  ณ     Nง     ณ    Fecha   ณ    Tipo     ณ       Nง      ณ                      ณ                              ณ     Monto     ณ
+ณ Recibo ณ   Cedula   ณ   de Pago  ณ   de Pago   ณ    Dep/Cheq   ณ Banco                ณ Cobrador                     ณ    Cobrado    ณ
+ิออออออออฯออออออออออออฯออออออออออออฯอออออออออออออฯอออออออออออออออฯออออออออออออออออออออออฯออออออออออออออออออออออออออออออฯอออออออออออออออพ
+ 6175                   02/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     100.00 6177                   09/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     150.00 6178                   09/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     150.00 6176                   10/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     150.00 6179                   14/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                      50.00 6180                   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     100.00 6181                   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     100.00 6182                   15/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     100.00 6183                   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     100.00 6184                   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                      50.00 6185                   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                      50.00 6186                   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                      50.00 6187                   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                      50.00 6188                   17/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     150.00 6189                   18/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                     250.00 6190                   18/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     150.00 6191                   18/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                      50.00 6192                   19/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                      50.00 6193                   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     100.00 6194                   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00 6195                   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00 6196                   21/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00 6197                   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     150.00 6198                   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00 6199                   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     150.00 6200                   22/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     200.00 6201                   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     100.00 6202                   23/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00 6203                   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     100.00 6204                   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00 6205                   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00 6206                   24/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00 6207                   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00 6208                   25/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     100.00 6209                   26/09/2015    EFECTIVO                                            LEONARDO GONZALEZ                      50.00 6210                   26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     250.00 81791                  26/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00 81805                  28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00 81807                  28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00 6211                   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     100.00 6212                   28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     200.00 81821                  28/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00 81829                  29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     100.00 6213                   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     100.00 6214                   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     250.00 6215                   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     250.00 6216                   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     100.00 6217                   29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     100.00 81843                  29/09/2015    EFECTIVO                                            DARISMAR ALVARADO                      50.00 6218                   30/09/2015    EFECTIVO                                            DARISMAR ALVARADO                     100.00 ------------------------------------------------------------------------------------------------------------------------------------------
+ EFECTIVO      :      242,600.00
+ DEPOSITOS     :            0.00
+ CHEQUES       :            0.00
+ TOTAL COBRANZA:      242,600.00
+                                  F
