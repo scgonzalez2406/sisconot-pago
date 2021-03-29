@@ -70,36 +70,36 @@ do while .t.
    tu = 0
    mbandes = space(30)
    if m.pote = 1
-      @ 00, 00 say 'ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป'
-      @ 01, 00 say 'บ Cdula  :             Apell/Nombres :                                      บ'
-      @ 02, 00 say 'บ Menciขn :       (             )  Nro.Control:             Semestre :(  )   บ'
-      @ 03, 00 say 'บ Nro.Mat.Adicionales : (  )       Nro.Control Mat.Adicional:                บ'
-      @ 04, 00 say 'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ'
-      @ 05, 00 say 'บ Cขdigo del Plan:      Descripciขn:                                         บ'
-      @ 06, 00 say 'บ       Total Plan Cobro:               Fecha de Pago    :                   บ'
-      @ 07, 00 say 'บ           Monto Pagado:               Tipo Pago (E/D/C):                   บ'
-      @ 08, 00 say 'บ        Saldo por Pagar:               Nro. Dep./Cheq   :                   บ'
-      @ 09, 00 say 'บ    Total Deuda Vencida:               Banco :                              บ'
-      @ 10, 00 say 'บ  Monto Cancelar/Abonar:               Cobrador :                           บ'
-      @ 11, 00 say 'บ CONCEPTOS   ณ  Cuotas  ณ  Pagado  ณTบ CONCEPTOS    ณ  Cuotas  ณ  Pagado  ณTบ'
-      @ 11, 01 say ' CONCEPTOS   ณ  Cuotas  ณ  Pagado  ณTบ CONCEPTOS    ณ  Cuotas  ณ  Pagado  ณT' color n+/w
-      @ 12, 00 say 'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
-      @ 13, 00 say 'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
-      @ 14, 00 say 'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
-      @ 15, 00 say 'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
-      @ 16, 00 say 'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
-      @ 17, 00 say 'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
-      @ 18, 00 say 'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
-      @ 19, 00 say 'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
-      @ 20, 00 say 'บ             ณ          ณ          ณ บ              ณ          ณ          ณ บ'
-      @ 21, 00 say 'ศอออออออออออออฯออออออออออฯออออออออออฯอสออออออออออออออฯออออออออออฯออออออออออฯอผ'
+      @ 00, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý{'
+      @ 01, 00 say 'ý Cýdula  :             Apell/Nombres :                                      ý'
+      @ 02, 00 say 'ý Menciýn :       (             )  Nro.Control:             Semestre :(  )   ý'
+      @ 03, 00 say 'ý Nro.Mat.Adicionales : (  )       Nro.Control Mat.Adicional:                ý'
+      @ 04, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý6'
+      @ 05, 00 say 'ý Cýdigo del Plan:      Descripciýn:                                         ý'
+      @ 06, 00 say 'ý       Total Plan Cobro:               Fecha de Pago    :                   ý'
+      @ 07, 00 say 'ý           Monto Pagado:               Tipo Pago (E/D/C):                   ý'
+      @ 08, 00 say 'ý        Saldo por Pagar:               Nro. Dep./Cheq   :                   ý'
+      @ 09, 00 say 'ý    Total Deuda Vencida:               Banco :                              ý'
+      @ 10, 00 say 'ý  Monto Cancelar/Abonar:               Cobrador :                           ý'
+      @ 11, 00 say 'ý CONCEPTOS   ý  Cuotas  ý  Pagado  ýTý CONCEPTOS    ý  Cuotas  ý  Pagado  ýTý'
+      @ 11, 01 say ' CONCEPTOS   ý  Cuotas  ý  Pagado  ýTý CONCEPTOS    ý  Cuotas  ý  Pagado  ýT' color n+/w
+      @ 12, 00 say 'ý             ý          ý          ý ý              ý          ý          ý ý'
+      @ 13, 00 say 'ý             ý          ý          ý ý              ý          ý          ý ý'
+      @ 14, 00 say 'ý             ý          ý          ý ý              ý          ý          ý ý'
+      @ 15, 00 say 'ý             ý          ý          ý ý              ý          ý          ý ý'
+      @ 16, 00 say 'ý             ý          ý          ý ý              ý          ý          ý ý'
+      @ 17, 00 say 'ý             ý          ý          ý ý              ý          ý          ý ý'
+      @ 18, 00 say 'ý             ý          ý          ý ý              ý          ý          ý ý'
+      @ 19, 00 say 'ý             ý          ý          ý ý              ý          ý          ý ý'
+      @ 20, 00 say 'ý             ý          ý          ý ý              ý          ý          ý ý'
+      @ 21, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý|'
       m.pote = 2
       save screen to pelota
    endif
    restore screen from pelota
    @ 01, 12 get m.nac picture '@!M V,E,C,R' message 'Ingrese la Nacionalidad del Alumno'
    @ 01, 13 say '-'
-   @ 01, 14 get m.ced picture '99999999' valid m.ced >= 0 message 'Ingrese el Nฃmero del Cedula del Alumno' error 'Ingrese al Nฃmero de Cedula'
+   @ 01, 14 get m.ced picture '99999999' valid m.ced >= 0 message 'Ingrese el Nýmero del Cedula del Alumno' error 'Ingrese al Nýmero de Cedula'
    read
    if lastkey() = -8
       select 1
@@ -287,7 +287,7 @@ do while .t.
          select 2
          @li,col()+1 say pagado&lk pict '999,999.99'
          if pagado&lk > 0
-            marca=iif(pagado&lk=suma,'๛','ํ')
+            marca=iif(pagado&lk=suma,'ý','ý')
             @ li, col() + 1 say marca color w+/bg*
          endif
          li = li + 1
@@ -331,7 +331,7 @@ do while .t.
    select 2
    @li,col()+1 say pagado&lk pict '999,999.99'
    if pagado&lk > 0
-      marca=iif(pagado&lk=suma,'๛','ํ')
+      marca=iif(pagado&lk=suma,'ý','ý')
       @ li, col() + 1 say marca color w+/bg*
    endif
    if m.total_deud = m.monto_paga
@@ -399,7 +399,7 @@ do while .t.
       @ 07, 58 get mtipop default 'Efectivo' picture '@!M Deposito,Cheque,Efectivo'
       read
       if mtipop <> 'Efectivo'
-         @ 08, 58 get mnrode picture '@!S15' valid mnrode <> space(20) error 'El Nฃmero de la Transacciขn esta en blanco'
+         @ 08, 58 get mnrode picture '@!S15' valid mnrode <> space(20) error 'El Nýmero de la Transacciýn esta en blanco'
          @ 09, 47 get mbanco picture '@!' valid mbancos(mbanco)
          read
          if lastkey() = 27
@@ -491,12 +491,12 @@ do while .t.
          mpagrec&lk=m.cuota&lk-pagado&lk
          mpsaldo&lk=0
          @li,col1 say m.cuota&lk pict '999,999.99'
-         @ li, col() + 1 say '๛' color w+/bg*
+         @ li, col() + 1 say 'ý' color w+/bg*
          mdec1 = mdec1 + 1
       else
          if mpagado > 0
             @li,col1 say mpagado+pagado&lk pict '999,999.99'
-            @ li, col() + 1 say 'ํ' color w+/bg*
+            @ li, col() + 1 say 'ý' color w+/bg*
             mpsaldo&lk=m.cuota&lk-mpagado-pagado&lk
             mpagrec&lk=mpagado
             mdec2 = mdec2 + 1
@@ -547,11 +547,11 @@ do while .t.
       @ 02, 68 say mfechap  picture '@E'
       @ 03, 00 say '                                                      '
       @ 03, 28 say chr(14) + chr(15) + 'RECIBO DE PAGO' + chr(18) + chr(20) + ' '
-      @ 04, 00 say '                                                      ษออออออออออออออออออออป '
-      @ 05, 00 say 'C.I.:                                                 บ Bs.                บ '
+      @ 04, 00 say '                                                      ýýýýýýýýýýýýýýýýýýýý{ '
+      @ 05, 00 say 'C.I.:                                                 ý Bs.                ý '
       @ 05, 61 say mmontop picture '9,999,999.99'
       @ 05, 06 say m.cedula picture '!-99999999'
-      @ 06, 00 say 'ALUMNO:                                               ศออออออออออออออออออออผ '
+      @ 06, 00 say 'ALUMNO:                                               ýýýýýýýýýýýýýýýýýýýý| '
       @ 06, 08 say m.nombres picture '@!s45'
       @ 07, 00 say 'SEMESTRE: '+m.semestre
       @ 08, 00 say 'TURNO   : ' +m.turno
@@ -560,11 +560,11 @@ do while .t.
       @ 09, 00 say 'Hemos recibido la cantidad de:'
       @ 10, 00 say xcantidad picture '@!'
       li = 11
-      @ li, 00 say  'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ' +ng
+      @ li, 00 say  'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý' +ng
       li = li + 1
       @ li, 00 say  '  C O N C E P T O S                   S A L D O              M O N T O       ' + ngn
       li = li + 1
-      @ li, 00 say  'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ'
+      @ li, 00 say  'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý'
       mpagado = mmontop
       ii = 1
       li = li + 1
@@ -698,11 +698,11 @@ do while .t.
                   @ 22,  ;
                      00  ;
                      say  ;
-                     'ษอออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออออออออป'
+                     'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý{'
                   @ 23,  ;
                      00  ;
                      say  ;
-                     'บ            N O T A            บ  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           บ'
+                     'ý            N O T A            ý  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           ý'
                   if mtipop <>  ;
                         'Efectivo'
                      @ 23, 65 say 'X'
@@ -712,7 +712,7 @@ do while .t.
                   @ 24,  ;
                      00  ;
                      say  ;
-                     'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ  NRO. :                                     บ'
+                     'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý6  NRO. :                                     ý'
                   @ 24,  ;
                      41  ;
                      say  ;
@@ -722,7 +722,7 @@ do while .t.
                   @ 25,  ;
                      00  ;
                      say  ;
-                     'บ                               บ  BANCO:                                     บ'
+                     'ý                               ý  BANCO:                                     ý'
                   @ 25,  ;
                      41  ;
                      say  ;
@@ -730,7 +730,7 @@ do while .t.
                   @ 26,  ;
                      00  ;
                      say  ;
-                     'บ                               บ                                             บ'
+                     'ý                               ý                                             ý'
                   @ 26,  ;
                      05  ;
                      say  ;
@@ -738,15 +738,15 @@ do while .t.
                   @ 27,  ;
                      00  ;
                      say  ;
-                     'บ                               บ                        ___________________  บ'
+                     'ý                               ý                        ___________________  ý'
                   @ 28,  ;
                      00  ;
                      say  ;
-                     'บ                               บ                           RECIBIDO POR:     บ'
+                     'ý                               ý                           RECIBIDO POR:     ý'
                   @ 29,  ;
                      00  ;
                      say  ;
-                     'ศอออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออผ'
+                     'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý|'
                   @ 30,  ;
                      00  ;
                      say  ;
@@ -830,11 +830,11 @@ do while .t.
                   @ 04,  ;
                      00  ;
                      say  ;
-                     '                                                      ษออออออออออออออออออออป '
+                     '                                                      ýýýýýýýýýýýýýýýýýýýý{ '
                   @ 05,  ;
                      00  ;
                      say  ;
-                     'C.I.:                                                 บ Bs.                บ '
+                     'C.I.:                                                 ý Bs.                ý '
                   @ 05,  ;
                      61  ;
                      say  ;
@@ -850,7 +850,7 @@ do while .t.
                   @ 06,  ;
                      00  ;
                      say  ;
-                     'ALUMNO:                                               ศออออออออออออออออออออผ '
+                     'ALUMNO:                                               ýýýýýýýýýýýýýýýýýýýý| '
                   @ 06,  ;
                      08  ;
                      say  ;
@@ -886,7 +886,7 @@ do while .t.
                   @ li,  ;
                      00  ;
                      say  ;
-                     'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ' +  ;
+                     'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý' +  ;
                      ng
                   li =  ;
                      li +  ;
@@ -902,7 +902,7 @@ do while .t.
                   @ li,  ;
                      00  ;
                      say  ;
-                     'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ'
+                     'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý'
                   li =  ;
                      li +  ;
                      1
@@ -1021,22 +1021,22 @@ do while .t.
                      1
                   if li >  ;
                         20
-                     @ 22, 00 say 'ษอออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออออออออป'
-                     @ 23, 00 say 'บ            N O T A            บ  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           บ'
+                     @ 22, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý{'
+                     @ 23, 00 say 'ý            N O T A            ý  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           ý'
                      if mtipop <> 'Efectivo'
                         @ 23, 65 say 'X'
                      else
                         @ 23, 47 say 'X'
                      endif
-                     @ 24, 00 say 'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ  NRO. :                                     บ'
+                     @ 24, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý6  NRO. :                                     ý'
                      @ 24, 41 say mnrode picture '@!'
-                     @ 25, 00 say 'บ                               บ  BANCO:                                     บ'
+                     @ 25, 00 say 'ý                               ý  BANCO:                                     ý'
                      @ 25, 41 say mbandes
-                     @ 26, 00 say 'บ                               บ                                             บ'
+                     @ 26, 00 say 'ý                               ý                                             ý'
                      @ 26, 05 say 'CONTINUA ....'
-                     @ 27, 00 say 'บ                               บ                        ___________________  บ'
-                     @ 28, 00 say 'บ                               บ                           RECIBIDO POR:     บ'
-                     @ 29, 00 say 'ศอออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออผ'
+                     @ 27, 00 say 'ý                               ý                        ___________________  ý'
+                     @ 28, 00 say 'ý                               ý                           RECIBIDO POR:     ý'
+                     @ 29, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý|'
                      @ 30, 00 say ' NOTA: Los Pagos Realizados no estan sujetos a devoluciones'
                      select 9
                      @ 0, 1 say '  ' + chr(27) + chr(67) + chr(33)
@@ -1052,11 +1052,11 @@ do while .t.
                      @ 02, 68 say mfechap picture '@E'
                      @ 03, 00 say '                                                      '
                      @ 03, 28 say chr(14) + chr(15) + 'RECIBO DE PAGO' + chr(18) + chr(20) + ' '
-                     @ 04, 00 say '                                                      ษออออออออออออออออออออป '
-                     @ 05, 00 say 'C.I.:                                                 บ Bs.                บ '
+                     @ 04, 00 say '                                                      ýýýýýýýýýýýýýýýýýýýý{ '
+                     @ 05, 00 say 'C.I.:                                                 ý Bs.                ý '
                      @ 05, 61 say mmontop picture '9,999,999.99'
                      @ 05, 06 say m.cedula picture '!-99999999'
-                     @ 06, 00 say 'ALUMNO:                                               ศออออออออออออออออออออผ '
+                     @ 06, 00 say 'ALUMNO:                                               ýýýýýýýýýýýýýýýýýýýý| '
                      @ 06, 08 say m.nombres picture '@!s45'
                      @ 07, 00 say 'SEMESTRE: ' + m.semestre
                      @ 08, 00 say 'TURNO   : ' + m.turno
@@ -1066,11 +1066,11 @@ do while .t.
                      @ 09, 00 say 'Hemos recibido la cantidad de:'
                      @ 10, 00 say xcantidad picture '@!'
                      li = 11
-                     @ li, 00 say 'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ' + ng
+                     @ li, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý' + ng
                      li = li + 1
                      @ li, 00 say '  C O N C E P T O S                                          M O N T O       ' + ngn
                      li = li + 1
-                     @ li, 00 say 'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ'
+                     @ li, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý'
                      li = li + 1
                   endif
                endfor
@@ -1079,29 +1079,29 @@ do while .t.
          endif
       endfor
       @ 22, 00 say  ;
-         'ษอออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออออออออป'
+         'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý{'
       @ 23, 00 say  ;
-         'บ            N O T A            บ  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           บ'
+         'ý            N O T A            ý  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           ý'
       if mtipop <> 'Efectivo'
          @ 23, 65 say 'X'
       else
          @ 23, 47 say 'X'
       endif
       @ 24, 00 say  ;
-         'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ  NRO. :                                     บ'
+         'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý6  NRO. :                                     ý'
       @ 24, 41 say mnrode  ;
          picture '@!'
       @ 25, 00 say  ;
-         'บ                               บ  BANCO:                                     บ'
+         'ý                               ý  BANCO:                                     ý'
       @ 25, 41 say mbandes
       @ 26, 00 say  ;
-         'บ                               บ                                             บ'
+         'ý                               ý                                             ý'
       @ 27, 00 say  ;
-         'บ                               บ                        ___________________  บ'
+         'ý                               ý                        ___________________  ý'
       @ 28, 00 say  ;
-         'บ                               บ                           RECIBIDO POR:     บ'
+         'ý                               ý                           RECIBIDO POR:     ý'
       @ 29, 00 say  ;
-         'ศอออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออผ'
+         'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý|'
       @ 30, 00 say  ;
          ' NOTA: Los Pagos Realizados no estan sujetos a devoluciones'
       eject
@@ -1306,7 +1306,6 @@ do while .t.
    m.ced = 0
    entra = .f.
 enddo
-
 procedure validar
 parameter xvar
 do case
@@ -1398,36 +1397,35 @@ endif
 show get mcobrador
 return .t.
 *
-
 function deuda_ven1
 define window deuda from 00, 00  ;
    to 24, 79 shadow title  ;
    'Registro de Control de Deuda Anterior'  ;
    color scheme 5
 activate window deuda
-@ 00, 00 say 'ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป'
-@ 01, 00 say 'บ C.I. :            Alumno:                                                  บ'
-@ 02, 00 say 'บ Menciขn :                   Semestre    Plan de Cobro:       Lapso:        บ'
-@ 03, 00 say 'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ'
-@ 04, 00 say 'บTot.Deuda Vencida Mens.:               Fecha de Pago    :                   บ'
-@ 05, 00 say 'บ   Monto Pagado/Abonado:               Tipo Pago (E/D/C):                   บ'
-@ 06, 00 say 'บ  Saldo Pendiente Pagar:               Nro. Dep./Cheq   :                   บ'
-@ 07, 00 say 'บ            % Descuento:               Banco :                              บ'
-@ 08, 00 say 'บ  Monto Cancelar/Abonar:               Cobrador :                           บ'
-@ 09, 00 say 'บ  Nro. ณ  Descripciขn de Conceptos           ณ Fecha Vencmto. ณ Monto Cuota บ' color n/w
-@ 10, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 11, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 12, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 13, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 14, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 15, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 16, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 17, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 18, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 19, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 20, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 21, 00 say 'วฤฤฤฤฤฤฤมฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤมฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤลฤฤฤฤฤฤฤฤฤฤฤฤฤถ'
-@ 22, 00 say 'บ                                                              ณ             บ'
+@ 00, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý{'
+@ 01, 00 say 'ý C.I. :            Alumno:                                                  ý'
+@ 02, 00 say 'ý Menciýn :                   Semestre    Plan de Cobro:       Lapso:        ý'
+@ 03, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý6'
+@ 04, 00 say 'ýTot.Deuda Vencida Mens.:               Fecha de Pago    :                   ý'
+@ 05, 00 say 'ý   Monto Pagado/Abonado:               Tipo Pago (E/D/C):                   ý'
+@ 06, 00 say 'ý  Saldo Pendiente Pagar:               Nro. Dep./Cheq   :                   ý'
+@ 07, 00 say 'ý            % Descuento:               Banco :                              ý'
+@ 08, 00 say 'ý  Monto Cancelar/Abonar:               Cobrador :                           ý'
+@ 09, 00 say 'ý  Nro. ý  Descripciýn de Conceptos           ý Fecha Vencmto. ý Monto Cuota ý' color n/w
+@ 10, 00 say 'ý       ý                                     ý                ý             ý'
+@ 11, 00 say 'ý       ý                                     ý                ý             ý'
+@ 12, 00 say 'ý       ý                                     ý                ý             ý'
+@ 13, 00 say 'ý       ý                                     ý                ý             ý'
+@ 14, 00 say 'ý       ý                                     ý                ý             ý'
+@ 15, 00 say 'ý       ý                                     ý                ý             ý'
+@ 16, 00 say 'ý       ý                                     ý                ý             ý'
+@ 17, 00 say 'ý       ý                                     ý                ý             ý'
+@ 18, 00 say 'ý       ý                                     ý                ý             ý'
+@ 19, 00 say 'ý       ý                                     ý                ý             ý'
+@ 20, 00 say 'ý       ý                                     ý                ý             ý'
+@ 21, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý6'
+@ 22, 00 say 'ý                                                              ý             ý'
 select 7
 xlap = lapsomat
 m.total_d = total_d - monto_p
@@ -1571,7 +1569,7 @@ do while .t.
       loop
    endif
    if m.tipop <> 'Efectivo'
-      @ 06, 58 get m.nrode picture '@!S15' valid m.nrode <> space(20) error 'El Nฃmero de la Transacciขn esta en blanco'
+      @ 06, 58 get m.nrode picture '@!S15' valid m.nrode <> space(20) error 'El Nýmero de la Transacciýn esta en blanco'
       @ 07, 47 get m.banco picture '@!' valid mbancos(m.banco)
       read
       select 10
@@ -1700,22 +1698,22 @@ else
    @ 02, 68 say m.fechap picture '@E'
    @ 03, 00 say '                                                      '
    @ 03, 28 say chr(14) + chr(15) + 'RECIBO DE PAGO' + chr(18) + chr(20) + ' '
-   @ 04, 00 say '                                                      ษออออออออออออออออออออป '
-   @ 05, 00 say 'C.I.:                                                 บ Bs.                บ '
+   @ 04, 00 say '                                                      ýýýýýýýýýýýýýýýýýýýý{ '
+   @ 05, 00 say 'C.I.:                                                 ý Bs.                ý '
    @ 05, 61 say m.montop picture '9,999,999.99'
    @ 05, 06 say m.cedula picture '!-99999999'
-   @ 06, 00 say 'ALUMNO:                                               ศออออออออออออออออออออผ '
+   @ 06, 00 say 'ALUMNO:                                               ýýýýýýýýýýýýýýýýýýýý| '
    @ 06, 08 say m.nombres picture '@!s45'
    xcantidad = letras(m.montop)
    xcantidad = alltrim(xcantidad)
    @ 08, 00 say 'Hemos recibido la cantidad de:'
    @ 10, 00 say xcantidad picture '@!'
    li = 11
-   @ li, 00 say 'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ'+ ng
+   @ li, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý'+ ng
    li = li + 1
    @ li, 00 say '  C O N C E P T O S                                          M O N T O       ' + ngn
    li = li + 1
-   @ li, 00 say 'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ'
+   @ li, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý'
    li = li + 1
    suma = 0.00
    m.montop1 = 0.00
@@ -1738,21 +1736,21 @@ else
       li = li + 1
       m.montop1 = m.montop1 - datos(s,2)
    endfor
-   @ 21, 00 say 'ษอออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออออออออป'
-   @ 22, 00 say 'บ            N O T A            บ  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           บ'
+   @ 21, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý{'
+   @ 22, 00 say 'ý            N O T A            ý  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           ý'
    if m.tipop <> 'Efectivo'
       @ 22, 65 say 'X'
    else
       @ 22, 47 say 'X'
    endif
-   @ 23, 00 say 'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ  NRO. :                                     บ'
+   @ 23, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý6  NRO. :                                     ý'
    @ 23, 41 say m.nrode picture '@!'
-   @ 24, 00 say 'บ                               บ  BANCO:                                     บ'
+   @ 24, 00 say 'ý                               ý  BANCO:                                     ý'
    @ 24, 41 say m.desban
-   @ 25, 00 say 'บ                               บ                                             บ'
-   @ 26, 00 say 'บ                               บ                        ___________________  บ'
-   @ 27, 00 say 'บ                               บ                           RECIBIDO POR:     บ'
-   @ 28, 00 say 'ศอออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออผ'
+   @ 25, 00 say 'ý                               ý                                             ý'
+   @ 26, 00 say 'ý                               ý                        ___________________  ý'
+   @ 27, 00 say 'ý                               ý                           RECIBIDO POR:     ý'
+   @ 28, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý|'
    @ 29, 00 say ' NOTA: Los Pagos Realizados no estan sujetos a devoluciones'
    @ 30, 00 say ' '
    eject
@@ -1830,36 +1828,35 @@ do while .t.
 enddo
 release window deuda
 return iif(nuevosaldo = 0, .t.,.f.)
-
 function deuda_ven2
 define window deuda from 00, 00  ;
    to 24, 79 shadow title  ;
    'Registro de Control de Deuda Anterior'  ;
    color scheme 5
 activate window deuda
-@ 00, 00 say 'ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป'
-@ 01, 00 say 'บ C.I. :            Alumno:                                                  บ'
-@ 02, 00 say 'บ Menciขn :                   Semestre    Plan de Cobro:       Lapso:        บ'
-@ 03, 00 say 'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ'
-@ 04, 00 say 'บTot.Deuda Vencida Adic.:               Fecha de Pago    :                   บ'
-@ 05, 00 say 'บ   Monto Pagado/Abonado:               Tipo Pago (E/D/C):                   บ'
-@ 06, 00 say 'บ  Saldo Pendiente Pagar:               Nro. Dep./Cheq   :                   บ'
-@ 07, 00 say 'บ            % Descuento:               Banco :                              บ'
-@ 08, 00 say 'บ  Monto Cancelar/Abonar:               Cobrador :                           บ'
-@ 09, 00 say 'บ  Nro. ณ  Descripciขn de Conceptos           ณ Fecha Vencmto. ณ Monto Cuota บ'  color n/w
-@ 10, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 11, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 12, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 13, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 14, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 15, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 16, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 17, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 18, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 19, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 20, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 21, 00 say 'วฤฤฤฤฤฤฤมฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤมฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤลฤฤฤฤฤฤฤฤฤฤฤฤฤถ'
-@ 22, 00 say 'บ                                                              ณ             บ'
+@ 00, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý{'
+@ 01, 00 say 'ý C.I. :            Alumno:                                                  ý'
+@ 02, 00 say 'ý Menciýn :                   Semestre    Plan de Cobro:       Lapso:        ý'
+@ 03, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý6'
+@ 04, 00 say 'ýTot.Deuda Vencida Adic.:               Fecha de Pago    :                   ý'
+@ 05, 00 say 'ý   Monto Pagado/Abonado:               Tipo Pago (E/D/C):                   ý'
+@ 06, 00 say 'ý  Saldo Pendiente Pagar:               Nro. Dep./Cheq   :                   ý'
+@ 07, 00 say 'ý            % Descuento:               Banco :                              ý'
+@ 08, 00 say 'ý  Monto Cancelar/Abonar:               Cobrador :                           ý'
+@ 09, 00 say 'ý  Nro. ý  Descripciýn de Conceptos           ý Fecha Vencmto. ý Monto Cuota ý'  color n/w
+@ 10, 00 say 'ý       ý                                     ý                ý             ý'
+@ 11, 00 say 'ý       ý                                     ý                ý             ý'
+@ 12, 00 say 'ý       ý                                     ý                ý             ý'
+@ 13, 00 say 'ý       ý                                     ý                ý             ý'
+@ 14, 00 say 'ý       ý                                     ý                ý             ý'
+@ 15, 00 say 'ý       ý                                     ý                ý             ý'
+@ 16, 00 say 'ý       ý                                     ý                ý             ý'
+@ 17, 00 say 'ý       ý                                     ý                ý             ý'
+@ 18, 00 say 'ý       ý                                     ý                ý             ý'
+@ 19, 00 say 'ý       ý                                     ý                ý             ý'
+@ 20, 00 say 'ý       ý                                     ý                ý             ý'
+@ 21, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý6'
+@ 22, 00 say 'ý                                                              ý             ý'
 select 7
 xlap = lapsomat
 m.total_d = total_d - monto_p
@@ -2003,7 +2000,7 @@ do while .t.
       loop
    endif
    if m.tipop <> 'Efectivo'
-      @ 06, 58 get m.nrode picture '@!S15' valid m.nrode <> space(20) error 'El Nฃmero de la Transacciขn esta en blanco'
+      @ 06, 58 get m.nrode picture '@!S15' valid m.nrode <> space(20) error 'El Nýmero de la Transacciýn esta en blanco'
       @ 07, 47 get m.banco picture '@!' valid  mbancos(m.banco)
       read
       select 10
@@ -2132,22 +2129,22 @@ else
    @ 02, 68 say m.fechap picture '@E'
    @ 03, 00 say '                                                      '
    @ 03, 28 say chr(14) + chr(15) + 'RECIBO DE PAGO' + chr(18) + chr(20) + ' '
-   @ 04, 00 say '                                                      ษออออออออออออออออออออป '
-   @ 05, 00 say 'C.I.:                                                 บ Bs.                บ '
+   @ 04, 00 say '                                                      ýýýýýýýýýýýýýýýýýýýý{ '
+   @ 05, 00 say 'C.I.:                                                 ý Bs.                ý '
    @ 05, 61 say m.montop picture '9,999,999.99'
    @ 05, 06 say m.cedula picture '!-99999999'
-   @ 06, 00 say 'ALUMNO:                                               ศออออออออออออออออออออผ '
+   @ 06, 00 say 'ALUMNO:                                               ýýýýýýýýýýýýýýýýýýýý| '
    @ 06, 08 say m.nombres picture '@!s45'
    xcantidad = letras(m.montop)
    xcantidad = alltrim(xcantidad)
    @ 08, 00 say 'Hemos recibido la cantidad de:'
    @ 10, 00 say xcantidad picture '@!'
    li = 11
-   @ li, 00 say 'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ' + ng
+   @ li, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý' + ng
    li = li + 1
    @ li, 00 say '  C O N C E P T O S                                          M O N T O       ' + ngn
    li = li + 1
-   @ li, 00 say 'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ'
+   @ li, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý'
    li = li + 1
    suma = 0.00
    m.montop1 = 0.00
@@ -2170,21 +2167,21 @@ else
       li = li + 1
       m.montop1 = m.montop1 - datos(s,2)
    endfor
-   @ 21, 00 say 'ษอออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออออออออป'
-   @ 22, 00 say 'บ            N O T A            บ  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           บ'
+   @ 21, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý{'
+   @ 22, 00 say 'ý            N O T A            ý  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           ý'
    if m.tipop <> 'Efectivo'
       @ 22, 65 say 'X'
    else
       @ 22, 47 say 'X'
    endif
-   @ 23, 00 say 'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ  NRO. :                                     บ'
+   @ 23, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý6  NRO. :                                     ý'
    @ 23, 41 say m.nrode picture '@!'
-   @ 24, 00 say 'บ                               บ  BANCO:                                     บ'
+   @ 24, 00 say 'ý                               ý  BANCO:                                     ý'
    @ 24, 41 say m.desban
-   @ 25, 00 say 'บ                               บ                                             บ'
-   @ 26, 00 say 'บ                               บ                        ___________________  บ'
-   @ 27, 00 say 'บ                               บ                           RECIBIDO POR:     บ'
-   @ 28, 00 say 'ศอออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออผ'
+   @ 25, 00 say 'ý                               ý                                             ý'
+   @ 26, 00 say 'ý                               ý                        ___________________  ý'
+   @ 27, 00 say 'ý                               ý                           RECIBIDO POR:     ý'
+   @ 28, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý|'
    @ 29, 00 say ' NOTA: Los Pagos Realizados no estan sujetos a devoluciones'
    @ 30, 00 say ' '
    eject
@@ -2231,7 +2228,6 @@ for qi=1 to 20
        m.cuota&lqi=cuota&lqi
     endif      
 endfor
-
 do while .t.
    if rlock()
       mpagado = m.montop
@@ -2264,36 +2260,35 @@ do while .t.
 enddo
 release window deuda
 return iif(nuevosaldo = 0, .t.,.f.)
-
 function deuda_ven3
 define window deuda from 00, 00  ;
    to 24, 79 shadow title  ;
    'Registro de Control de Deuda Anterior'  ;
    color scheme 5
 activate window deuda
-@ 00, 00 say 'ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป'
-@ 01, 00 say 'บ C.I. :            Alumno:                                                  บ'
-@ 02, 00 say 'บ Menciขn :                   Semestre    Plan de Cobro:       Lapso:        บ'
-@ 03, 00 say 'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ'
-@ 04, 00 say 'บTot.Deuda Vencida Adic.:               Fecha de Pago    :                   บ'
-@ 05, 00 say 'บ   Monto Pagado/Abonado:               Tipo Pago (E/D/C):                   บ'
-@ 06, 00 say 'บ  Saldo Pendiente Pagar:               Nro. Dep./Cheq   :                   บ'
-@ 07, 00 say 'บ            % Descuento:               Banco :                              บ'
-@ 08, 00 say 'บ  Monto Cancelar/Abonar:               Cobrador :                           บ'
-@ 09, 00 say 'บ  Nro. ณ  Descripciขn de Conceptos           ณ Fecha Vencmto. ณ Monto Cuota บ'  color n/w
-@ 10, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 11, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 12, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 13, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 14, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 15, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 16, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 17, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 18, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 19, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 20, 00 say 'บ       ณ                                     ณ                ณ             บ'
-@ 21, 00 say 'วฤฤฤฤฤฤฤมฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤมฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤลฤฤฤฤฤฤฤฤฤฤฤฤฤถ'
-@ 22, 00 say 'บ                                                              ณ             บ'
+@ 00, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý{'
+@ 01, 00 say 'ý C.I. :            Alumno:                                                  ý'
+@ 02, 00 say 'ý Menciýn :                   Semestre    Plan de Cobro:       Lapso:        ý'
+@ 03, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý6'
+@ 04, 00 say 'ýTot.Deuda Vencida Adic.:               Fecha de Pago    :                   ý'
+@ 05, 00 say 'ý   Monto Pagado/Abonado:               Tipo Pago (E/D/C):                   ý'
+@ 06, 00 say 'ý  Saldo Pendiente Pagar:               Nro. Dep./Cheq   :                   ý'
+@ 07, 00 say 'ý            % Descuento:               Banco :                              ý'
+@ 08, 00 say 'ý  Monto Cancelar/Abonar:               Cobrador :                           ý'
+@ 09, 00 say 'ý  Nro. ý  Descripciýn de Conceptos           ý Fecha Vencmto. ý Monto Cuota ý'  color n/w
+@ 10, 00 say 'ý       ý                                     ý                ý             ý'
+@ 11, 00 say 'ý       ý                                     ý                ý             ý'
+@ 12, 00 say 'ý       ý                                     ý                ý             ý'
+@ 13, 00 say 'ý       ý                                     ý                ý             ý'
+@ 14, 00 say 'ý       ý                                     ý                ý             ý'
+@ 15, 00 say 'ý       ý                                     ý                ý             ý'
+@ 16, 00 say 'ý       ý                                     ý                ý             ý'
+@ 17, 00 say 'ý       ý                                     ý                ý             ý'
+@ 18, 00 say 'ý       ý                                     ý                ý             ý'
+@ 19, 00 say 'ý       ý                                     ý                ý             ý'
+@ 20, 00 say 'ý       ý                                     ý                ý             ý'
+@ 21, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý6'
+@ 22, 00 say 'ý                                                              ý             ý'
 select 7
 xlap = lapsomat
 m.total_d = total_d - monto_p
@@ -2403,7 +2398,7 @@ do while .t.
       loop
    endif
    if m.tipop <> 'Efectivo'
-      @ 06, 58 get m.nrode picture '@!S15' valid m.nrode <> space(20) error  'El Nฃmero de la Transacciขn esta en blanco'
+      @ 06, 58 get m.nrode picture '@!S15' valid m.nrode <> space(20) error  'El Nýmero de la Transacciýn esta en blanco'
       @ 07, 47 get m.banco picture '@!' valid mbancos(m.banco)
       read
       select 10
@@ -2532,22 +2527,22 @@ else
    @ 02, 68 say m.fechap picture '@E'
    @ 03, 00 say '                                                      '
    @ 03, 28 say chr(14) + chr(15) + 'RECIBO DE PAGO' + chr(18) + chr(20) + ' '
-   @ 04, 00 say '                                                      ษออออออออออออออออออออป '
-   @ 05, 00 say 'C.I.:                                                 บ Bs.                บ '
+   @ 04, 00 say '                                                      ýýýýýýýýýýýýýýýýýýýý{ '
+   @ 05, 00 say 'C.I.:                                                 ý Bs.                ý '
    @ 05, 61 say m.montop picture '9,999,999.99'
    @ 05, 06 say m.cedula picture '!-99999999'
-   @ 06, 00 say 'ALUMNO:                                               ศออออออออออออออออออออผ '
+   @ 06, 00 say 'ALUMNO:                                               ýýýýýýýýýýýýýýýýýýýý| '
    @ 06, 08 say m.nombres picture '@!s45'
    xcantidad = letras(m.montop)
    xcantidad = alltrim(xcantidad)
    @ 08, 00 say 'Hemos recibido la cantidad de:'
    @ 10, 00 say xcantidad picture '@!'
    li = 11
-   @ li, 00 say 'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ' + ng
+   @ li, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý' + ng
    li = li + 1
    @ li, 00 say '  C O N C E P T O S                                          M O N T O       ' + ngn
    li = li + 1
-   @ li, 00 say 'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ'
+   @ li, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý'
    li = li + 1
    select 7
    set order to cedula
@@ -2563,21 +2558,21 @@ else
    li = li + 1
    @ li, 00 say concepto5
    li = li + 1
-   @ 21, 00 say 'ษอออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออออออออป'
-   @ 22, 00 say 'บ            N O T A            บ  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           บ'
+   @ 21, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý{'
+   @ 22, 00 say 'ý            N O T A            ý  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           ý'
    if m.tipop <> 'Efectivo'
       @ 22, 65 say 'X'
    else
       @ 22, 47 say 'X'
    endif
-   @ 23, 00 say 'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ  NRO. :                                     บ'
+   @ 23, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý6  NRO. :                                     ý'
    @ 23, 41 say m.nrode picture '@!'
-   @ 24, 00 say 'บ                               บ  BANCO:                                     บ'
+   @ 24, 00 say 'ý                               ý  BANCO:                                     ý'
    @ 24, 41 say m.desban
-   @ 25, 00 say 'บ                               บ                                             บ'
-   @ 26, 00 say 'บ                               บ                        ___________________  บ'
-   @ 27, 00 say 'บ                               บ                           RECIBIDO POR:     บ'
-   @ 28, 00 say 'ศอออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออผ'
+   @ 25, 00 say 'ý                               ý                                             ý'
+   @ 26, 00 say 'ý                               ý                        ___________________  ý'
+   @ 27, 00 say 'ý                               ý                           RECIBIDO POR:     ý'
+   @ 28, 00 say 'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý|'
    @ 29, 00 say ' NOTA: Los Pagos Realizados no estan sujetos a devoluciones'
    @ 30, 00 say ' '
    eject
@@ -2635,7 +2630,6 @@ do while .t.
 enddo
 release window deuda
 return iif(nuevosaldo = 0, .t., .f.)
-
 procedure repite_rec
 set device to screen
 mrecibo = 0
@@ -2697,15 +2691,15 @@ else
       chr(15) + 'RECIBO DE PAGO' +  ;
       chr(18) + chr(20) + ' '
    @ 04, 00 say  ;
-      '                                                      ษออออออออออออออออออออป '
+      '                                                      ýýýýýýýýýýýýýýýýýýýý{ '
    @ 05, 00 say  ;
-      'C.I.:                                                 บ Bs.                บ '
+      'C.I.:                                                 ý Bs.                ý '
    @ 05, 61 say mmontop picture  ;
       '9,999,999.99'
    @ 05, 06 say m.cedula  ;
       picture '!-99999999'
    @ 06, 00 say  ;
-      'ALUMNO:                                               ศออออออออออออออออออออผ '
+      'ALUMNO:                                               ýýýýýýýýýýýýýýýýýýýý| '
    @ 06, 08 say m.nombres  ;
       picture '@!s45'
    @ 07, 00 say 'SEMESTRE: ' +  ;
@@ -2720,7 +2714,7 @@ else
       picture '@!'
    li = 11
    @ li, 00 say  ;
-      'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ' +  ;
+      'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý' +  ;
       ng
    li = li + 1
    @ li, 00 say  ;
@@ -2728,7 +2722,7 @@ else
       ngn
    li = li + 1
    @ li, 00 say  ;
-      'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ'
+      'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý'
    mpagado = mmontop
    ii = 1
    li = li + 1
@@ -2845,10 +2839,10 @@ else
             if li > 20
                @ 22, 00  ;
                   say  ;
-                  'ษอออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออออออออป'
+                  'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý{'
                @ 23, 00  ;
                   say  ;
-                  'บ            N O T A            บ  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           บ'
+                  'ý            N O T A            ý  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           ý'
                if mtipop <>  ;
                      'Efectivo'
                   @ 23,  ;
@@ -2863,7 +2857,7 @@ else
                endif
                @ 24, 00  ;
                   say  ;
-                  'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ  NRO. :                                     บ'
+                  'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý6  NRO. :                                     ý'
                @ 24, 41  ;
                   say  ;
                   mnrode  ;
@@ -2871,25 +2865,25 @@ else
                   '@!'
                @ 25, 00  ;
                   say  ;
-                  'บ                               บ  BANCO:                                     บ'
+                  'ý                               ý  BANCO:                                     ý'
                @ 25, 41  ;
                   say  ;
                   mbandes
                @ 26, 00  ;
                   say  ;
-                  'บ                               บ                                             บ'
+                  'ý                               ý                                             ý'
                @ 26, 05  ;
                   say  ;
                   'CONTINUA ....'
                @ 27, 00  ;
                   say  ;
-                  'บ                               บ                        ___________________  บ'
+                  'ý                               ý                        ___________________  ý'
                @ 28, 00  ;
                   say  ;
-                  'บ                               บ                           RECIBIDO POR:     บ'
+                  'ý                               ý                           RECIBIDO POR:     ý'
                @ 29, 00  ;
                   say  ;
-                  'ศอออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออผ'
+                  'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý|'
                @ 30, 00  ;
                   say  ;
                   ' NOTA: Los Pagos Realizados no estan sujetos a devoluciones'
@@ -2958,10 +2952,10 @@ else
                   ' '
                @ 04, 00  ;
                   say  ;
-                  '                                                      ษออออออออออออออออออออป '
+                  '                                                      ýýýýýýýýýýýýýýýýýýýý{ '
                @ 05, 00  ;
                   say  ;
-                  'C.I.:                                                 บ Bs.                บ '
+                  'C.I.:                                                 ý Bs.                ý '
                @ 05, 61  ;
                   say  ;
                   mmontop  ;
@@ -2974,7 +2968,7 @@ else
                   '!-99999999'
                @ 06, 00  ;
                   say  ;
-                  'ALUMNO:                                               ศออออออออออออออออออออผ '
+                  'ALUMNO:                                               ýýýýýýýýýýýýýýýýýýýý| '
                @ 06, 08  ;
                   say  ;
                   m.nombres  ;
@@ -3003,7 +2997,7 @@ else
                li = 11
                @ li, 00  ;
                   say  ;
-                  'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ' +  ;
+                  'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý' +  ;
                   ng
                li = li +  ;
                   1
@@ -3015,7 +3009,7 @@ else
                   1
                @ li, 00  ;
                   say  ;
-                  'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ'
+                  'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý'
                li = li +  ;
                   1
             endif
@@ -3168,11 +3162,11 @@ else
                   @ 22,  ;
                      00  ;
                      say  ;
-                     'ษอออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออออออออป'
+                     'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý{'
                   @ 23,  ;
                      00  ;
                      say  ;
-                     'บ            N O T A            บ  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           บ'
+                     'ý            N O T A            ý  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           ý'
                   if mtipop <>  ;
                         'Efectivo'
                      @ 23, 65 say 'X'
@@ -3182,7 +3176,7 @@ else
                   @ 24,  ;
                      00  ;
                      say  ;
-                     'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ  NRO. :                                     บ'
+                     'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý6  NRO. :                                     ý'
                   @ 24,  ;
                      41  ;
                      say  ;
@@ -3192,7 +3186,7 @@ else
                   @ 25,  ;
                      00  ;
                      say  ;
-                     'บ                               บ  BANCO:                                     บ'
+                     'ý                               ý  BANCO:                                     ý'
                   @ 25,  ;
                      41  ;
                      say  ;
@@ -3200,7 +3194,7 @@ else
                   @ 26,  ;
                      00  ;
                      say  ;
-                     'บ                               บ                                             บ'
+                     'ý                               ý                                             ý'
                   @ 26,  ;
                      05  ;
                      say  ;
@@ -3208,15 +3202,15 @@ else
                   @ 27,  ;
                      00  ;
                      say  ;
-                     'บ                               บ                        ___________________  บ'
+                     'ý                               ý                        ___________________  ý'
                   @ 28,  ;
                      00  ;
                      say  ;
-                     'บ                               บ                           RECIBIDO POR:     บ'
+                     'ý                               ý                           RECIBIDO POR:     ý'
                   @ 29,  ;
                      00  ;
                      say  ;
-                     'ศอออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออผ'
+                     'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý|'
                   @ 30,  ;
                      00  ;
                      say  ;
@@ -3300,11 +3294,11 @@ else
                   @ 04,  ;
                      00  ;
                      say  ;
-                     '                                                      ษออออออออออออออออออออป '
+                     '                                                      ýýýýýýýýýýýýýýýýýýýý{ '
                   @ 05,  ;
                      00  ;
                      say  ;
-                     'C.I.:                                                 บ Bs.                บ '
+                     'C.I.:                                                 ý Bs.                ý '
                   @ 05,  ;
                      61  ;
                      say  ;
@@ -3320,7 +3314,7 @@ else
                   @ 06,  ;
                      00  ;
                      say  ;
-                     'ALUMNO:                                               ศออออออออออออออออออออผ '
+                     'ALUMNO:                                               ýýýýýýýýýýýýýýýýýýýý| '
                   @ 06,  ;
                      08  ;
                      say  ;
@@ -3363,7 +3357,7 @@ else
                   @ li,  ;
                      00  ;
                      say  ;
-                     'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ' +  ;
+                     'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý' +  ;
                      ng
                   li =  ;
                      li +  ;
@@ -3379,7 +3373,7 @@ else
                   @ li,  ;
                      00  ;
                      say  ;
-                     'อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ'
+                     'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý'
                   li =  ;
                      li +  ;
                      1
@@ -3390,29 +3384,29 @@ else
       endif
    endfor
    @ 22, 00 say  ;
-      'ษอออออออออออออออออออออออออออออออหอออออออออออออออออออออออออออออออออออออออออออออป'
+      'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý{'
    @ 23, 00 say  ;
-      'บ            N O T A            บ  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           บ'
+      'ý            N O T A            ý  EFECTIVO   [ ]   CHEQ/DEPOST [ ]           ý'
    if mtipop <> 'Efectivo'
       @ 23, 65 say 'X'
    else
       @ 23, 47 say 'X'
    endif
    @ 24, 00 say  ;
-      'วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ  NRO. :                                     บ'
+      'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý6  NRO. :                                     ý'
    @ 24, 41 say mnrode picture  ;
       '@!'
    @ 25, 00 say  ;
-      'บ                               บ  BANCO:                                     บ'
+      'ý                               ý  BANCO:                                     ý'
    @ 25, 41 say mbandes
    @ 26, 00 say  ;
-      'บ                               บ                                             บ'
+      'ý                               ý                                             ý'
    @ 27, 00 say  ;
-      'บ                               บ                        ___________________  บ'
+      'ý                               ý                        ___________________  ý'
    @ 28, 00 say  ;
-      'บ                               บ                           RECIBIDO POR:     บ'
+      'ý                               ý                           RECIBIDO POR:     ý'
    @ 29, 00 say  ;
-      'ศอออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออผ'
+      'ýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýýý|'
    @ 30, 00 say  ;
       ' NOTA: Los Pagos Realizados no estan sujetos a devoluciones'
    eject

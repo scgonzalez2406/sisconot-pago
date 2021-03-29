@@ -1,6 +1,3 @@
-*** 
-*** ReFox X  #UK933629  MANRIQUE ORELLANA  MANSOFT SYSTEMS [FP25]
-***
 CLOSE DATABASES
 SET DEVICE TO SCREEN
 RELEASE WINDOW
@@ -78,11 +75,11 @@ STORE .F. TO barm1, barm2, barm3,  ;
       barm11
 PUBLIC entre, entra
 STORE .F. TO entre, entra
-kuku1 = 'K1º·ÕÄÚÄ±ÉÄº¿Ú¹ÕÆÚ±¿ÅÖÉ»ÕÅ±ÎÕ»ÖÅ±µµÕ'
-kuku2 = 'K2ºÓÉÓ¿Ó±ÎÕ»ÖÅ±µµÕ'
-kuku3 = 'K3ºÓÉÓ¿Ó±ÎÕ»ÖÅ±µµÕ'
-kuku4 = 'K4ÎÐÈÊÁ¾·¼¶Á'
-kuku5 = 'K5ÑÐÙ¶¶ÁÔ¾È¼ÐÈ'
+kuku1 = 'K1ýýýýý1ý:ý¹ýý±ýýý{ýqý{ýqýýý'
+kuku2 = 'K2ýýýÿñý{ýqýýý'
+kuku3 = 'K3ýýýÿñý{ýqýýý'
+kuku4 = 'K4ýýýýýýýýýý'
+kuku5 = 'K5ýývýý><ýý'
 l_nomext = stringv(SUBSTR(kuku1,  ;
            3, 60))
 l_nombre = stringv(SUBSTR(kuku2,  ;
@@ -268,7 +265,7 @@ DO WHILE .T.
        GET xfechaf PICTURE  ;
        '99/9999'
      @ 04, 01 SAY  ;
-       'Fecha Revisi¢n       : '  ;
+       'Fecha Revisiýn       : '  ;
        GET xfechar PICTURE  ;
        '99/9999'
      @ 05, 01 SAY  ;
@@ -325,10 +322,10 @@ W/N
             principal PROMPT  ;
             '\<Tablas Basicas' AT  ;
             1, 00 MESSAGE  ;
-            'Tablas B sicas del Sistema'
+            'Tablas Býsicas del Sistema'
      DEFINE PAD alumnos OF  ;
             principal PROMPT  ;
-            '\<Al£mnos/Pagos' AT  ;
+            '\<Alýmnos/Pagos' AT  ;
             1, 23 MESSAGE  ;
             'Tratamiento Administrativo de Alumnos'
      DEFINE PAD consulta OF  ;
@@ -340,7 +337,7 @@ W/N
             principal PROMPT  ;
             '\<Salida' AT 1, 68  ;
             MESSAGE  ;
-            'Desactivaci¢n del Sistema'
+            'Desactivaciýn del Sistema'
      ON SELECTION PAD tablas OF principal;
 do p_tablas
      ON SELECTION PAD alumnos OF principal;
@@ -397,25 +394,25 @@ DEFINE POPUP tablita FROM 2, 00  ;
 DEFINE BAR 1 OF tablita PROMPT  ;
        ' Conceptos de \<Cobranza                '  ;
        MESSAGE  ;
-       'Actualizaci¢n de Conceptos de Cobranza y Control de Pagos'  ;
+       'Actualizaciýn de Conceptos de Cobranza y Control de Pagos'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 DEFINE BAR 2 OF tablita PROMPT  ;
        ' \<Planes de Cobro                      '  ;
        MESSAGE  ;
-       'Actualizaci¢n Planes de Pagos'  ;
+       'Actualizaciýn Planes de Pagos'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 DEFINE BAR 3 OF tablita PROMPT  ;
        ' Tabla de \<Bancos                      '  ;
        MESSAGE  ;
-       'Actualizaci¢n de Tablas de Bancos Comerciales'  ;
+       'Actualizaciýn de Tablas de Bancos Comerciales'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 DEFINE BAR 4 OF tablita PROMPT  ;
        ' Tabla de Cobra\<dores                  '  ;
        MESSAGE  ;
-       'Actualizaci¢n de Cobradores'  ;
+       'Actualizaciýn de Cobradores'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 DEFINE BAR 5 OF tablita PROMPT  ;
@@ -427,9 +424,9 @@ DEFINE BAR 5 OF tablita PROMPT  ;
 DEFINE BAR 7 OF tablita PROMPT  ;
        '\-'
 DEFINE BAR 8 OF tablita PROMPT  ;
-       ' \<Reconstrucci¢n de Indices            '  ;
+       ' \<Reconstrucciýn de Indices            '  ;
        MESSAGE  ;
-       'Reconstruci¢n de los Archivos Indices'  ;
+       'Reconstruciýn de los Archivos Indices'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 DEFINE BAR 9 OF tablita PROMPT  ;
@@ -441,27 +438,27 @@ DEFINE BAR 9 OF tablita PROMPT  ;
 DEFINE BAR 10 OF tablita PROMPT  ;
        ' Respaldar el \<Sistema                 '  ;
        MESSAGE  ;
-       'Respalda la Informaci¢n del Sistema en un Disco'  ;
+       'Respalda la Informaciýn del Sistema en un Disco'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 DEFINE BAR 11 OF tablita PROMPT  ;
        ' Res\<taurar el Sistema                 '  ;
        MESSAGE  ;
-       'Restaura la Informaci¢n del Sistema de un Disco al PC'  ;
+       'Restaura la Informaciýn del Sistema de un Disco al PC'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 DEFINE BAR 12 OF tablita PROMPT  ;
-       ' Busca Archi\<vos Da¤ados               '  ;
+       ' Busca Archi\<vos Daýados               '  ;
        MESSAGE  ;
-       'Busca Archivos o Bases de Datos Da¤adas'  ;
+       'Busca Archivos o Bases de Datos Daýadas'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 DEFINE BAR 13 OF tablita PROMPT  ;
        '\-'
 DEFINE BAR 14 OF tablita PROMPT  ;
-       ' Actuali\<zaci¢n de Usuarios del Sistema'  ;
+       ' Actuali\<zaciýn de Usuarios del Sistema'  ;
        MESSAGE  ;
-       'Actualizaci¢n de los Usuarios del Sistema (Claves de Acceso)'  ;
+       'Actualizaciýn de los Usuarios del Sistema (Claves de Acceso)'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 ON SELECTION POPUP tablita do m_tablas;
@@ -657,9 +654,9 @@ DEFINE BAR 1 OF alumnos PROMPT  ;
 DEFINE BAR 2 OF alumnos PROMPT  ;
        '\-'
 DEFINE BAR 3 OF alumnos PROMPT  ;
-       ' Registro de \<Inscripci¢n              '  ;
+       ' Registro de \<Inscripciýn              '  ;
        MESSAGE  ;
-       'Registra Datos de Inscripci¢n por Alumno'  ;
+       'Registra Datos de Inscripciýn por Alumno'  ;
        SKIP FOR barm3 MARK  ;
        CHR(251) COLOR SCHEME 2
 DEFINE BAR 4 OF alumnos PROMPT  ;
@@ -670,20 +667,20 @@ DEFINE BAR 5 OF alumnos PROMPT  ;
        'Procesa los Pagos Realizados por el Alumno'  ;
        SKIP FOR barm4 MARK  ;
        CHR(251) COLOR SCHEME 2
-DEFINE BAR 6 OF alumnos PROMPT  ;
-       ' Proceso Control Pa\<gos Mat. Adicional '  ;
-       MESSAGE  ;
-       'Procesa los Pagos por Materias Adicionales del Alumno'  ;
-       SKIP FOR barm4 MARK  ;
-       CHR(251) COLOR SCHEME 2
+*DEFINE BAR 6 OF alumnos PROMPT  ;
+*       ' Proceso Control Pa\<gos Mat. Adicional '  ;
+*       MESSAGE  ;
+*       'Procesa los Pagos por Materias Adicionales del Alumno'  ;
+*       SKIP FOR barm4 MARK  ;
+*       CHR(251) COLOR SCHEME 2
 DEFINE BAR 7 OF alumnos PROMPT  ;
        ' Proceso de \<Otros Ingresos            '  ;
        MESSAGE  ;
-       'Procesa el Cobro de Otros Ingresos de la Instituci¢n'  ;
+       'Procesa el Cobro de Otros Ingresos de la Instituciýn'  ;
        SKIP FOR barm5 MARK  ;
        CHR(251) COLOR SCHEME 2
 DEFINE BAR 8 OF alumnos PROMPT  ;
-       ' \<Anulaci¢n de Recibos de Cobro        '  ;
+       ' \<Anulaciýn de Recibos de Cobro        '  ;
        MESSAGE  ;
        'Anula el Ultimo Recibo de Cobro por Alumno'  ;
        SKIP FOR barm6 MARK  ;
@@ -696,8 +693,15 @@ DEFINE BAR 10 OF alumnos PROMPT  ;
        2
 DEFINE BAR 11 OF alumnos PROMPT  ;
        '\-'
+DEFINE BAR 40 OF alumnos PROMPT  ;
+       ' Control de pagos en linea    '  ;
+       MESSAGE  ;
+       'Gestionar pagos de la plataforma web'  ;
+       MARK CHR(251) COLOR SCHEME 2
+DEFINE BAR 41 OF alumnos PROMPT  ;
+       '\-'
 DEFINE BAR 12 OF alumnos PROMPT  ;
-       ' Act\<ualizaci¢n Registros de Pago      '  ;
+       ' Act\<ualizaciýn Registros de Pago      '  ;
        MESSAGE  ;
        'Actualiza los Registros de Pago por Alumno antes de Instalado el Sistema'  ;
        SKIP FOR barm10 MARK  ;
@@ -707,13 +711,13 @@ DEFINE BAR 13 OF alumnos PROMPT  ;
 DEFINE BAR 14 OF alumnos PROMPT  ;
        ' Cierre Diario de \<Caja                '  ;
        MESSAGE  ;
-       'Emisi¢n del Reporte de Cierre Diario de Caja'  ;
+       'Emisiýn del Reporte de Cierre Diario de Caja'  ;
        SKIP FOR barm8 MARK  ;
        CHR(251) COLOR SCHEME 2
 DEFINE BAR 15 OF alumnos PROMPT  ;
        '\-'
 DEFINE BAR 16 OF alumnos PROMPT  ;
-       ' \<Re-Impresi¢n de Recibos de Cobros    '  ;
+       ' \<Re-Impresiýn de Recibos de Cobros    '  ;
        MESSAGE  ;
        'Reimprime Cualquier Recibo de Cobro Emitido por el Sistema'  ;
        MARK CHR(251) COLOR SCHEME  ;
@@ -721,21 +725,21 @@ DEFINE BAR 16 OF alumnos PROMPT  ;
 DEFINE BAR 17 OF alumnos PROMPT  ;
        '\-'
 DEFINE BAR 18 OF alumnos PROMPT  ;
-       ' \<Eliminar Alumnos Matr¡cula de Pagos '  ;
+       ' \<Eliminar Alumnos Matrýcula de Pagos '  ;
        MESSAGE  ;
-       'Eliminar Datos del Alumno de la Matr¡cula de Pago'  ;
+       'Eliminar Datos del Alumno de la Matrýcula de Pago'  ;
        SKIP FOR barm9 MARK  ;
        CHR(251) COLOR SCHEME 2
 DEFINE BAR 19 OF alumnos PROMPT  ;
-       ' Actuali\<zaci¢n de C‚dula de Alumnos   '  ;
+       ' Actuali\<zaciýn de Cýdula de Alumnos   '  ;
        MESSAGE  ;
-       'Actualizaci¢n de C‚dula del Alumno'  ;
+       'Actualizaciýn de Cýdula del Alumno'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 DEFINE BAR 21 OF alumnos PROMPT  ;
-       ' Cierre de \<Matr¡cula de Pagos         '  ;
+       ' Cierre de \<Matrýcula de Pagos         '  ;
        MESSAGE  ;
-       'Cierre de Matr¡cula de Pagos al Final del Semestre'  ;
+       'Cierre de Matrýcula de Pagos al Final del Semestre'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 ON SELECTION POPUP alumnos do m_alumnos;
@@ -797,25 +801,25 @@ m_alumin2 with bar()
                  SCHEME 3
           DEFINE BAR 1 OF alumins  ;
                  PROMPT  ;
-                 ' Registro de \<Inscripci¢n            '  ;
+                 ' Registro de \<Inscripciýn            '  ;
                  MESSAGE  ;
-                 'Proceso de Registros de Datos de Inscripci¢n del Alumno'  ;
+                 'Proceso de Registros de Datos de Inscripciýn del Alumno'  ;
                  MARK CHR(251)  ;
                  COLOR SCHEME 2
           DEFINE BAR 2 OF alumins  ;
                  PROMPT  ;
                  ' \<Egresos de Matricula de Pagos      '  ;
                  MESSAGE  ;
-                 'Egresa Alumnos de la Matr¡cula de Pagos'  ;
+                 'Egresa Alumnos de la Matrýcula de Pagos'  ;
                  MARK CHR(251)  ;
                  COLOR SCHEME 2
           DEFINE BAR 3 OF alumins  ;
                  PROMPT '\-'
           DEFINE BAR 4 OF alumins  ;
                  PROMPT  ;
-                 ' Registro Inscripci¢n \<Mat.Adicional '  ;
+                 ' Registro Inscripciýn \<Mat.Adicional '  ;
                  MESSAGE  ;
-                 'Proceso de Inscripci¢n de Materia Adicional'  ;
+                 'Proceso de Inscripciýn de Materia Adicional'  ;
                  MARK CHR(251)  ;
                  COLOR SCHEME 2
           DEFINE BAR 5 OF alumins  ;
@@ -870,7 +874,7 @@ m_alumins with bar()
                  PROMPT  ;
                  ' R\<egistro de Otros Ingresos          '  ;
                  MESSAGE  ;
-                 'Registra los Ingresos Adicionales que tiene la Instituci¢n'  ;
+                 'Registra los Ingresos Adicionales que tiene la Instituciýn'  ;
                  MARK CHR(251)  ;
                  COLOR SCHEME 2
           ON SELECTION POPUP adic do m_adic;
@@ -894,7 +898,7 @@ with bar()
                  PROMPT  ;
                  ' Anula R\<egistro de Otros Ingresos         '  ;
                  MESSAGE  ;
-                 'Anula Registros Ingresos Adicionales que tiene la Instituci¢n'  ;
+                 'Anula Registros Ingresos Adicionales que tiene la Instituciýn'  ;
                  MARK CHR(251)  ;
                  COLOR SCHEME 2
           DEFINE BAR 3 OF anula  ;
@@ -914,6 +918,11 @@ m_anula with bar()
           DO scp20008
           RESTORE SCREEN FROM  ;
                   m_salva
+     CASE xbar = 40
+          SAVE SCREEN TO m_salva
+          DO sfr1010
+          RESTORE SCREEN FROM  ;
+                  m_salva
      CASE xbar = 12
           DEFINE POPUP actuali  ;
                  FROM 13, 25  ;
@@ -922,14 +931,14 @@ m_anula with bar()
                  SCHEME 3
           DEFINE BAR 1 OF actuali  ;
                  PROMPT  ;
-                 ' Actualizaci¢n Registro de \<Inscripci¢n'  ;
+                 ' Actualizaciýn Registro de \<Inscripciýn'  ;
                  MESSAGE  ;
                  'Proceso Registro de Datos de Inscripcion con Fecha Atrasada'  ;
                  MARK CHR(251)  ;
                  COLOR SCHEME 2
           DEFINE BAR 2 OF actuali  ;
                  PROMPT  ;
-                 ' Act\<ualizaci¢n Control de Pago        '  ;
+                 ' Act\<ualizaciýn Control de Pago        '  ;
                  MESSAGE  ;
                  'Proceso Registro de Pagos por Alumno con Fecha Atrasada'  ;
                  MARK CHR(251)  ;
@@ -938,14 +947,14 @@ m_anula with bar()
                  PROMPT '\-'
           DEFINE BAR 4 OF actuali  ;
                  PROMPT  ;
-                 ' Actualizaci¢n Reg.I\<nscripci¢n Mat.Adic'  ;
+                 ' Actualizaciýn Reg.I\<nscripciýn Mat.Adic'  ;
                  MESSAGE  ;
                  'Proceso de Inscripcion de Materias Adicionales con Fecha Atrasada'  ;
                  MARK CHR(251)  ;
                  COLOR SCHEME 2
           DEFINE BAR 5 OF actuali  ;
                  PROMPT  ;
-                 ' Ac\<tualizaci¢n Control de Pago Mat.Adic'  ;
+                 ' Ac\<tualizaciýn Control de Pago Mat.Adic'  ;
                  MESSAGE  ;
                  'Proceso de Control de Pago de Materias Adicionales con Fecha Atrasada'  ;
                  MARK CHR(251)  ;
@@ -970,9 +979,9 @@ m_actuali with bar()
                  COLOR SCHEME 2
           DEFINE BAR 2 OF plancob  ;
                  PROMPT  ;
-                 ' \<Relaci¢n de Cierre Diario de Caja '  ;
+                 ' \<Relaciýn de Cierre Diario de Caja '  ;
                  MESSAGE  ;
-                 'Relaci¢n de Cierre Diario de Caja'  ;
+                 'Relaciýn de Cierre Diario de Caja'  ;
                  MARK CHR(251)  ;
                  COLOR SCHEME 2
           ON SELECTION POPUP plancob do;
@@ -1339,25 +1348,25 @@ DEFINE BAR 3 OF p_alumnos PROMPT  ;
 DEFINE BAR 5 OF p_alumnos PROMPT  ;
        '\-'
 DEFINE BAR 6 OF p_alumnos PROMPT  ;
-       ' Relaci¢n de \<Morosidad            '  ;
+       ' Relaciýn de \<Morosidad            '  ;
        MESSAGE  ;
        'Emite un Reporte de los Alumnos Morosos por Periodos Actualizados'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 DEFINE BAR 7 OF p_alumnos PROMPT  ;
-       ' Relaci¢n de \<Cancelaci¢n          '  ;
+       ' Relaciýn de \<Cancelaciýn          '  ;
        MESSAGE  ;
        'Emite un Reporte de los Alumnos que Cancelaron por Periodos Establecidos'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 DEFINE BAR 8 OF p_alumnos PROMPT  ;
-       ' Relaci¢n de \<Depositos            '  ;
+       ' Relaciýn de \<Depositos            '  ;
        MESSAGE  ;
        'Emite un Reporte de los Depositos Consignados a las Diferentes Cuentas Bancarias por Periodos'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 DEFINE BAR 9 OF p_alumnos PROMPT  ;
-       ' Relaci¢n de Co\<bros por Conceptos '  ;
+       ' Relaciýn de Co\<bros por Conceptos '  ;
        MESSAGE  ;
        'Emite un Reporte de los Cobros Diferenciados por Concepto de Otros Ingresos'  ;
        MARK CHR(251) COLOR SCHEME  ;
@@ -1373,35 +1382,35 @@ DEFINE BAR 12 OF p_alumnos PROMPT  ;
 DEFINE BAR 13 OF p_alumnos PROMPT  ;
        '\-'
 DEFINE BAR 14 OF p_alumnos PROMPT  ;
-       ' Constancia de \<Inscripci¢n        '  ;
+       ' Constancia de \<Inscripciýn        '  ;
        MESSAGE  ;
-       'Emisi¢n de Constancia de Inscripci¢n'  ;
+       'Emisiýn de Constancia de Inscripciýn'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 DEFINE BAR 15 OF p_alumnos PROMPT  ;
        ' Constancia de \<Estudios           '  ;
        MESSAGE  ;
-       'Emisi¢n de Constancia de Estudio'  ;
+       'Emisiýn de Constancia de Estudio'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 DEFINE BAR 16 OF p_alumnos PROMPT  ;
        ' Constancia de Buen\<a Conducta     '  ;
        MESSAGE  ;
-       'Emisi¢n de Constancia de Buena Conducta'  ;
+       'Emisiýn de Constancia de Buena Conducta'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 DEFINE BAR 17 OF p_alumnos PROMPT  ;
        ' Constancia de Trabajo \<Profesores '  ;
        MESSAGE  ;
-       'Emisi¢n de Constancia de Buena Conducta'  ;
+       'Emisiýn de Constancia de Buena Conducta'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 DEFINE BAR 18 OF p_alumnos PROMPT  ;
        '\-'
 DEFINE BAR 19 OF p_alumnos PROMPT  ;
-       ' Cumplea\<¤os del Mes              '  ;
+       ' Cumplea\<ýos del Mes              '  ;
        MESSAGE  ;
-       'Emite un Listado con los Cumplea¤os del Mes Indicado'  ;
+       'Emite un Listado con los Cumpleaýos del Mes Indicado'  ;
        MARK CHR(251) COLOR SCHEME  ;
        2
 ON SELECTION POPUP p_alumnos do m_alumn1;
@@ -1468,14 +1477,14 @@ m_alumzle with bar()
                  PROMPT  ;
                  ' \<Por \<Semestre  '  ;
                  MESSAGE  ;
-                 'Emite un Reporte de los Alumnos Al D¡a por Semestre en Periodos Establecidos'  ;
+                 'Emite un Reporte de los Alumnos Al Dýa por Semestre en Periodos Establecidos'  ;
                  MARK CHR(251)  ;
                  COLOR SCHEME 2
           DEFINE BAR 2 OF alumzli  ;
                  PROMPT  ;
                  ' Por \<Turno '  ;
                  MESSAGE  ;
-                 'Emite un Reporte de los Alumnos Al D¡a por Turno en Periodos Establecidos'  ;
+                 'Emite un Reporte de los Alumnos Al Dýa por Turno en Periodos Establecidos'  ;
                  MARK CHR(251)  ;
                  COLOR SCHEME 2
           ON SELECTION POPUP alumzli do;
@@ -1637,7 +1646,7 @@ ENDIF
 SET COLOR TO W+/B
 @ 09, 06 SAY 'ÜÛ'
 @ 09, 08 SAY 'ßßÛ' COLOR W+/N 
-@ 09, 11 SAY 'Ü'
+@ 09, 11 SAY 'Ü '
 @ 10, 06 SAY 'ßÛÛÜÜ'
 @ 10, 11 SAY 'ßß' COLOR  ;
   (colorvar)
@@ -1656,7 +1665,7 @@ SET COLOR TO W+/B
   (colorvar)
 @ 09, 20 SAY 'ÜÛ'
 @ 09, 22 SAY 'ßßÛ' COLOR W+/N 
-@ 09, 25 SAY 'Ü'
+@ 09, 25 SAY 'Ü '
 @ 10, 20 SAY 'ßÛÛÜÜ'
 @ 10, 25 SAY 'ßß' COLOR  ;
   (colorvar)
@@ -1679,77 +1688,77 @@ SET COLOR TO W+/B
 @ 12, 35 SAY 'ß ' COLOR W+/N 
 @ 13, 29 SAY '   ßßßß' COLOR  ;
   (colorvar)
-@ 09, 39 SAY ' ÜÛ'
-@ 09, 42 SAY 'ß' COLOR W+/N 
-@ 09, 43 SAY 'ÛÜ'
-@ 10, 39 SAY 'ÛÛ ' COLOR W+/N 
-@ 10, 42 SAY 'ß ' COLOR  ;
+@ 09, 39 SAY ' ýý'
+@ 09, 42 SAY 'ý' COLOR W+/N 
+@ 09, 43 SAY 'ýý'
+@ 10, 39 SAY 'ýý ' COLOR W+/N 
+@ 10, 42 SAY 'ý ' COLOR  ;
   (colorvar)
-@ 10, 44 SAY 'ÛÛ'
-@ 10, 46 SAY 'Ü' COLOR (colorvar)
-@ 11, 39 SAY 'ÛÛ ' COLOR W+/N 
-@ 11, 42 SAY '  ÛÛ'
-@ 11, 46 SAY 'Û' COLOR (colorvar)
-@ 12, 39 SAY ' ßÛÜÛ'
-@ 12, 44 SAY 'ß ' COLOR W+/N 
-@ 12, 46 SAY 'ß' COLOR (colorvar)
-@ 13, 39 SAY '   ßßß' COLOR  ;
+@ 10, 44 SAY 'ýý'
+@ 10, 46 SAY 'ý' COLOR (colorvar)
+@ 11, 39 SAY 'ýý ' COLOR W+/N 
+@ 11, 42 SAY '  ýý'
+@ 11, 46 SAY 'ý' COLOR (colorvar)
+@ 12, 39 SAY ' ýýýý'
+@ 12, 44 SAY 'ý ' COLOR W+/N 
+@ 12, 46 SAY 'ý' COLOR (colorvar)
+@ 13, 39 SAY '   ýýý' COLOR  ;
   (colorvar)
-@ 09, 49 SAY 'ÛÛÜ  ÛÛ'
-@ 09, 56 SAY 'Ü' COLOR (colorvar)
-@ 10, 49 SAY 'ÛÛßÜ' COLOR W+/N 
-@ 10, 53 SAY ' ÛÛ'
-@ 10, 56 SAY 'Û' COLOR (colorvar)
-@ 11, 49 SAY 'ÛÛ ' COLOR W+/N 
-@ 11, 52 SAY 'ß'
-@ 11, 53 SAY 'ÜÛÛ ' COLOR W+/N 
-@ 12, 49 SAY 'ÛÛ ' COLOR W+/N 
-@ 12, 52 SAY ' ßÛÛ'
+@ 09, 49 SAY 'ýýý  ýý'
+@ 09, 56 SAY 'ý' COLOR (colorvar)
+@ 10, 49 SAY 'ýýýý' COLOR W+/N 
+@ 10, 53 SAY ' ýý'
+@ 10, 56 SAY 'ý' COLOR (colorvar)
+@ 11, 49 SAY 'ýý ' COLOR W+/N 
+@ 11, 52 SAY 'ý'
+@ 11, 53 SAY 'ýýý ' COLOR W+/N 
+@ 12, 49 SAY 'ýý ' COLOR W+/N 
+@ 12, 52 SAY ' ýýý'
 @ 12, 56 SAY ' ' COLOR W+/N 
-@ 13, 49 SAY ' ßß   ßß' COLOR  ;
+@ 13, 49 SAY ' ýý   ýý' COLOR  ;
   (colorvar)
-@ 09, 59 SAY ' ÜÛ'
-@ 09, 62 SAY 'ß' COLOR W+/N 
-@ 09, 63 SAY 'ÛÜ'
-@ 10, 59 SAY 'ÛÛ ' COLOR W+/N 
-@ 10, 62 SAY 'ß ' COLOR  ;
+@ 09, 59 SAY ' ýý'
+@ 09, 62 SAY 'ý' COLOR W+/N 
+@ 09, 63 SAY 'ýý'
+@ 10, 59 SAY 'ýý ' COLOR W+/N 
+@ 10, 62 SAY 'ý ' COLOR  ;
   (colorvar)
-@ 10, 64 SAY 'ÛÛ'
-@ 10, 66 SAY 'Ü' COLOR (colorvar)
-@ 11, 59 SAY 'ÛÛ ' COLOR W+/N 
-@ 11, 62 SAY '  ÛÛ'
-@ 11, 66 SAY 'Û' COLOR (colorvar)
-@ 12, 59 SAY ' ßÛÜÛ'
-@ 12, 64 SAY 'ß ' COLOR W+/N 
-@ 12, 66 SAY 'ß' COLOR (colorvar)
-@ 13, 59 SAY '   ßßß' COLOR  ;
+@ 10, 64 SAY 'ýý'
+@ 10, 66 SAY 'ý' COLOR (colorvar)
+@ 11, 59 SAY 'ýý ' COLOR W+/N 
+@ 11, 62 SAY '  ýý'
+@ 11, 66 SAY 'ý' COLOR (colorvar)
+@ 12, 59 SAY ' ýýýý'
+@ 12, 64 SAY 'ý ' COLOR W+/N 
+@ 12, 66 SAY 'ý' COLOR (colorvar)
+@ 13, 59 SAY '   ýýý' COLOR  ;
   (colorvar)
-@ 09, 68 SAY 'ß'
-@ 09, 69 SAY 'ßÛÛßß' COLOR W+/N 
-@ 09, 74 SAY 'Ü' COLOR (colorvar)
-@ 10, 70 SAY 'ÛÛ ' COLOR W+/N 
-@ 11, 70 SAY 'ÛÛ ' COLOR W+/N 
-@ 12, 70 SAY 'ÛÛ ' COLOR W+/N 
-@ 13, 68 SAY '   ßß' COLOR  ;
+@ 09, 68 SAY 'ý'
+@ 09, 69 SAY 'ýýýýý' COLOR W+/N 
+@ 09, 74 SAY 'ý' COLOR (colorvar)
+@ 10, 70 SAY 'ýý ' COLOR W+/N 
+@ 11, 70 SAY 'ýý ' COLOR W+/N 
+@ 12, 70 SAY 'ýý ' COLOR W+/N 
+@ 13, 68 SAY '   ýý' COLOR  ;
   (colorvar)
 @ 7, 2 TO 7, 77 COLOR B+/B 
 @ 7, 2 TO 14, 2 COLOR B+/B 
 @ 7, 77 TO 14, 77 COLOR N+/B 
-@ 7, 2 SAY 'Ú' COLOR B+/B 
-@ 7, 77 SAY '¿' COLOR N+/B 
+@ 7, 2 SAY 'ý' COLOR B+/B 
+@ 7, 77 SAY 'ý' COLOR N+/B 
 @ 14, 2 TO 14, 77 COLOR N+/B 
-@ 14, 2 SAY 'À' COLOR B+/B 
-@ 14, 77 SAY 'Ù' COLOR N+/B 
+@ 14, 2 SAY 'ý' COLOR B+/B 
+@ 14, 77 SAY 'ý' COLOR N+/B 
 SET COLOR TO W+/B
 xz1 = 'Copyright (C) Dise¤o de Sistemas SISCONOT, C.A. 1996'
-xz2 = 'Versi¢n 1.00'
+xz2 = 'Versi¢n 1.1'
 xz3 = 'Reservados todos los Derechos'
 xz4 = 'Licencia Autorizada a ' +  ;
       ALLTRIM(l_nomext)
 xz5 = 'R.I.F. Nro. ' +  ;
       ALLTRIM(l_rif)
-xz6 = 'Toda  Utilizaci¢n de  este sistema que no este'
-xz7 = 'Expresamente autorizada , est  prohibida '
+xz6 = 'Toda Utilizaci¢n de este sistema que no este'
+xz7 = 'Expresamente autorizada, esta prohibida'
 @ 15, 0 SAY SPACE((80 - LEN(xz1) -  ;
   6) / 2) + xz1
 @ 16, 0 SAY SPACE((80 - LEN(xz2) -  ;
@@ -1794,7 +1803,3 @@ SET COLOR TO R+/W
   CHR(25)
 set color to &color1
 RETURN .T.
-*
-*** 
-*** ReFox - retrace your steps ... 
-***

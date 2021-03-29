@@ -22,13 +22,13 @@ DO CASE
             m.messg
           @ 03, 01 SAY 'Error : ' +  ;
             LTRIM(STR(m.code))
-          ms = 'Active la Impresora y Pulse una Tecla ¢'
+          ms = 'Active la Impresora y Pulse una Tecla ý'
           @ 03, 01 SAY  ;
             SPACE((WCOLS() -  ;
             LEN(ms) - 6) / 2) +  ;
             SPACE(3)
           @ 03, COL() SAY ms
-          ms = 'Presione Esc para Cancelar la Impresi¢n'
+          ms = 'Presione Esc para Cancelar la Impresiýn'
           @ 04, 01 SAY  ;
             SPACE((WCOLS() -  ;
             LEN(ms) - 6) / 2) +  ;
@@ -75,7 +75,7 @@ DO CASE
             m.messg
           @ 03, 01 SAY 'Error : ' +  ;
             LTRIM(STR(m.code))
-          ms = 'Anote la Operaci¢n y Consulte con (SEGUNDO GONZALEZ)'
+          ms = 'Anote la Operaciýn y Consulte con (SEGUNDO GONZALEZ)'
           @ 04, 01 SAY  ;
             SPACE((WCOLS() -  ;
             LEN(ms) - 6) / 2) +  ;
@@ -106,8 +106,8 @@ RETURN TRANSFORM(stri, '@R' +  ;
 *
 FUNCTION stringv
 PARAMETER stri
-letra1 = 'ABCDEFGHIJKLMN¥OPQRSTUVWXYZ0123456789.-, '
-letra2 = 'ÚÂ¿ÄÉË»ÍÕÑ¸ÖÒ·ÃÅ´³ÌÎ¹ºÆØµÇ×¶ÀÁÙÈÊ¼ÔÏ¾ÓÐ½±'
+letra1 = 'ABCDEFGHIJKLMNýOPQRSTUVWXYZ0123456789.-, '
+letra2 = 'ý¿ýýûýýxý·ýtýý¹ýý5ýöýýýý¼ýþý=ý'
 stri = ALLTRIM(stri)
 FOR i = 1 TO LEN(stri)
      x = SUBSTR(stri, i, 1)
@@ -126,8 +126,8 @@ RETURN stri1
 *
 FUNCTION stringr
 PARAMETER stri
-letra2 = 'ABCDEFGHIJKLMN¥OPQRSTUVWXYZ0123456789.-, '
-letra1 = 'ÚÂ¿ÄÉË»ÍÕÑ¸ÖÒ·ÃÅ´³ÌÎ¹ºÆØµÇ×¶ÀÁÙÈÊ¼ÔÏ¾ÓÐ½±'
+letra2 = 'ABCDEFGHIJKLMNýOPQRSTUVWXYZ0123456789.-, '
+letra1 = 'ý¿ýýûýýxý·ýtýý¹ýý5ýöýýýý¼ýþý=ý'
 stri = ALLTRIM(stri)
 FOR i = 1 TO LEN(stri)
      x = SUBSTR(stri, i, 1)
@@ -151,13 +151,13 @@ DEFINE WINDOW xhelp FROM 09, 05  ;
 MOVE WINDOW xhelp CENTER
 ACTIVATE WINDOW xhelp
 xz1 = ' Sistema Integral de Control Academico de Notas'
-xz2 = 'Copyright (C) Dise¤o de Sistemas (SISCONOT, C.A) - 1996'
-xz3 = 'Versi¢n 1.00'
+xz2 = 'Copyright (C) Diseýo de Sistemas (SISCONOT, C.A) - 1996'
+xz3 = 'Versiýn 1.00'
 xz4 = 'Reservados todos los Derechos'
 xz5 = 'Licencia Autorizada a ' +  ;
       l_nombre
-xz6 = 'Toda  Utilizaci¢n de  este sistema que no este'
-xz7 = 'Expresamente autorizada , est  prohibida '
+xz6 = 'Toda  Utilizaciýn de  este sistema que no este'
+xz7 = 'Expresamente autorizada , estý prohibida '
 @ 00, 0 SAY SPACE(((WCOLS() -  ;
   LEN(xz1) - 6) / 2) + 3) + xz1
 @ 01, 0 SAY SPACE(((WCOLS() -  ;
@@ -189,13 +189,13 @@ SET SYSMENU ON
 DO CASE
      CASE ALLTRIM(UPPER(xpopup)) $  ;
           'TABLAS BASICAS'
-          HELP þ tablas
+          HELP ý tablas
      CASE ALLTRIM(UPPER(xpopup)) $  ;
-          'AL£MNOS/NOTAS'
-          HELP þ alumnos
+          'ALýMNOS/NOTAS'
+          HELP ý alumnos
      CASE ALLTRIM(UPPER(xpopup)) $  ;
           'REPORTES'
-          HELP þ procesos
+          HELP ý procesos
 ENDCASE
 SET SYSMENU OFF
 RETURN
@@ -210,8 +210,8 @@ xyz = 'Clave de Acceso'
 lk = SPACE(((WCOLS() - LEN(xyz) -  ;
      6) / 2) + 3)
 @ 01, LEN(lk) SAY xyz
-@ 02, 00 SAY 'Ã' + REPLICATE('Ä',  ;
-  WCOLS() - 2) + '´'
+@ 02, 00 SAY 'ý' + REPLICATE('ý',  ;
+  WCOLS() - 2) + 'ý'
 SET ESCAPE OFF
 x_swt1 = 0
 x_con = 0
@@ -255,12 +255,12 @@ DO WHILE .T.
           EXIT
      ELSE
           ?? CHR(7)
-          @ 04, 02 SAY '®® '  ;
+          @ 04, 02 SAY 'ýý '  ;
             COLOR W+/RB* 
           @ 04, 08 SAY  ;
             'Clave de Acceso Denegada'
           @ 04, COL() + 4 SAY  ;
-            ' ¯¯' COLOR W+/RB* 
+            ' ýý' COLOR W+/RB* 
           SET CURSOR OFF
           WAIT ''
           @ 04, 02 SAY  ;
@@ -293,10 +293,10 @@ xyz = 'Clave de Acceso'
 lk = SPACE(((WCOLS() - LEN(xyz) -  ;
      6) / 2) + 3)
 @ 01, LEN(lk) SAY xyz
-@ 02, 00 SAY 'Ã' COLOR GR+/W 
+@ 02, 00 SAY 'Ä' COLOR GR+/W 
 @ 02, COL() SAY REPLICATE('Ä',  ;
   WCOLS() - 2)
-@ 02, COL() SAY '´' COLOR GR+/W 
+@ 02, COL() SAY 'Ä' COLOR GR+/W 
 SET ESCAPE OFF
 x_swt1 = 0
 x_con = 0
@@ -350,7 +350,7 @@ RETURN ALLTRIM(x_clave)
 *
 FUNCTION clave1
 SET ESCAPE OFF
-@ 03, 24 SAY '²²²²²'
+@ 03, 24 SAY 'ýýýýý'
 x_swt1 = 0
 x_con = 0
 x_x = 1
@@ -423,7 +423,7 @@ DO WHILE .T.
            LEN(msg) - 6) / 2) +  ;
            3)
      @ 01, LEN(xyz) SAY msg
-     msg = 'ESC = Cancelar ³ ENTER = Imprimir'
+     msg = 'ESC = Cancelar ý ENTER = Imprimir'
      xyz = SPACE(((WCOLS() -  ;
            LEN(msg) - 6) / 2) +  ;
            3)
@@ -554,7 +554,7 @@ DO WHILE .T.
        LEN(jk1) - 6) / 2) + 3) +  ;
        jk1
      @ 1, 1 SAY  ;
-       'Unidad desde donde se Restaurar : '  ;
+       'Unidad desde donde se Restaurarý: '  ;
        GET unid PICTURE  ;
        '@!M A,B,C'
      READ
@@ -733,9 +733,9 @@ IF LEN(errmsg) > 30
             SHADOW COLOR SCHEME  ;
             7
      ACTIVATE WINDOW msg
-     @ 01, 00 SAY '®®' COLOR GR+/ ;
+     @ 01, 00 SAY 'ýý' COLOR GR+/ ;
        R*,,
-     @ 01, WCOLS() - 2 SAY '¯¯'  ;
+     @ 01, WCOLS() - 2 SAY 'ýý'  ;
        COLOR GR+/R*,,
      ycol1 = SPACE(((WCOLS() -  ;
              LEN(rmes) - 6) / 2) +  ;
@@ -771,9 +771,9 @@ ELSE
             SHADOW COLOR SCHEME  ;
             7
      ACTIVATE WINDOW msg
-     @ 01, 00 SAY '®®' COLOR GR+/ ;
+     @ 01, 00 SAY 'ýý' COLOR GR+/ ;
        R*,,
-     @ 01, WCOLS() - 2 SAY '¯¯'  ;
+     @ 01, WCOLS() - 2 SAY 'ýý'  ;
        COLOR GR+/R*,,
      ycol1 = SPACE(((WCOLS() -  ;
              LEN(rmes) - 6) / 2) +  ;
@@ -1194,7 +1194,7 @@ nblocks = (percent / 100) *  ;
 @ 1, 25 SAY percent PICTURE  ;
   '9999'
 @ 1, COL() SAY '%'
-@ 3, 3 SAY REPLICATE('Û',  ;
+@ 3, 3 SAY REPLICATE('ý',  ;
   nblocks)
 RETURN .T.
 *
@@ -1426,7 +1426,7 @@ DO WHILE .T.
           SEEK bus
           IF  .NOT. FOUND()
                = msgerro( ;
-                 'No existen Datos con esta operaci¢n' ;
+                 'No existen Datos con esta operaciýn' ;
                  )
                LOOP
           ENDIF

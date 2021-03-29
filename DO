@@ -1,0 +1,3 @@
+- Makefile para eliminar temporales
+- Agregar archivo de configuracion
+  - Actualizar version

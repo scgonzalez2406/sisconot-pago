@@ -3,8 +3,7 @@ COPY TO BA022016
 
 *--- los de plan 01
 repla all plancobro with "01",;
-          total_deud with 62000,;
-          
+          total_deud with 62000,;         
           cuota5 with 15000;
           cuota6 with 15000;
    for alltrim(plancobro)="01" and ultimacuot<=2

@@ -29,7 +29,7 @@ IF  .NOT. WEXIST('_r7a0vjj0c')
             FROM 08, 0 TO 19, 79  ;
             GROW FLOAT CLOSE ZOOM  ;
             SHADOW TITLE  ;
-            'Actualizaci¢n de Conceptos de Control de Pagos'  ;
+            'Actualizaciýn de Conceptos de Control de Pagos'  ;
             MINIMIZE SYSTEM COLOR  ;
             SCHEME 5
 ENDIF
@@ -87,15 +87,15 @@ ELSE
               _r7a0vjj0c
 ENDIF
 @ 00, 00 TO WROWS(), WCOLS()
-@ 02, 02 SAY 'C¢digo : ' COLOR  ;
+@ 02, 02 SAY 'Cýdigo : ' COLOR  ;
   SCHEME 5 GET m.codigo SIZE 1, 2,  ;
   2 PICTURE '@!' WHEN isediting
-@ 04, 02 SAY 'Descripci¢n : '  ;
+@ 04, 02 SAY 'Descripciýn : '  ;
   COLOR SCHEME 5 GET m.descripcio  ;
   SIZE 1, 43, 2 PICTURE '@!' WHEN  ;
   isediting
-@ 05, 0 SAY 'Ã' + REPLICATE('Ä',  ;
-  WCOLS() - 2) + '´'
+@ 05, 0 SAY 'ý' + REPLICATE('ý',  ;
+  WCOLS() - 2) + 'ý'
 @ 06, 2 GET m.top_btn DEFAULT 1  ;
   SIZE 1, 10, 2 PICTURE  ;
   '@*HN \<Primero   ' VALID  ;
@@ -148,13 +148,13 @@ ENDIF
   SIZE 1, 10, 2 PICTURE  ;
   '@*HN \<Imprimir  ' VALID  ;
   btn_val('PRINT') MESSAGE  ;
-  'Registro de Impresi¢n.' COLOR  ;
+  'Registro de Impresiýn.' COLOR  ;
   SCHEME 5
 @ 07, 62 GET m.exit_btn DEFAULT 1  ;
   SIZE 1, 10, 2 PICTURE  ;
   '@*HN Sa\<lir     ' VALID  ;
   btn_val('EXIT') MESSAGE  ;
-  'Finaliza la Actualizaci¢n de Concepto de Pagos y Descuentos'  ;
+  'Finaliza la Actualizaciýn de Concepto de Pagos y Descuentos'  ;
   COLOR SCHEME 5
 IF  .NOT. WVISIBLE('_r7a0vjj0c')
      ACTIVATE WINDOW _r7a0vjj0c
@@ -372,7 +372,7 @@ DO CASE
           isadding = .F.
           UNLOCK
           WAIT WINDOW NOWAIT  ;
-               'Modificaci¢n Cancelada.'
+               'Modificaciýn Cancelada.'
           DO refresh
      CASE m.btnname = 'DELETE'
           IF EOF() .OR. BOF()
@@ -538,7 +538,7 @@ DEFINE WINDOW _qjn12zbvh AT    ;
        7.231 ,  54.800  FONT  ;
        'MS Sans Serif', 8 FLOAT  ;
        NOCLOSE SHADOW TITLE  ;
-       'Registro de Impresi¢n'  ;
+       'Registro de Impresiýn'  ;
        MINIMIZE SYSTEM COLOR  ;
        SCHEME 5
 MOVE WINDOW _qjn12zbvh CENTER
