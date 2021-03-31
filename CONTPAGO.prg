@@ -80,20 +80,15 @@ kuku2 = 'K2§§§џё§{§q§§§'
 kuku3 = 'K3§§§џё§{§q§§§'
 kuku4 = 'K4§§§§§§§§§§'
 kuku5 = 'K5§§v§§><§§'
-l_nomext = stringv(SUBSTR(kuku1,  ;
-           3, 60))
-l_nombre = stringv(SUBSTR(kuku2,  ;
-           3, 60))
-l_nomcort = stringv(SUBSTR(kuku2,  ;
-            3, 60))
-l_nombredd = stringv(SUBSTR(kuku2,  ;
-             3, 60))
+l_nomext = 'UNIDAD EDUCATIVA COLEGIO SIGLO XXI'
+l_nombre = 'U.E.C. SIGLO XXI'
+l_nomcort = 'U.E.C. SIGLO XXI'
+l_nombredd = 'U.E.C. SIGLO XXI'
 titulo = stringv(SUBSTR(kuku3, 3,  ;
          60))
 l_omad = stringv(SUBSTR(kuku4, 3,  ;
          20))
-l_rif = stringv(SUBSTR(kuku5, 3,  ;
-        20))
+l_rif = 'J-30027946-4'
 l_unico = m.unico
 l_zona = m.zona
 l_distrito = m.distrito
@@ -1688,21 +1683,21 @@ SET COLOR TO W+/B
 @ 12, 35 SAY 'п ' COLOR W+/N 
 @ 13, 29 SAY '   пппп' COLOR  ;
   (colorvar)
-@ 09, 39 SAY ' §§'
-@ 09, 42 SAY '§' COLOR W+/N 
-@ 09, 43 SAY '§§'
-@ 10, 39 SAY '§§ ' COLOR W+/N 
-@ 10, 42 SAY '§ ' COLOR  ;
+@ 09, 39 SAY ' мл'
+@ 09, 42 SAY 'п' COLOR W+/N 
+@ 09, 43 SAY 'лм'
+@ 10, 39 SAY 'лл ' COLOR W+/N 
+@ 10, 42 SAY 'л ' COLOR  ;
   (colorvar)
-@ 10, 44 SAY '§§'
-@ 10, 46 SAY '§' COLOR (colorvar)
-@ 11, 39 SAY '§§ ' COLOR W+/N 
-@ 11, 42 SAY '  §§'
-@ 11, 46 SAY '§' COLOR (colorvar)
-@ 12, 39 SAY ' §§§§'
-@ 12, 44 SAY '§ ' COLOR W+/N 
-@ 12, 46 SAY '§' COLOR (colorvar)
-@ 13, 39 SAY '   §§§' COLOR  ;
+@ 10, 44 SAY 'лл'
+@ 10, 46 SAY 'л' COLOR (colorvar)
+@ 11, 39 SAY 'лл ' COLOR W+/N 
+@ 11, 42 SAY '  лл'
+@ 11, 46 SAY 'л' COLOR (colorvar)
+@ 12, 39 SAY ' плмл'
+@ 12, 44 SAY 'п ' COLOR W+/N 
+@ 12, 46 SAY 'п' COLOR (colorvar)
+@ 13, 39 SAY '   ппп' COLOR  ;
   (colorvar)
 @ 09, 49 SAY '§§§  §§'
 @ 09, 56 SAY '§' COLOR (colorvar)
@@ -1717,21 +1712,21 @@ SET COLOR TO W+/B
 @ 12, 56 SAY ' ' COLOR W+/N 
 @ 13, 49 SAY ' §§   §§' COLOR  ;
   (colorvar)
-@ 09, 59 SAY ' §§'
-@ 09, 62 SAY '§' COLOR W+/N 
-@ 09, 63 SAY '§§'
-@ 10, 59 SAY '§§ ' COLOR W+/N 
-@ 10, 62 SAY '§ ' COLOR  ;
+@ 09, 59 SAY ' мл'
+@ 09, 62 SAY 'п' COLOR W+/N 
+@ 09, 63 SAY 'лм'
+@ 10, 59 SAY 'лл ' COLOR W+/N 
+@ 10, 62 SAY 'л ' COLOR  ;
   (colorvar)
-@ 10, 64 SAY '§§'
-@ 10, 66 SAY '§' COLOR (colorvar)
-@ 11, 59 SAY '§§ ' COLOR W+/N 
-@ 11, 62 SAY '  §§'
-@ 11, 66 SAY '§' COLOR (colorvar)
-@ 12, 59 SAY ' §§§§'
-@ 12, 64 SAY '§ ' COLOR W+/N 
-@ 12, 66 SAY '§' COLOR (colorvar)
-@ 13, 59 SAY '   §§§' COLOR  ;
+@ 10, 64 SAY 'лл'
+@ 10, 66 SAY 'л' COLOR (colorvar)
+@ 11, 59 SAY 'лл ' COLOR W+/N 
+@ 11, 62 SAY '  лл'
+@ 11, 66 SAY 'л' COLOR (colorvar)
+@ 12, 59 SAY ' плмл'
+@ 12, 64 SAY 'п ' COLOR W+/N 
+@ 12, 66 SAY 'п' COLOR (colorvar)
+@ 13, 59 SAY '   ппп' COLOR  ;
   (colorvar)
 @ 09, 68 SAY '§'
 @ 09, 69 SAY '§§§§§' COLOR W+/N 
@@ -1744,11 +1739,11 @@ SET COLOR TO W+/B
 @ 7, 2 TO 7, 77 COLOR B+/B 
 @ 7, 2 TO 14, 2 COLOR B+/B 
 @ 7, 77 TO 14, 77 COLOR N+/B 
-@ 7, 2 SAY '§' COLOR B+/B 
-@ 7, 77 SAY '§' COLOR N+/B 
+@ 7, 2 SAY 'к' COLOR B+/B 
+@ 7, 77 SAY 'П' COLOR N+/B 
 @ 14, 2 TO 14, 77 COLOR N+/B 
-@ 14, 2 SAY '§' COLOR B+/B 
-@ 14, 77 SAY '§' COLOR N+/B 
+@ 14, 2 SAY 'Р' COLOR B+/B 
+@ 14, 77 SAY 'й' COLOR N+/B 
 SET COLOR TO W+/B
 xz1 = 'Copyright (C) DiseЄo de Sistemas SISCONOT, C.A. 1996'
 xz2 = 'VersiЂn 1.1'
